@@ -1,7 +1,10 @@
 package com.example.shiftmate.Database.Tables.Shifts;
 
+import com.example.shiftmate.Database.Connector.DBConnector;
+
 /**
  * Created by jorda_000 on 2/6/2016.
+ * A model representing a Shift
  */
 public class Shift {
 
@@ -14,5 +17,19 @@ public class Shift {
     public String punchOutDT;
     public int breakTime;
     public int payPerHour;
+
+
+    public static int getLastOpenShift()
+    {
+
+        for (int i = 0; i < Shifts.shiftList.size(); i++)
+        {
+            if(Shifts.shiftList.get(i).punchOutDT.equals(Shift.PUNCHOUT_NONE))
+            return i;
+        }
+
+        return -1;
+
+    }
 
 }

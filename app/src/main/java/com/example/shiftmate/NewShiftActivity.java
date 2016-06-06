@@ -49,7 +49,6 @@ public class NewShiftActivity extends AppCompatActivity {
     //TextView that is associated with a DatePickerDialog. This is because the onDataSet callback function does not return the view that initially called
     //The DatePickerDialog, so we can't dynamically know for which date TextView to set the returned date for
 
-
     //region Variables & References
 
     Button ssButton;
@@ -168,10 +167,7 @@ public class NewShiftActivity extends AppCompatActivity {
     //Updates the strings representing the dates and the corresponding TextViews with the selected dates from the DatePickerDialogs
     private void updateGUIAndData(UpdateRequest updateRequest){
 
-
-        //Finally, set our TextView to the selected date by the DatePickerDialog
-
-        //Update the requested data and the Text View for that data
+        //Update the requested data and the Text Views according to the request type
         switch(updateRequest) {
 
             case UPDATE_BEGIN_DATE:
@@ -445,6 +441,41 @@ public class NewShiftActivity extends AppCompatActivity {
 
         totalPaidHoursText = (TextView) findViewById(R.id.totalPaidHoursText);
         totalPaidHoursText.setText("");
+
+        //Acquire data from MainActivity (for when a quick shift was requested to be ended)
+        //If this activity was started from selecting the New Shift button then the data below will be null!
+        if(getIntent().getStringExtra("punchInDT") != null)
+        {
+
+            try {
+
+                Date punchInDT = UniversalVariables.dateFormatDateTime2.parse(getIntent().getStringExtra("punchInDT"));
+                Date punchOutDT = UniversalVariables.dateFormatDateTime2.parse(getIntent().getStringExtra("punchOutDT"));
+
+                shiftBeginDate = ((UniversalVariables.dateFormatDate.format(punchInDT)));
+                shiftBeginDateText.setText(shiftBeginDate);
+
+                shiftEndDate = ((UniversalVariables.dateFormatDate.format(punchOutDT)));
+                shiftEndDateText.setText(shiftEndDate);
+
+                shiftBeginTime = ((UniversalVariables.dateFormatTime.format(punchInDT)));
+                shiftBeginTimeText.setText(shiftBeginTime);
+
+                shiftEndTime = ((UniversalVariables.dateFormatTime.format(punchOutDT)));
+                shiftEndTimeText.setText(shiftEndTime);
+
+                //Update the period according to the data updated above
+                updatePeriod();
+
+                //Update Total Hours and Total Paid Hours
+                updateTotalAndPaidHours();
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+        }
+
 
     }
 

@@ -19,6 +19,7 @@ import com.example.shiftmate.Database.Connector.DBConnector;
 import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Shifts.Shift;
 import com.example.shiftmate.Database.Tables.Shifts.Shifts;
+import com.example.shiftmate.Shared.UniversalVariables;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -83,23 +84,35 @@ public class MainActivity extends AppCompatActivity {
 
         //region Quick Shift Button
 
+        //This button opens a new quick shift (adds a new Shift entry into the DB) only if there is no
+        //other open shift in the database already, otherwise, this button will offer to "end shift" which will
+        //change the punchout time of that detected open shift which will close that open shift.
         qsButton = (Button) findViewById(R.id.qsButton);
 
-        //When the quick shift button is clicked we want to add a new database record that contains
-        //an id and a start date and time(we leave the end date as null to indicate we have not finished a shift yet)
         qsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //End the shift if there is at least one shift AND the latest shift does not have a punch out date
-                if(DataSource.shifts.shiftList.size() > 0 && DataSource.shifts.shiftList.get(DataSource.shifts.shiftList.size() - 1).punchOutDT.equals(Shift.PUNCHOUT_NONE))
-                    DataSource.shifts.EndShift(DataSource.shifts.tableName, DataSource.shifts.shiftList.get(DataSource.shifts.shiftList.size() - 1).Id);
+                //End the shift if there is at least one shift without a punch out date time (an open shift)
+                if(Shift.getLastOpenShift() != -1)
+                {
 
-                //Otherwise, we need to add a new quick shift
+                    //Transition to the NewShiftActivity with the data for the punchInDT and punchOutDT
+                    Intent intent = new Intent(MainActivity.this, NewShiftActivity.class);
+                    intent.putExtra("punchInDT", Shifts.shiftList.get(Shift.getLastOpenShift()).punchInDT);
+                    intent.putExtra("punchOutDT", UniversalVariables.dateFormatDateTime2.format(new Date()));
+                    startActivity(intent);
+
+                    //DataSource.shifts.EndShift(DataSource.shifts.tableName, DataSource.shifts.shiftList.get(Shift.getLastOpenShift()).Id);
+
+
+                }
+
+                //Otherwise, we add a new quick shift
                 else{
 
                     Shift shift = new Shift();
-                    shift.punchInDT = new SimpleDateFormat("MM/dd/yyyy HH:mm").format(new Date());
+                    shift.punchInDT =  UniversalVariables.dateFormatDateTime2.format(new Date());
                     shift.punchOutDT = Shift.PUNCHOUT_NONE;
                     shift.breakTime = Shift.NO_BREAK;
                     shift.payPerHour = 40;
@@ -182,16 +195,13 @@ public class MainActivity extends AppCompatActivity {
     //Updates the GUI's selectable buttons depending on the records of the database
     public void UpdateGUI() {
 
-        //If there is at least 1 shift & the latest shift does not have a punchout date then that means
-        //that the end shift button and the latestShift label should displayed with the latest shift's punch in date.
-        //Otherwise hide them and show the quickshift button
-        if (DataSource.shifts.shiftList.size() > 0 && DataSource.shifts.shiftList.get(DataSource.shifts.shiftList.size() - 1).punchOutDT.equals(Shift.PUNCHOUT_NONE)) {
+        //If there is at least 1 shift with a punchOutDT of PUNCHOUT_NONE (an open shift) then we display "End Shift" and some helpful GUI elements
+        //Otherwise, there is no open shift so we just display "Quick Shift" to let the user open a new quick shift
+        if (Shift.getLastOpenShift() != -1) {
 
-            latestShiftTV.setText("Latest Shift Started: " + DataSource.shifts.shiftList.get(DataSource.shifts.shiftList.size() - 1).punchInDT);
+            latestShiftTV.setText("Latest Quick Shift Started: " + DataSource.shifts.shiftList.get(DataSource.shifts.shiftList.size() - 1).punchInDT);
             latestShiftTV.setVisibility(View.VISIBLE);
             qsButton.setText("End Shift");
-            //Animation ani = AnimationUtils.loadAnimation(this, 0);
-            //esButton.setAnimation(ani);
 
         } else {
 
