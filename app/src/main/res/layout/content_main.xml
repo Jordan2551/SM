@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.shiftmate.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="shiftMate"
+        android:textSize="50sp"
+        android:id="@+id/headerTV"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="What Would you like to do?"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="15sp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Latest Shift Started: 10:03PM 2/3/2016"
+        android:id="@+id/latestShiftTV"
+        android:textColor="#030303"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="italic" />
+
+    <Button
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="New Shift"
+        android:id="@+id/nsButton"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Quick Shift"
+        android:id="@+id/qsButton"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="View Shifts"
+        android:id="@+id/vsButton"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="146dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Delete Records"
+        android:id="@+id/drButton"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
