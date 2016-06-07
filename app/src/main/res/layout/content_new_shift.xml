@@ -266,17 +266,6 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/editText"
-        android:layout_alignLeft="@+id/shiftBeginDateText"
-        android:layout_alignStart="@+id/shiftBeginDateText"
-        android:layout_toStartOf="@+id/shiftBeginTimeText"
-        android:layout_toLeftOf="@+id/shiftBeginTimeText" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
         android:id="@+id/notesText"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/textView10"
