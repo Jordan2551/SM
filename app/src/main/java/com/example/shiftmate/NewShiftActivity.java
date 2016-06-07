@@ -80,6 +80,10 @@ public class NewShiftActivity extends AppCompatActivity {
     TextView shiftBeginTimeText;
     TextView shiftEndTimeText;
 
+    TextView tipsText;
+    TextView salesText;
+    TextView notesText;
+
     TextView totalHoursText;
     TextView totalPaidHoursText;
 
@@ -216,11 +220,8 @@ public class NewShiftActivity extends AppCompatActivity {
 
     private void updateTotalAndPaidHours(){
 
-
-        try {
-
-            //The shift begin date is before the shift end date
-            if(UniversalVariables.dateFormatDate.parse(shiftBeginDate).before(UniversalVariables.dateFormatDate.parse(shiftEndDate)))
+            //If the two selected dates and times actually have a difference between them (the shift begin is before shift end)
+            if(hourDifference * 60 + minuteDifference > 0)
             {
 
                     //If the total shift time in minutes is larger than the break time then set the Total Hours and Paid Hours Text Views accordingly
@@ -247,10 +248,6 @@ public class NewShiftActivity extends AppCompatActivity {
                 totalHoursText.setText("0");
                 totalPaidHoursText.setText("0");
             }
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -288,7 +285,19 @@ public class NewShiftActivity extends AppCompatActivity {
                         shift.punchInDT = shiftBeginDate + " " + shiftBeginTime;
                         shift.punchOutDT = shiftEndDate + " " + shiftEndTime;
                         shift.payPerHour = 0;
+                        shift.notes = notesText.getText().toString();
 
+                        if(tipsText.length() > 0)
+                            shift.tips = Integer.parseInt(tipsText.getText().toString());
+
+                        else
+                            shift.tips = Shift.NO_TIPS;
+
+                        if(salesText.length() > 0)
+                            shift.sales = Integer.parseInt(salesText.getText().toString());
+
+                        else
+                            shift.tips = Shift.NO_SALES;
 
                             //If the total time of the shift (in minutes) is bigger or equal to the break time then allow the user to save the shift
                             if(hourDifference * 60 + minuteDifference >= breakTime)
@@ -297,13 +306,13 @@ public class NewShiftActivity extends AppCompatActivity {
                             //Otherwise, the break time is greater than the shift time, which would yield a negative total paid time (doesn't make sense)
                             //Prompt the user with a toast and exit the function
                             else{
-                                Toast.makeText(getApplicationContext(), "Break time has to be less than the total shift time.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), R.string.Break_Time_Less_Than_Shift_Time, Toast.LENGTH_LONG).show();
                                 return;
                             }
 
                         DataSource.shifts.CreateShift(DataSource.shifts.tableName, shift);
 
-                        Toast.makeText(getApplicationContext(), String.format("Your shift of %d:%d hours has been created!", hourDifference, minuteDifference), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), String.format("Your shift of %d:%d hours has been saved!", hourDifference, minuteDifference), Toast.LENGTH_LONG).show();
 
                         //After the new shift was created and the confirmation toast was displayed, finish with this activity and go backk to the main activity
                         finish();
@@ -312,7 +321,7 @@ public class NewShiftActivity extends AppCompatActivity {
 
                     //Otherwise, prompt the user with a toast
                     else
-                        Toast.makeText(getApplicationContext(), "Shift begin date must be before shift end date.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.Shift_Begin_Before_End, Toast.LENGTH_LONG).show();
 
 
                 } catch (ParseException e) {
@@ -435,6 +444,15 @@ public class NewShiftActivity extends AppCompatActivity {
 
             }
         });
+
+        tipsText = (TextView) findViewById(R.id.tipsText);
+        tipsText.setText("");
+
+        salesText = (TextView) findViewById(R.id.salesText);
+        salesText.setText("");
+
+        notesText = (TextView) findViewById(R.id.notesText);
+        notesText.setText("");
 
         totalHoursText = (TextView) findViewById(R.id.totalHoursText);
         totalHoursText.setText("");

@@ -28,6 +28,9 @@ public class Shifts extends TableItem {
     private static final String COLUMN_PUNCHOUTDT = "punchOutDT";
     private static final String COLUMN_BREAKTIME = "breakTime";
     private static final String COLUMN_PAYPERHOUR = "payPerHour";
+    private static final String COLUMN_TIPS = "tips";
+    private static final String COLUMN_SALES = "sales";
+    private static final String COLUMN_NOTES = "notes";
 
 
     //endregion
@@ -36,12 +39,15 @@ public class Shifts extends TableItem {
 
     public Shifts() {
 
-        super("Shifts", "SHIFTS", new String[]{COLUMN_ID, COLUMN_PUNCHINDT, COLUMN_PUNCHOUTDT, COLUMN_BREAKTIME, COLUMN_PAYPERHOUR},
+        super("Shifts", "SHIFTS", new String[]{COLUMN_ID, COLUMN_PUNCHINDT, COLUMN_PUNCHOUTDT, COLUMN_BREAKTIME, COLUMN_PAYPERHOUR, COLUMN_TIPS, COLUMN_SALES, COLUMN_NOTES},
                 "CREATE TABLE Shifts ("
                         + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + COLUMN_PUNCHINDT + " TEXT, "
                         + COLUMN_PUNCHOUTDT + " TEXT, "
                         + COLUMN_BREAKTIME + " INTEGER, "
+                        + COLUMN_TIPS + " INTEGER, "
+                        + COLUMN_SALES + " INTEGER, "
+                        + COLUMN_NOTES + " TEXT, "
                         + COLUMN_PAYPERHOUR + " INTEGER);");
 
     }
@@ -57,6 +63,9 @@ public class Shifts extends TableItem {
         values.put(COLUMN_PUNCHOUTDT, shift.punchOutDT);
         values.put(COLUMN_BREAKTIME, shift.breakTime);
         values.put(COLUMN_PAYPERHOUR, shift.payPerHour);
+        values.put(COLUMN_TIPS, shift.tips);
+        values.put(COLUMN_SALES, shift.sales);
+        values.put(COLUMN_NOTES, shift.notes);
 
         DBConnector.database.insert(tableName, null, values);
 
@@ -103,6 +112,10 @@ public class Shifts extends TableItem {
                 shift.punchOutDT = cursor.getString(cursor.getColumnIndex(COLUMN_PUNCHOUTDT));
                 shift.breakTime = cursor.getInt(cursor.getColumnIndex(COLUMN_BREAKTIME));
                 shift.payPerHour = cursor.getInt(cursor.getColumnIndex(COLUMN_PAYPERHOUR));
+                shift.tips = cursor.getInt(cursor.getColumnIndex(COLUMN_TIPS));
+                shift.sales = cursor.getInt(cursor.getColumnIndex(COLUMN_SALES));
+                shift.notes = cursor.getString(cursor.getColumnIndex(COLUMN_NOTES));
+
                 tableItems.add(shift);
 
             }
