@@ -11,15 +11,25 @@ import java.util.Comparator;
 public class ViewShiftsComparators {
 
 
-    public static Comparator getDateComparator(){ return  new dateComparator(); }
+    public static Comparator getDateComparator() {
+        return new dateComparator();
+    }
 
-    public static Comparator getBreakComparator(){ return  new breakComparator(); }
+    public static Comparator getBreakComparator() {
+        return new breakComparator();
+    }
 
-    public static Comparator getPayComparator(){ return  new payComparator(); }
+    public static Comparator getPayComparator() {
+        return new payComparator();
+    }
 
-    public static Comparator getTipsComparator(){ return  new tipsComparator(); }
+    public static Comparator getTipsComparator() {
+        return new tipsComparator();
+    }
 
-    public static Comparator getSalesComparator(){ return  new salesComparator(); }
+    public static Comparator getSalesComparator() {
+        return new salesComparator();
+    }
 
 
     private static class dateComparator implements Comparator<Shift> {

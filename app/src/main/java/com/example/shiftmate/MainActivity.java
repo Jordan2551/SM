@@ -94,10 +94,9 @@ public class MainActivity extends AppCompatActivity {
                 if(Shift.getLastOpenShift() != -1)
                 {
 
-                    //Transition to the NewShiftActivity with the data for the punchInDT and punchOutDT
+                    //Transition to the NewShiftActivity with the data for the punchInDT
                     Intent intent = new Intent(MainActivity.this, NewShiftActivity.class);
                     intent.putExtra("punchInDT", Shifts.shiftList.get(Shift.getLastOpenShift()).punchInDT);
-                    intent.putExtra("punchOutDT", UniversalVariables.dateFormatDateTime2.format(new Date()));
                     startActivity(intent);
 
                     //DataSource.shifts.EndShift(DataSource.shifts.tableName, DataSource.shifts.shiftList.get(Shift.getLastOpenShift()).Id);

@@ -15,6 +15,7 @@ import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Shifts.Shift;
 import com.example.shiftmate.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.codecrafters.tableview.TableDataAdapter;
@@ -23,7 +24,7 @@ public class ShiftTableAdapter extends TableDataAdapter<Shift> {
 
     private final byte TEXT_SIZE = 18;
 
-    public ShiftTableAdapter(Context context) {
+    public ShiftTableAdapter(Context context, ArrayList<Shift> filteredShiftsList) {
         super(context, DataSource.shifts.shiftList);
 
     }
@@ -34,7 +35,7 @@ public class ShiftTableAdapter extends TableDataAdapter<Shift> {
         Shift shift = getRowData(rowIndex);
         View renderedView = null;
 
-        renderedView = renderView(rowIndex, columnIndex);
+        renderedView = renderView(columnIndex, shift);
         return renderedView;
 
     }
@@ -42,7 +43,7 @@ public class ShiftTableAdapter extends TableDataAdapter<Shift> {
     //Renders the TextView according to the column index requested for the adapter, as well as for the row index requested(which represents the data index in our shiftList).
     //The TextView returned depends on the row and column indexes.
     //For example: column 0 row 0 will return the first index data according to the shift date property.
-    private View renderView(int rowIndex, int columnIndex){
+    private View renderView(int columnIndex, Shift shift){
 
         LinearLayout layout = new LinearLayout(getContext());
         layout.setOrientation(LinearLayout.VERTICAL);
@@ -55,26 +56,26 @@ public class ShiftTableAdapter extends TableDataAdapter<Shift> {
 
             case 0:
                 textViewToAdd.setMaxLines(2);
-                textViewToAdd.setText(DataSource.shifts.shiftList.get(rowIndex).punchInDT + System.getProperty("line.separator") + DataSource.shifts.shiftList.get(rowIndex).punchOutDT);
+                textViewToAdd.setText(shift.punchInDT + System.getProperty("line.separator") + shift.punchOutDT);
                 break;
             case 1:
-                textViewToAdd.setText(Integer.toString(DataSource.shifts.shiftList.get(rowIndex).breakTime));
+                textViewToAdd.setText(Integer.toString(shift.breakTime));
                 textViewToAdd.setPadding(90,0,0,0);
                 break;
             case 2:
-                textViewToAdd.setText(Integer.toString(DataSource.shifts.shiftList.get(rowIndex).payPerHour));
+                textViewToAdd.setText(Integer.toString(shift.payPerHour));
                 textViewToAdd.setPadding(90,0,0,0);
                 break;
             case 3:
-                textViewToAdd.setText(Integer.toString(DataSource.shifts.shiftList.get(rowIndex).tips));
+                textViewToAdd.setText(Integer.toString(shift.tips));
                 textViewToAdd.setPadding(90,0,0,0);
                 break;
             case 4:
-                textViewToAdd.setText(Integer.toString(DataSource.shifts.shiftList.get(rowIndex).sales));
+                textViewToAdd.setText(Integer.toString(shift.sales));
                 textViewToAdd.setPadding(90,0,0,0);
                 break;
             case 5:
-                textViewToAdd.setText(DataSource.shifts.shiftList.get(rowIndex).notes);
+                textViewToAdd.setText(shift.notes);
                 textViewToAdd.setPadding(40,0,0,0);
                 break;
 

@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.shiftmate.Database.Tables.Shifts.Shifts;
 import com.example.shiftmate.Database.Tables.TableItem;
+import com.example.shiftmate.ViewShifts.ViewShiftsComparators;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,6 @@ public class DBConnector extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + tableItem.tableName);
             Log.i(tableItem.logTag, "Table Dropped!");
         }
-
         onCreate(db);
 
     }

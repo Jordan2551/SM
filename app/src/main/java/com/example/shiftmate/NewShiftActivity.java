@@ -2,6 +2,7 @@ package com.example.shiftmate;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,19 +17,16 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.shiftmate.Database.Connector.DBConnector;
 import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Shifts.Shift;
 import com.example.shiftmate.Shared.UniversalFunctions;
 import com.example.shiftmate.Shared.UniversalVariables;
 
 import org.joda.time.DateTime;
+import org.joda.time.Interval;
 import org.joda.time.Period;
-import org.w3c.dom.Text;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -101,6 +99,7 @@ public class NewShiftActivity extends AppCompatActivity {
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
             updateGUIAndData(UpdateRequest.UPDATE_BEGIN_DATE);
 
         }
@@ -209,7 +208,7 @@ public class NewShiftActivity extends AppCompatActivity {
 
         datePeriod = new Period(DateTime.parse(shiftBeginDate + " " + shiftBeginTime, UniversalVariables.dateFormatDateTime),
                 DateTime.parse(shiftEndDate + " " + shiftEndTime, UniversalVariables.dateFormatDateTime));
-
+        //DDOS#3 ISSUES WITH A DATE SUCH AS mon, 13 jun 2016 12:51AM -> mon, 13 jun 2016 07:52PM HOURS SHOW NEGATIVE VALUE
         //Get the hour difference between two dates. We convert the days, weeks and months to hours as well!
         hourDifference = datePeriod.getHours() + datePeriod.getDays() * 24 + ((datePeriod.getWeeks() * 7) * 24) + (((datePeriod.getMonths() * 4) * 7) * 24) + ((((datePeriod.getYears() * 12) * 4) * 7) * 24);
 
@@ -306,8 +305,6 @@ public class NewShiftActivity extends AppCompatActivity {
 
                         shift.notes = notesText.getText().toString();
 
-
-
                         //If the total time of the shift (in minutes) is bigger or equal to the break time then allow the user to save the shift
                             if(hourDifference * 60 + minuteDifference >= breakTime)
                                 shift.breakTime = breakTime;
@@ -392,7 +389,7 @@ public class NewShiftActivity extends AppCompatActivity {
             }
         });
 
-        shiftEndDateText = (TextView) findViewById(R.id.shiftEndDateText);
+        shiftEndDateText = (TextView) findViewById(R.id.totalHoursTV);
         shiftEndDateText.setText(shiftEndDate);
 
         //DDOS#1
@@ -477,7 +474,7 @@ public class NewShiftActivity extends AppCompatActivity {
             try {
 
                 Date punchInDT = UniversalVariables.dateFormatDateTime2.parse(getIntent().getStringExtra("punchInDT"));
-                Date punchOutDT = UniversalVariables.dateFormatDateTime2.parse(getIntent().getStringExtra("punchOutDT"));
+                Date punchOutDT = new Date();
 
                 shiftBeginDate = ((UniversalVariables.dateFormatDate.format(punchInDT)));
                 shiftBeginDateText.setText(shiftBeginDate);

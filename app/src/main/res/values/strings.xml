@@ -5,4 +5,12 @@
     <string name="title_activity_new_shift">NewShiftActivity</string>
     <string name="Break_Time_Less_Than_Shift_Time">Break time has to be less than the total shift time.</string>
     <string name="Shift_Begin_Before_End">Shift begin date must be before shift end date.</string>
+
+    <array name="view_shifts_spinner_choices">
+        <item>All Shifts</item>
+        <item>Shifts by Date</item>
+        <item>Shifts by Week</item>
+        <item>Shifts by Year</item>
+    </array>
+
 </resources>

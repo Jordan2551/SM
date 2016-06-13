@@ -32,6 +32,9 @@
             android:name="com.example.shiftmate.NewShiftActivity"
             android:label="@string/title_activity_new_shift"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.example.shiftmate.ViewShifts.ViewShiftsNEW" />
+        <activity android:name="com.example.shiftmate.MessingAround" />
+        <activity android:name="com.example.shiftmate.ViewShifts.ShiftTableAdapter" />
     </application>
 
 </manifest>

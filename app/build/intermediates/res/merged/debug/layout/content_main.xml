@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.shiftmate.MainActivity"
+    tools:context=".NewShiftActivity"
     tools:showIn="@layout/activity_main">
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_marginTop="30dp"
         android:textSize="15sp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Latest Shift Started: 10:03PM 2/3/2016"
+        android:text="Latest Quick Shift Started: 10:03PM 2/3/2016"
         android:id="@+id/latestShiftTV"
         android:textColor="#030303"
         android:layout_gravity="center_horizontal"
