@@ -285,7 +285,6 @@ public class NewShiftActivity extends AppCompatActivity {
                         shift.punchInDT = shiftBeginDate + " " + shiftBeginTime;
                         shift.punchOutDT = shiftEndDate + " " + shiftEndTime;
                         shift.payPerHour = 0;
-                        shift.notes = notesText.getText().toString();
 
                         if(tipsText.length() > 0)
                             shift.tips = Integer.parseInt(tipsText.getText().toString());
@@ -299,7 +298,17 @@ public class NewShiftActivity extends AppCompatActivity {
                         else
                             shift.tips = Shift.NO_SALES;
 
-                            //If the total time of the shift (in minutes) is bigger or equal to the break time then allow the user to save the shift
+                        if(notesText.length() > 0)
+                            shift.notes = notesText.getText().toString();
+
+                        else
+                            shift.notes = "";
+
+                        shift.notes = notesText.getText().toString();
+
+
+
+                        //If the total time of the shift (in minutes) is bigger or equal to the break time then allow the user to save the shift
                             if(hourDifference * 60 + minuteDifference >= breakTime)
                                 shift.breakTime = breakTime;
 

@@ -1,7 +1,6 @@
 package com.example.shiftmate;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,8 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -20,8 +17,8 @@ import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Shifts.Shift;
 import com.example.shiftmate.Database.Tables.Shifts.Shifts;
 import com.example.shiftmate.Shared.UniversalVariables;
+import com.example.shiftmate.ViewShifts.ViewShiftsNEW;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {

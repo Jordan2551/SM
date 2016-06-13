@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/ShiftMate.iml" filepath="$PROJECT_DIR$/ShiftMate.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/sorttableview/sorttableview.iml" filepath="$PROJECT_DIR$/sorttableview/sorttableview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tableview/tableview.iml" filepath="$PROJECT_DIR$/tableview/tableview.iml" />
     </modules>
   </component>
 </project>

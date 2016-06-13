@@ -26,7 +26,9 @@
             android:name=".NewShiftActivity"
             android:label="@string/title_activity_new_shift"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ViewShiftsNEW"></activity>
+        <activity android:name=".ViewShifts.ViewShiftsNEW" />
+        <activity android:name=".MessingAround" />
+        <activity android:name=".ViewShifts.ShiftTableAdapter"></activity>
     </application>
 
 </manifest>
