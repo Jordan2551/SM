@@ -7,13 +7,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.shiftmate.ViewShiftsNEW">
+    tools:context="com.example.shiftmate.ViewShiftsNEW"
+    android:id="@+id/t">
 
-    <GridView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/gridView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp" />
+    <de.codecrafters.tableview.TableView
+        xmlns:table="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tableView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        table:tableView_columnCount="4" />
+
+
 </RelativeLayout>
