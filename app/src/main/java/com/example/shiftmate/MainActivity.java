@@ -16,9 +16,14 @@ import com.example.shiftmate.Database.Connector.DBConnector;
 import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Shifts.Shift;
 import com.example.shiftmate.Database.Tables.Shifts.Shifts;
+import com.example.shiftmate.Shared.UniversalFunctions;
 import com.example.shiftmate.Shared.UniversalVariables;
 import com.example.shiftmate.ViewShifts.ViewShiftsNEW;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormatter;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
@@ -108,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 else{
 
                     Shift shift = new Shift();
-                    shift.punchInDT =  UniversalVariables.dateFormatDateTime2.format(new Date());
+                    shift.punchInDT = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateTimeString, DateTime.now(), null);
                     shift.punchOutDT = Shift.PUNCHOUT_NONE;
                     shift.breakTime = Shift.NO_BREAK;
                     shift.payPerHour = 40;
@@ -196,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
         //Otherwise, there is no open shift so we just display "Quick Shift" to let the user open a new quick shift
         if (Shift.getLastOpenShift() != -1) {
 
-            latestShiftTV.setText("Latest Quick Shift Started: " + DataSource.shifts.shiftList.get(DataSource.shifts.shiftList.size() - 1).punchInDT);
+            latestShiftTV.setText("Latest Quick Shift Started: " + UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatDateTimeDisplayString, DataSource.shifts.shiftList.get(DataSource.shifts.shiftList.size() - 1).punchInDT));
             latestShiftTV.setVisibility(View.VISIBLE);
             qsButton.setText("End Shift");
 

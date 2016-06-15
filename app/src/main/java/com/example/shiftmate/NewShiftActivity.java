@@ -23,15 +23,21 @@ import com.example.shiftmate.Shared.UniversalFunctions;
 import com.example.shiftmate.Shared.UniversalVariables;
 
 import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.Hours;
 import org.joda.time.Interval;
 import org.joda.time.Period;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 //Indicates what data and Text Views should be updated according to the corresponding Text View which started the DatePicker/TimePicker dialog
-enum UpdateRequest{
+enum UpdateRequest {
 
     UPDATE_BEGIN_DATE,
     UPDATE_END_DATE,
@@ -49,17 +55,20 @@ public class NewShiftActivity extends AppCompatActivity {
 
     //region Variables & References
 
+    //Indicates how this activity started
+    private boolean calledFromQuickShift = false;
+
     Button ssButton;
 
-    //These strings hold the shift begin and end dates in string format
+    //These strings hold the shift begin and end dates in a MM/dd/yyyy format
     //These strings get initialized with the current date by default
-    String shiftBeginDate = UniversalVariables.dateFormatDate.format(new Date());
-    String shiftEndDate = UniversalVariables.dateFormatDate.format(new Date());
+    String shiftBeginDate = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, DateTime.now(), null);
+    String shiftEndDate = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, DateTime.now(), null);
 
-    //These strings hold the shift being and end times in string format
+    //These strings hold the shift begin and end dates in a MM/dd/yyyy format
     //These strings get initialized with the current time by default
-    String shiftBeginTime = UniversalVariables.dateFormatTime.format(new Date());
-    String shiftEndTime = UniversalVariables.dateFormatTime.format(new Date());
+    String shiftBeginTime = UniversalFunctions.dateToString(UniversalVariables.dateFormatTimeString, DateTime.now(), null);
+    String shiftEndTime = UniversalFunctions.dateToString(UniversalVariables.dateFormatTimeString, DateTime.now(), null);
 
     //A period object to determine the hour and minute difference between two dates
     Period datePeriod;
@@ -168,29 +177,29 @@ public class NewShiftActivity extends AppCompatActivity {
     //region Update Functions
 
     //Updates the strings representing the dates and the corresponding TextViews with the selected dates from the DatePickerDialogs
-    private void updateGUIAndData(UpdateRequest updateRequest){
+    private void updateGUIAndData(UpdateRequest updateRequest) {
 
         //Update the requested data and the Text Views according to the request type
-        switch(updateRequest) {
+        switch (updateRequest) {
 
             case UPDATE_BEGIN_DATE:
-                shiftBeginDate = ((UniversalVariables.dateFormatDate.format(myCalendar.getTime())));
-                shiftBeginDateText.setText(shiftBeginDate);
+                shiftBeginDate = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, null, myCalendar.getTime());
+                shiftBeginDateText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateString, shiftBeginDate));
                 break;
 
             case UPDATE_END_DATE:
-                shiftEndDate = ((UniversalVariables.dateFormatDate.format(myCalendar.getTime())));
-                shiftEndDateText.setText(shiftEndDate);
+                shiftEndDate = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, null, myCalendar.getTime());
+                shiftEndDateText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateString, shiftEndDate));
                 break;
 
             case UPDATE_BEGIN_TIME:
-                shiftBeginTime = ((UniversalVariables.dateFormatTime.format(myCalendar.getTime())));
-                shiftBeginTimeText.setText(shiftBeginTime);
+                shiftBeginTime = UniversalFunctions.dateToString(UniversalVariables.dateFormatTimeString, null, myCalendar.getTime());
+                shiftBeginTimeText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatTime, UniversalVariables.dateFormatTimeString, shiftBeginTime));
                 break;
 
             case UPDATE_END_TIME:
-                shiftEndTime = ((UniversalVariables.dateFormatTime.format(myCalendar.getTime())));
-                shiftEndTimeText.setText(shiftEndTime);
+                shiftEndTime = UniversalFunctions.dateToString(UniversalVariables.dateFormatTimeString, null, myCalendar.getTime());
+                shiftEndTimeText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatTime, UniversalVariables.dateFormatTimeString, shiftEndTime));
                 break;
 
         }
@@ -204,12 +213,11 @@ public class NewShiftActivity extends AppCompatActivity {
     }
 
     //Updates the period and gets the hour and minute difference for the currently selected shift being and end dates
-    private void updatePeriod(){
+    private void updatePeriod() {
 
-        datePeriod = new Period(DateTime.parse(shiftBeginDate + " " + shiftBeginTime, UniversalVariables.dateFormatDateTime),
-                DateTime.parse(shiftEndDate + " " + shiftEndTime, UniversalVariables.dateFormatDateTime));
-        //DDOS#3 ISSUES WITH A DATE SUCH AS mon, 13 jun 2016 12:51AM -> mon, 13 jun 2016 07:52PM HOURS SHOW NEGATIVE VALUE
-        //Get the hour difference between two dates. We convert the days, weeks and months to hours as well!
+        datePeriod = new Period(UniversalFunctions.stringToDate(UniversalVariables.dateFormatDateTime, shiftBeginDate + " " + shiftBeginTime),
+                UniversalFunctions.stringToDate(UniversalVariables.dateFormatDateTime, shiftEndDate + " " + shiftEndTime));
+
         hourDifference = datePeriod.getHours() + datePeriod.getDays() * 24 + ((datePeriod.getWeeks() * 7) * 24) + (((datePeriod.getMonths() * 4) * 7) * 24) + ((((datePeriod.getYears() * 12) * 4) * 7) * 24);
 
         //Get the minute difference between two dates
@@ -217,36 +225,33 @@ public class NewShiftActivity extends AppCompatActivity {
 
     }
 
-    private void updateTotalAndPaidHours(){
+    private void updateTotalAndPaidHours() {
 
-            //If the two selected dates and times actually have a difference between them (the shift begin is before shift end)
-            if(hourDifference * 60 + minuteDifference > 0)
-            {
+        //If the two selected dates and times actually have a difference between them (the shift begin is before shift end)
+        if (hourDifference * 60 + minuteDifference > 0) {
 
-                    //If the total shift time in minutes is larger than the break time then set the Total Hours and Paid Hours Text Views accordingly
-                    if(hourDifference * 60 + minuteDifference > breakTime) {
+            //If the total shift time in minutes is larger than the break time then set the Total Hours and Paid Hours Text Views accordingly
+            if (hourDifference * 60 + minuteDifference > breakTime) {
 
-                        totalHoursText.setText(hourDifference + ":" + minuteDifference);
-                        totalPaidHrsAndMins = UniversalFunctions.getHoursAndMinutes((hourDifference * 60 + minuteDifference) - breakTime);
-                        totalPaidHoursText.setText(totalPaidHrsAndMins[0] + ":" + totalPaidHrsAndMins[1]);
+                totalHoursText.setText(hourDifference + ":" + minuteDifference);
+                totalPaidHrsAndMins = UniversalFunctions.getHoursAndMinutes((hourDifference * 60 + minuteDifference) - breakTime);
+                totalPaidHoursText.setText(totalPaidHrsAndMins[0] + ":" + totalPaidHrsAndMins[1]);
 
-                    }
+            }
 
-                    //Otherwise, the break time (in minutes) is larger than the total shift time (in minutes) then set the Total Hours and Paid Hours Text Views to 0
-                    else
-                    {
-                        totalHoursText.setText("0");
-                        totalPaidHoursText.setText("0");
-                    }
-
-                }
-
-            //The shift being date is after the shift end date or the shift begin and end date are equal, which means we set the Total Hours and Paid Hours Text Views to 0
-            else
-            {
+            //Otherwise, the break time (in minutes) is larger than the total shift time (in minutes) then set the Total Hours and Paid Hours Text Views to 0
+            else {
                 totalHoursText.setText("0");
                 totalPaidHoursText.setText("0");
             }
+
+        }
+
+        //The shift being date is after the shift end date or the shift begin and end date are equal, which means we set the Total Hours and Paid Hours Text Views to 0
+        else {
+            totalHoursText.setText("0");
+            totalPaidHoursText.setText("0");
+        }
 
     }
 
@@ -274,67 +279,64 @@ public class NewShiftActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                try {
+                //If the start of the shift is before the end of the shift date
+                if (UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftBeginDate).isBefore(UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftEndDate))
+                        || UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftBeginDate).isEqual(UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftEndDate))) {
 
-                    //If the start of the shift is before the end of the shift date
-                    if(UniversalVariables.dateFormatDate.parse(shiftBeginDate).before(UniversalVariables.dateFormatDate.parse(shiftEndDate)) ||  UniversalVariables.dateFormatDate.parse(shiftBeginDate).equals(UniversalVariables.dateFormatDate.parse(shiftEndDate)))
-                    {
+                    Shift shift = new Shift();
+                    shift.punchInDT = shiftBeginDate + " " + shiftBeginTime;
+                    shift.punchOutDT = shiftEndDate + " " + shiftEndTime;
+                    shift.payPerHour = 0;
 
-                        Shift shift = new Shift();
-                        shift.punchInDT = shiftBeginDate + " " + shiftBeginTime;
-                        shift.punchOutDT = shiftEndDate + " " + shiftEndTime;
-                        shift.payPerHour = 0;
+                    if (tipsText.length() > 0)
+                        shift.tips = Integer.parseInt(tipsText.getText().toString());
 
-                        if(tipsText.length() > 0)
-                            shift.tips = Integer.parseInt(tipsText.getText().toString());
+                    else
+                        shift.tips = Shift.NO_TIPS;
 
-                        else
-                            shift.tips = Shift.NO_TIPS;
+                    if (salesText.length() > 0)
+                        shift.sales = Integer.parseInt(salesText.getText().toString());
 
-                        if(salesText.length() > 0)
-                            shift.sales = Integer.parseInt(salesText.getText().toString());
+                    else
+                        shift.tips = Shift.NO_SALES;
 
-                        else
-                            shift.tips = Shift.NO_SALES;
-
-                        if(notesText.length() > 0)
-                            shift.notes = notesText.getText().toString();
-
-                        else
-                            shift.notes = "";
-
+                    if (notesText.length() > 0)
                         shift.notes = notesText.getText().toString();
 
-                        //If the total time of the shift (in minutes) is bigger or equal to the break time then allow the user to save the shift
-                            if(hourDifference * 60 + minuteDifference >= breakTime)
-                                shift.breakTime = breakTime;
+                    else
+                        shift.notes = "";
 
-                            //Otherwise, the break time is greater than the shift time, which would yield a negative total paid time (doesn't make sense)
-                            //Prompt the user with a toast and exit the function
-                            else{
-                                Toast.makeText(getApplicationContext(), R.string.Break_Time_Less_Than_Shift_Time, Toast.LENGTH_LONG).show();
-                                return;
-                            }
+                    shift.notes = notesText.getText().toString();
 
-                        DataSource.shifts.CreateShift(DataSource.shifts.tableName, shift);
+                    //If the total time of the shift (in minutes) is bigger or equal to the break time then allow the user to save the shift
+                    if (hourDifference * 60 + minuteDifference >= breakTime)
+                        shift.breakTime = breakTime;
 
-                        Toast.makeText(getApplicationContext(), String.format("Your shift of %d:%d hours has been saved!", hourDifference, minuteDifference), Toast.LENGTH_LONG).show();
-
-                        //After the new shift was created and the confirmation toast was displayed, finish with this activity and go backk to the main activity
-                        finish();
-
+                        //Otherwise, the break time is greater than the shift time, which would yield a negative total paid time (doesn't make sense)
+                        //Prompt the user with a toast and exit the function
+                    else {
+                        Toast.makeText(getApplicationContext(), R.string.Break_Time_Less_Than_Shift_Time, Toast.LENGTH_LONG).show();
+                        return;
                     }
 
-                    //Otherwise, prompt the user with a toast
+                    //If this activity was called by end quick shift then just call the EndShift function
+                    if (calledFromQuickShift)
+                        DataSource.shifts.EndShift(DataSource.shifts.tableName, shift.Id);
+
+                    //Otherwise, this activity started regularly(by clicking Create Shift), so create a new shift
                     else
-                        Toast.makeText(getApplicationContext(), R.string.Shift_Begin_Before_End, Toast.LENGTH_LONG).show();
+                        DataSource.shifts.CreateShift(DataSource.shifts.tableName, shift);
 
+                    Toast.makeText(getApplicationContext(), String.format("Your shift of %d:%d hours has been saved!", hourDifference, minuteDifference), Toast.LENGTH_LONG).show();
 
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                    //After the new shift was created and the confirmation toast was displayed, finish with this activity and go backk to the main activity
+                    finish();
+
                 }
 
-
+                //Otherwise, prompt the user with a toast
+                else
+                    Toast.makeText(getApplicationContext(), R.string.Shift_Begin_Before_End, Toast.LENGTH_LONG).show();
 
             }
         });
@@ -356,8 +358,8 @@ public class NewShiftActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(breakTimeText.length() > 0)
-                     breakTime =  Integer.parseInt(breakTimeText.getText().toString());
+                if (breakTimeText.length() > 0)
+                    breakTime = Integer.parseInt(breakTimeText.getText().toString());
 
                 else
                     breakTime = Shift.NO_BREAK;
@@ -370,7 +372,7 @@ public class NewShiftActivity extends AppCompatActivity {
         });
 
         shiftBeginDateText = (TextView) findViewById(R.id.shiftBeginDateText);
-        shiftBeginDateText.setText(shiftBeginDate);
+        shiftBeginDateText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateString, shiftBeginDate));
 
         shiftBeginDateText.setOnClickListener(new View.OnClickListener() {
 
@@ -390,7 +392,7 @@ public class NewShiftActivity extends AppCompatActivity {
         });
 
         shiftEndDateText = (TextView) findViewById(R.id.totalHoursTV);
-        shiftEndDateText.setText(shiftEndDate);
+        shiftEndDateText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateString, shiftEndDate));
 
         //DDOS#1
         shiftEndDateText.setOnClickListener(new View.OnClickListener() {
@@ -411,7 +413,7 @@ public class NewShiftActivity extends AppCompatActivity {
         });
 
         shiftBeginTimeText = (TextView) findViewById(R.id.shiftBeginTimeText);
-        shiftBeginTimeText.setText(shiftBeginTime);
+        shiftBeginTimeText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatTime, UniversalVariables.dateFormatTimeString, shiftBeginTime));
 
         shiftBeginTimeText.setOnClickListener(new View.OnClickListener() {
 
@@ -431,7 +433,7 @@ public class NewShiftActivity extends AppCompatActivity {
         });
 
         shiftEndTimeText = (TextView) findViewById(R.id.shiftEndTimeText);
-        shiftEndTimeText.setText(shiftEndTime);
+        shiftEndTimeText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatTime, UniversalVariables.dateFormatTimeString, shiftEndTime));
 
         //DDOS#1
         shiftEndTimeText.setOnClickListener(new View.OnClickListener() {
@@ -468,41 +470,35 @@ public class NewShiftActivity extends AppCompatActivity {
 
         //Acquire data from MainActivity (for when a quick shift was requested to be ended)
         //If this activity was started from selecting the New Shift button then the data below will be null!
-        if(getIntent().getStringExtra("punchInDT") != null)
-        {
+        if (getIntent().getStringExtra("punchInDT") != null) {
 
-            try {
+            calledFromQuickShift = true;
 
-                Date punchInDT = UniversalVariables.dateFormatDateTime2.parse(getIntent().getStringExtra("punchInDT"));
-                Date punchOutDT = new Date();
+            DateTime punchInDT = UniversalFunctions.stringToDate(UniversalVariables.dateFormatDateTime, getIntent().getStringExtra("punchInDT"));
+            DateTime punchOutDT = DateTime.now();//Watch out here DDOS
 
-                shiftBeginDate = ((UniversalVariables.dateFormatDate.format(punchInDT)));
-                shiftBeginDateText.setText(shiftBeginDate);
+            shiftBeginDate = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, punchInDT, null);
+            shiftBeginDateText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftBeginDate));
 
-                shiftEndDate = ((UniversalVariables.dateFormatDate.format(punchOutDT)));
-                shiftEndDateText.setText(shiftEndDate);
+            shiftEndDate = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, punchOutDT, null);
+            shiftEndDateText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftEndDate));
 
-                shiftBeginTime = ((UniversalVariables.dateFormatTime.format(punchInDT)));
-                shiftBeginTimeText.setText(shiftBeginTime);
+            shiftBeginTime = UniversalFunctions.dateToString(UniversalVariables.dateFormatTimeString, punchInDT, null);
+            shiftBeginTimeText.setText(shiftBeginTime);
 
-                shiftEndTime = ((UniversalVariables.dateFormatTime.format(punchOutDT)));
-                shiftEndTimeText.setText(shiftEndTime);
+            shiftEndTime = UniversalFunctions.dateToString(UniversalVariables.dateFormatTimeString, punchOutDT, null);
+            shiftEndTimeText.setText(shiftEndTime);
 
-                //Update the period according to the data updated above
-                updatePeriod();
+            //Update the period according to the data updated above
+            updatePeriod();
 
-                //Update Total Hours and Total Paid Hours
-                updateTotalAndPaidHours();
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            //Update Total Hours and Total Paid Hours
+            updateTotalAndPaidHours();
 
         }
 
 
     }
-
 
 
 }

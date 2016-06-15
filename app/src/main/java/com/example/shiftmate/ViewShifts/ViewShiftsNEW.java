@@ -116,7 +116,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
             case SPINNER_OPTION_ALL_SHIFTS:
 
                 for (Shift shift : DataSource.shifts.shiftList) {
-                    if (!shift.punchOutDT.equals(Shift.PUNCHOUT_NONE))
+                    if (!shift.punchOutDT.equals(Shift.PUNCHOUT_NONE))//Ignore shifts with no punch out datetime
                         filteredShiftsList.add(shift);
                 }
 

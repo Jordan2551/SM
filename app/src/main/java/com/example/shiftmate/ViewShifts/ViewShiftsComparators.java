@@ -42,7 +42,7 @@ public class ViewShiftsComparators {
     private static class breakComparator implements Comparator<Shift> {
         @Override
         public int compare(Shift lhs, Shift rhs) {
-            if (lhs.breakTime > rhs.breakTime) return -1;
+            if (lhs.breakTime < rhs.breakTime) return -1;
             else
                 return 1;
         }

@@ -8,6 +8,10 @@ import android.util.Log;
 import com.example.shiftmate.Database.Connector.DBConnector;
 import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.TableItem;
+import com.example.shiftmate.Shared.UniversalFunctions;
+import com.example.shiftmate.Shared.UniversalVariables;
+
+import org.joda.time.DateTime;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -74,10 +78,11 @@ public class Shifts extends TableItem {
 
     }
 
+    //Ends a quick shift by updating the Punchout datetime of the supplied Shift Id
     public void EndShift(String tableName, long Id) {
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_PUNCHOUTDT, (new SimpleDateFormat("EEE, d MMM yyyy HH:mm a").format(new Date())).toString());
+        values.put(COLUMN_PUNCHOUTDT, UniversalFunctions.dateToString(UniversalVariables.dateFormatDateTimeString, DateTime.now(), null));
 
         DBConnector.database.update(tableName, values, "Id = " + Id, null);
 

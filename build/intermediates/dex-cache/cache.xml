@@ -1,3 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.1.1_edc1a6f8005ccc357894cf271d5a2238e06a8d27\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.3.0_f0de177becf56b681efb78c190904e89ee88daa6\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b7b44b609227ac76034cdfb7ceb92878a2e4fcd8">
+        <dex dex="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_6b0300568b60b2b9f95943ede3a1893a78abcf16\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jorda_000\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.3.0_49721f99e81ba9f400c25ded7c7957cf1fa33959\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.3.0_8f701953fe203a0c11c61f65721b6196aa04bb88\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jorda_000\.gradle\caches\modules-2\files-2.1\joda-time\joda-time\2.9.2\36d6e77a419cb455e6fd5909f6f96b168e21e9d0\joda-time-2.9.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="36d6e77a419cb455e6fd5909f6f96b168e21e9d0">
+        <dex dex="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\transforms\dex\debug\folders\1000\10\joda-time-2.9.2_f27fb421d559dc92da5ed830a043e1e054ac9803\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.3.0_aaed602c4e4e33ffa1baf8c5cc7995fb105fe8ad\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e62cbed3a4f498bc21a4ca62a9fdd3038dc520e5">
+        <dex dex="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_66eb88eb9229b071f058f5fd6db0b9fe63c46b62\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.1.1_9e6824dfb983419e599676ca114388b5d434f6f8\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\de.codecrafters.tableview\tableview\2.0.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="95df9aed9df240a0e1b508ddaeb510d950b2879c">
+        <dex dex="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\transforms\dex\debug\folders\1000\10\de.codecrafters.tableview-tableview-2.0.1_6ac81cd7c7b4c9c5538ff93f31afee19057fa664\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.3.0_e7ddcfeaaa7fcb29ed225024beec41add787d426\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.3.0_5642e89835cd886b68cefd289b7248f14cee1be5\classes.dex" />
+    </item>
+
+</items>

@@ -1,1 +1,1 @@
-include ':app', ':sorttableview'
+include ':app', ':sorttableview', ':testlib'
