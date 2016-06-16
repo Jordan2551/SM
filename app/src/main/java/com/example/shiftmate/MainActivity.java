@@ -30,12 +30,15 @@ public class MainActivity extends AppCompatActivity {
 
     public static DBConnector dbConnector;
 
+    static final int END_SHIFT_REQUEST_CODE = 1;  // Request code for startActivityForResult for NewShift callback
+
     //region Variables & References
 
     Button nsButton;
     Button qsButton;
     Button vsButton;
     Button drButton;
+    Button testButton;
     TextView latestShiftTV;
 
     //endregion
@@ -84,6 +87,23 @@ public class MainActivity extends AppCompatActivity {
 
         //endregion
 
+        //region Test
+
+        testButton = (Button) findViewById(R.id.testButton);
+
+        testButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DataSource.shifts.EndShift(DataSource.shifts.tableName, Shift.getLastOpenShift());
+                UpdateGUI();
+
+            }
+        });
+
+        //endreigon
+
+
         //region Quick Shift Button
 
         //This button opens a new quick shift (adds a new Shift entry into the DB) only if there is no
@@ -95,22 +115,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                int lastOpenShiftId = Shift.getLastOpenShift();
+
                 //End the shift if there is at least one shift without a punch out date time (an open shift)
-                if(Shift.getLastOpenShift() != -1)
-                {
+                if (lastOpenShiftId != -1) {
 
                     //Transition to the NewShiftActivity with the data for the punchInDT
                     Intent intent = new Intent(MainActivity.this, NewShiftActivity.class);
-                    intent.putExtra("punchInDT", Shifts.shiftList.get(Shift.getLastOpenShift()).punchInDT);
-                    startActivity(intent);
-
-                    //DataSource.shifts.EndShift(DataSource.shifts.tableName, DataSource.shifts.shiftList.get(Shift.getLastOpenShift()).Id);
-
+                    intent.putExtra("punchInDT", Shifts.shiftList.get(lastOpenShiftId).punchInDT);
+                    intent.putExtra("shiftEndId", Shifts.shiftList.get(lastOpenShiftId).Id);
+                    startActivityForResult(intent, END_SHIFT_REQUEST_CODE);
 
                 }
 
                 //Otherwise, we add a new quick shift
-                else{
+                else {
 
                     Shift shift = new Shift();
                     shift.punchInDT = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateTimeString, DateTime.now(), null);
@@ -120,12 +139,13 @@ public class MainActivity extends AppCompatActivity {
 
                     DataSource.shifts.CreateShift(DataSource.shifts.tableName, shift);
 
-                }
+                    UpdateGUI();
 
-                UpdateGUI();
+                }
 
             }
         });
+
 
         //endregion
 
@@ -212,6 +232,18 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    //Gets a response from NetShiftActivity regarding the ending of a quick shift
+    //Once the NewShiftActivity finishes closing a quick shift we update the GUI
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == END_SHIFT_REQUEST_CODE) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                UpdateGUI();
+            }
+        }
     }
 
 }

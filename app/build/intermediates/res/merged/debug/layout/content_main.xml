@@ -80,4 +80,16 @@
         android:id="@+id/drButton"
         android:layout_gravity="center_horizontal" />
 
+    <Button
+        android:layout_width="146dp"
+        android:layout_height="wrap_content"
+        android:text="Test"
+        android:id="@+id/testButton"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignBottom="@+id/drButton"
+        android:layout_alignRight="@+id/nsButton"
+        android:layout_alignEnd="@+id/nsButton"
+        android:layout_alignLeft="@+id/nsButton"
+        android:layout_alignStart="@+id/nsButton" />
+
 </LinearLayout>

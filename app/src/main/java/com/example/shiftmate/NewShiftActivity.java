@@ -1,7 +1,9 @@
 package com.example.shiftmate;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.shiftmate.Database.Connector.DBConnector;
 import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Shifts.Shift;
 import com.example.shiftmate.Shared.UniversalFunctions;
@@ -55,8 +58,17 @@ public class NewShiftActivity extends AppCompatActivity {
 
     //region Variables & References
 
+    //region Quick shift end related
+
+    static final int END_SHIFT_REQUEST_CODE = 1;  // Request code for startActivityForResult for NewShift callback
+
+    //The Id of the quick shift that is requested to be ended
+    private long shiftEndId;
+
     //Indicates how this activity started
     private boolean calledFromQuickShift = false;
+
+    //endregion
 
     Button ssButton;
 
@@ -320,8 +332,16 @@ public class NewShiftActivity extends AppCompatActivity {
                     }
 
                     //If this activity was called by end quick shift then just call the EndShift function
-                    if (calledFromQuickShift)
-                        DataSource.shifts.EndShift(DataSource.shifts.tableName, shift.Id);
+                    if (calledFromQuickShift) {
+
+                        DataSource.shifts.EndShift(DataSource.shifts.tableName, shiftEndId);
+
+                        //Set up the return intent for the MainActivity containing an OK code
+                        Intent returnIntent = new Intent();
+                        //returnIntent.putExtra("result",END_SHIFT_REQUEST_CODE);
+                        setResult(Activity.RESULT_OK,returnIntent);
+
+                    }
 
                     //Otherwise, this activity started regularly(by clicking Create Shift), so create a new shift
                     else
@@ -474,8 +494,11 @@ public class NewShiftActivity extends AppCompatActivity {
 
             calledFromQuickShift = true;
 
+            //Get the Id of the shift we are requested to the EndShift function on
+            shiftEndId = getIntent().getLongExtra("shiftEndId", 0);
+
             DateTime punchInDT = UniversalFunctions.stringToDate(UniversalVariables.dateFormatDateTime, getIntent().getStringExtra("punchInDT"));
-            DateTime punchOutDT = DateTime.now();//Watch out here DDOS
+            DateTime punchOutDT = DateTime.now();
 
             shiftBeginDate = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, punchInDT, null);
             shiftBeginDateText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftBeginDate));
@@ -499,6 +522,7 @@ public class NewShiftActivity extends AppCompatActivity {
 
 
     }
+
 
 
 }

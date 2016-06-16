@@ -82,8 +82,7 @@ public class Shifts extends TableItem {
     public void EndShift(String tableName, long Id) {
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_PUNCHOUTDT, UniversalFunctions.dateToString(UniversalVariables.dateFormatDateTimeString, DateTime.now(), null));
-
+        values.put("punchOutDT", UniversalFunctions.dateToString(UniversalVariables.dateFormatDateTimeString, DateTime.now(), null));
         DBConnector.database.update(tableName, values, "Id = " + Id, null);
 
         //Refresh the shift list
