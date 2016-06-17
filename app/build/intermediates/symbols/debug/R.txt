@@ -749,8 +749,8 @@ int id title_template 0x7f0d004a
 int id toolbar 0x7f0d006b
 int id top 0x7f0d0028
 int id topPanel 0x7f0d0049
-int id totalHoursTV 0x7f0d0079
 int id totalHoursText 0x7f0d008f
+int id totalHoursTextView 0x7f0d0079
 int id totalPaidHoursText 0x7f0d008e
 int id totalPayHoursTV 0x7f0d00a6
 int id up 0x7f0d000b

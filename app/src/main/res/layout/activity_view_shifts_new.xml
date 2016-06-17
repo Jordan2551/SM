@@ -110,10 +110,10 @@
         <de.codecrafters.tableview.SortableTableView
             android:id="@+id/tableView"
             android:layout_below="@id/toolbar"
-            android:layout_width="750dp"
+            android:layout_width="800dp"
             android:layout_height="match_parent"
             android:textAlignment="center"
-            custom:tableView_columnCount="6"
+            custom:tableView_columnCount="7"
             custom:tableView_headerColor="@color/LIGHT_GREEN"
             custom:tableView_headerElevation="10"/>
 
@@ -142,7 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:text="100"
-            android:id="@+id/totalHoursTV"
+            android:id="@+id/totalHoursTextView"
             android:layout_weight="0.81"
             android:textSize="17dp"
             android:clickable="true"

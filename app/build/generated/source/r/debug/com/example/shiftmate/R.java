@@ -2428,8 +2428,8 @@ containing a value of this type.
         public static final int toolbar=0x7f0d006b;
         public static final int top=0x7f0d0028;
         public static final int topPanel=0x7f0d0049;
-        public static final int totalHoursTV=0x7f0d0079;
         public static final int totalHoursText=0x7f0d008f;
+        public static final int totalHoursTextView=0x7f0d0079;
         public static final int totalPaidHoursText=0x7f0d008e;
         public static final int totalPayHoursTV=0x7f0d00a6;
         public static final int up=0x7f0d000b;

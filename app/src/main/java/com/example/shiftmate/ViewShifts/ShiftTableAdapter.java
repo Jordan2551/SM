@@ -26,6 +26,8 @@ public class ShiftTableAdapter extends TableDataAdapter<Shift> {
 
     private final byte TEXT_SIZE = 18;
 
+    private int[] totalHoursAndMinutes = new int[]{0,0};//Holds the values from the getHoursAndMinutes function
+
     public ShiftTableAdapter(Context context, ArrayList<Shift> filteredShiftsList) {
         super(context, filteredShiftsList);
 
@@ -58,27 +60,31 @@ public class ShiftTableAdapter extends TableDataAdapter<Shift> {
 
             case 0:
                 textViewToAdd.setMaxLines(2);
-                textViewToAdd.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatDateTimeDisplayString, shift.punchInDT)
-                        + System.getProperty("line.separator") + UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatDateTimeDisplayString, shift.punchOutDT));
-                textViewToAdd.setTextSize(16);
+                textViewToAdd.setText(UniversalFunctions.getShiftDateRangeString(shift.punchInDT, shift.punchOutDT));
+                textViewToAdd.setTextSize(17);
                 break;
             case 1:
-                textViewToAdd.setText(Integer.toString(shift.breakTime));
+                totalHoursAndMinutes = UniversalFunctions.getHoursAndMinutes(shift.totalMinutes);
+                textViewToAdd.setText(totalHoursAndMinutes[0] + ":" + totalHoursAndMinutes[1]);
                 textViewToAdd.setPadding(90, 0, 0, 0);
                 break;
             case 2:
-                textViewToAdd.setText(Integer.toString(shift.payPerHour));
+                textViewToAdd.setText(Integer.toString(shift.breakTime));
                 textViewToAdd.setPadding(90, 0, 0, 0);
                 break;
             case 3:
-                textViewToAdd.setText(Integer.toString(shift.tips));
+                textViewToAdd.setText(Integer.toString(shift.payPerHour));
                 textViewToAdd.setPadding(90, 0, 0, 0);
                 break;
             case 4:
-                textViewToAdd.setText(Integer.toString(shift.sales));
+                textViewToAdd.setText(Integer.toString(shift.tips));
                 textViewToAdd.setPadding(90, 0, 0, 0);
                 break;
             case 5:
+                textViewToAdd.setText(Integer.toString(shift.sales));
+                textViewToAdd.setPadding(90, 0, 0, 0);
+                break;
+            case 6:
                 textViewToAdd.setText(shift.notes);
                 textViewToAdd.setPadding(40, 0, 0, 0);
                 break;

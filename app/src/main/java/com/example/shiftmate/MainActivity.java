@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                DataSource.shifts.EndShift(DataSource.shifts.tableName, Shift.getLastOpenShift());
                 UpdateGUI();
 
             }

@@ -15,6 +15,10 @@ public class ViewShiftsComparators {
         return new dateComparator();
     }
 
+    public static Comparator getShiftDurationComparator() {
+        return new breakComparator();
+    }
+
     public static Comparator getBreakComparator() {
         return new breakComparator();
     }
@@ -43,6 +47,15 @@ public class ViewShiftsComparators {
         @Override
         public int compare(Shift lhs, Shift rhs) {
             if (lhs.breakTime < rhs.breakTime) return -1;
+            else
+                return 1;
+        }
+    }
+
+    private static class shiftDurationComparator implements Comparator<Shift> {
+        @Override
+        public int compare(Shift lhs, Shift rhs) {
+            if (lhs.totalMinutes < rhs.totalMinutes) return -1;
             else
                 return 1;
         }

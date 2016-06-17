@@ -30,6 +30,7 @@ public class Shifts extends TableItem {
     private static final String COLUMN_ID = "Id";
     private static final String COLUMN_PUNCHINDT = "punchInDT";
     private static final String COLUMN_PUNCHOUTDT = "punchOutDT";
+    private static final String COLUMN_TOTALTMINUTES = "totalHours";
     private static final String COLUMN_BREAKTIME = "breakTime";
     private static final String COLUMN_PAYPERHOUR = "payPerHour";
     private static final String COLUMN_TIPS = "tips";
@@ -43,11 +44,12 @@ public class Shifts extends TableItem {
 
     public Shifts() {
 
-        super("Shifts", "SHIFTS", new String[]{COLUMN_ID, COLUMN_PUNCHINDT, COLUMN_PUNCHOUTDT, COLUMN_BREAKTIME, COLUMN_PAYPERHOUR, COLUMN_TIPS, COLUMN_SALES, COLUMN_NOTES},
+        super("Shifts", "SHIFTS", new String[]{COLUMN_ID, COLUMN_PUNCHINDT, COLUMN_PUNCHOUTDT, COLUMN_TOTALTMINUTES, COLUMN_BREAKTIME, COLUMN_PAYPERHOUR, COLUMN_TIPS, COLUMN_SALES, COLUMN_NOTES},
                 "CREATE TABLE Shifts ("
                         + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + COLUMN_PUNCHINDT + " TEXT, "
                         + COLUMN_PUNCHOUTDT + " TEXT, "
+                        + COLUMN_TOTALTMINUTES + " INTEGER, "
                         + COLUMN_BREAKTIME + " INTEGER, "
                         + COLUMN_TIPS + " INTEGER, "
                         + COLUMN_SALES + " INTEGER, "
@@ -65,6 +67,7 @@ public class Shifts extends TableItem {
 
         values.put(COLUMN_PUNCHINDT, shift.punchInDT);
         values.put(COLUMN_PUNCHOUTDT, shift.punchOutDT);
+        values.put(COLUMN_TOTALTMINUTES, shift.totalMinutes);
         values.put(COLUMN_BREAKTIME, shift.breakTime);
         values.put(COLUMN_PAYPERHOUR, shift.payPerHour);
         values.put(COLUMN_TIPS, shift.tips);
@@ -78,12 +81,17 @@ public class Shifts extends TableItem {
 
     }
 
-    //Ends a quick shift by updating the Punchout datetime of the supplied Shift Id
-    public void EndShift(String tableName, long Id) {
+    //Ends a quick shift by updating the Punchout datetime of the supplied Shift Id, as well as tips, sales, notes, etc
+    public void EndShift(String tableName, Shift shift) {
 
         ContentValues values = new ContentValues();
-        values.put("punchOutDT", UniversalFunctions.dateToString(UniversalVariables.dateFormatDateTimeString, DateTime.now(), null));
-        DBConnector.database.update(tableName, values, "Id = " + Id, null);
+        values.put(COLUMN_PUNCHOUTDT, UniversalFunctions.dateToString(UniversalVariables.dateFormatDateTimeString, DateTime.now(), null));
+        values.put(COLUMN_TOTALTMINUTES, shift.totalMinutes);
+        values.put(COLUMN_TIPS, shift.tips);
+        values.put(COLUMN_SALES, shift.sales);
+        values.put(COLUMN_NOTES, shift.notes);
+
+        DBConnector.database.update(tableName, values, "Id = " + shift.Id, null);
 
         //Refresh the shift list
         GetRecords(tableName);
@@ -114,6 +122,7 @@ public class Shifts extends TableItem {
                 shift.Id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
                 shift.punchInDT = cursor.getString(cursor.getColumnIndex(COLUMN_PUNCHINDT));
                 shift.punchOutDT = cursor.getString(cursor.getColumnIndex(COLUMN_PUNCHOUTDT));
+                shift.totalMinutes = cursor.getInt(cursor.getColumnIndex(COLUMN_TOTALTMINUTES));
                 shift.breakTime = cursor.getInt(cursor.getColumnIndex(COLUMN_BREAKTIME));
                 shift.payPerHour = cursor.getInt(cursor.getColumnIndex(COLUMN_PAYPERHOUR));
                 shift.tips = cursor.getInt(cursor.getColumnIndex(COLUMN_TIPS));
