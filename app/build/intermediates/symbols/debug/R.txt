@@ -694,9 +694,9 @@ int id shiftEndTimeText 0x7f0d0088
 int id shiftRangeSpinner 0x7f0d0071
 int id shiftStartTV 0x7f0d009e
 int id shiftStatusIV 0x7f0d009d
-int id shiftsFromTV 0x7f0d0074
+int id shiftsFilterFromText 0x7f0d0074
+int id shiftsFilterToText 0x7f0d0072
 int id shiftsLV 0x7f0d0095
-int id shiftsToTV 0x7f0d0072
 int id shortcut 0x7f0d0055
 int id showCustom 0x7f0d0013
 int id showHome 0x7f0d0014

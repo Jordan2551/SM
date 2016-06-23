@@ -1,11 +1,13 @@
 package com.example.shiftmate.ViewShifts;
 
+import android.app.DatePickerDialog;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import com.example.shiftmate.Database.Tables.Shifts.Shift;
 import com.example.shiftmate.Database.Tables.Shifts.Shifts;
 import com.example.shiftmate.R;
 import com.example.shiftmate.Shared.UniversalFunctions;
+import com.example.shiftmate.Shared.UniversalVariables;
 
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
@@ -22,6 +25,7 @@ import org.joda.time.Period;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Comparator;
 import java.util.List;
 
@@ -44,14 +48,93 @@ public class ViewShiftsNEW extends AppCompatActivity {
     //Only shifts from within that date range
     private ArrayList<Shift> filteredShiftsList = new ArrayList<Shift>();
 
+
+    //These strings hold the shift begin and end dates in a MM/dd/yyyy format
+    //These strings get initialized with the current date by default
+    String shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, DateTime.now(), null);
+    String shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, DateTime.now(), null);
+
+    Calendar myCalendar = Calendar.getInstance();
+
+    TextView shiftFilterDateFromText;
+    TextView shiftFilterDateToText;
+
     private TextView totalHoursTextView;
     private SortableTableView tableView;
     private Spinner shiftRangeSpinner;
+
+    DatePickerDialog.OnDateSetListener shiftFilterDateFromSetListener = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            // TODO Auto-generated method stub
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, monthOfYear);
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+            shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, null, myCalendar.getTime());
+            shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+            //shiftFilterDateFromText.setText(shiftFilterDateFrom);
+
+        }
+
+    };
+
+    DatePickerDialog.OnDateSetListener shiftFilterDateToSetListener = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            // TODO Auto-generated method stub
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, monthOfYear);
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+            shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, null, myCalendar.getTime());
+            shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+
+        }
+
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_shifts_new);
+
+        shiftFilterDateFromText = (TextView) findViewById(R.id.shiftsFilterFromText);
+        //shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+        shiftFilterDateFromText.setText(shiftFilterDateFrom);
+
+        shiftFilterDateFromText.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                new DatePickerDialog(ViewShiftsNEW.this, shiftFilterDateFromSetListener, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+            }
+        });
+
+        shiftFilterDateToText = (TextView) findViewById(R.id.shiftsFilterToText);
+        //shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+        shiftFilterDateToText.setText(shiftFilterDateTo);
+
+        shiftFilterDateToText.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                new DatePickerDialog(ViewShiftsNEW.this, shiftFilterDateToSetListener, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+            }
+        });
+
 
         totalHoursTextView = (TextView) findViewById(R.id.totalHoursTextView);
 
@@ -133,15 +216,14 @@ public class ViewShiftsNEW extends AppCompatActivity {
             case SPINNER_OPTION_SHIFTS_BY_DATE:
 
                 //An interval object so we can track which shift start dates fall within the specified date range the user defines
-                Interval dateInterval = null;
+                Interval dateInterval = new Interval(UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftFilterDateFrom), UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftFilterDateTo));
 
                 for (Shift shift : DataSource.shifts.shiftList) {
 
                     if (!shift.punchOutDT.equals(Shift.PUNCHOUT_NONE))
-
                         dateInterval = new Interval(DateTime.parse(shift.punchInDT), DateTime.parse(shift.punchOutDT));
 
-                    //if the shift start date falls within the DDOS#2 ADD SPECIFIED DATE RANGE then add that shit to the filteredShiftList
+                    //if the shift start date falls within the user specified date range
                     if (dateInterval.contains(DateTime.parse(shift.punchInDT)))
                         filteredShiftsList.add(shift);
 

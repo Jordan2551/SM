@@ -2373,9 +2373,9 @@ containing a value of this type.
         public static final int shiftRangeSpinner=0x7f0d0071;
         public static final int shiftStartTV=0x7f0d009e;
         public static final int shiftStatusIV=0x7f0d009d;
-        public static final int shiftsFromTV=0x7f0d0074;
+        public static final int shiftsFilterFromText=0x7f0d0074;
+        public static final int shiftsFilterToText=0x7f0d0072;
         public static final int shiftsLV=0x7f0d0095;
-        public static final int shiftsToTV=0x7f0d0072;
         public static final int shortcut=0x7f0d0055;
         public static final int showCustom=0x7f0d0013;
         public static final int showHome=0x7f0d0014;
