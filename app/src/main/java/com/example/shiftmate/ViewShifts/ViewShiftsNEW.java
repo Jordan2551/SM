@@ -11,6 +11,7 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Shifts.Shift;
@@ -27,6 +28,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import de.codecrafters.tableview.SortableTableView;
@@ -52,7 +54,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
     //These strings hold the shift begin and end dates in a MM/dd/yyyy format
     //These strings get initialized with the current date by default
     String shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, DateTime.now(), null);
-    String shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, DateTime.now(), null);
+    String shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, DateTime.now().plusDays(1), null);
 
     Calendar myCalendar = Calendar.getInstance();
 
@@ -75,7 +77,9 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
             shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, null, myCalendar.getTime());
             shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
-            //shiftFilterDateFromText.setText(shiftFilterDateFrom);
+
+            setFilteredShifts(shiftRangeSpinner.getSelectedItemPosition());
+            tableView.setDataAdapter(new ShiftTableAdapter(getBaseContext(), filteredShiftsList));
 
         }
 
@@ -94,9 +98,13 @@ public class ViewShiftsNEW extends AppCompatActivity {
             shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, null, myCalendar.getTime());
             shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
+            setFilteredShifts(shiftRangeSpinner.getSelectedItemPosition());
+            tableView.setDataAdapter(new ShiftTableAdapter(getBaseContext(), filteredShiftsList));
+
         }
 
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,8 +112,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
         setContentView(R.layout.activity_view_shifts_new);
 
         shiftFilterDateFromText = (TextView) findViewById(R.id.shiftsFilterFromText);
-        //shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
-        shiftFilterDateFromText.setText(shiftFilterDateFrom);
+        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
 
         shiftFilterDateFromText.setOnClickListener(new View.OnClickListener() {
 
@@ -120,8 +127,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
         });
 
         shiftFilterDateToText = (TextView) findViewById(R.id.shiftsFilterToText);
-        //shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
-        shiftFilterDateToText.setText(shiftFilterDateTo);
+        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
         shiftFilterDateToText.setOnClickListener(new View.OnClickListener() {
 
@@ -140,7 +146,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
         tableView = (SortableTableView) findViewById(R.id.tableView);
 
-        tableView.setColumnWeight(0, 3);
+        tableView.setColumnWeight(0, 4);
         tableView.setColumnWeight(1, 2);
         tableView.setColumnWeight(2, 2);
         tableView.setColumnWeight(5, 2);
@@ -170,25 +176,24 @@ public class ViewShiftsNEW extends AppCompatActivity {
         // Apply the adapter to the spinner
         shiftRangeSpinner.setAdapter(adapter);
 
-        //Select the first item by default
+        //Select the first item by default (show all shifts in the database)
         shiftRangeSpinner.setSelection(0);
 
-        //MAYBE THE MODDED DAT SHOULD BE IN THE ADAPTER
+        //Handle the selection of different indexes on the spinner
         shiftRangeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                setFilteredShifts(position);
+                setFilteredShifts(shiftRangeSpinner.getSelectedItemPosition());
                 tableView.setDataAdapter(new ShiftTableAdapter(getBaseContext(), filteredShiftsList));
 
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+
             }
-
         });
-
 
     }
 
@@ -215,21 +220,45 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
             case SPINNER_OPTION_SHIFTS_BY_DATE:
 
-                //An interval object so we can track which shift start dates fall within the specified date range the user defines
-                Interval dateInterval = new Interval(UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftFilterDateFrom), UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftFilterDateTo));
+                //Only allow a date range where the before date is before the after date
+                if (UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftFilterDateFrom).isBefore(UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftFilterDateTo))) {
 
-                for (Shift shift : DataSource.shifts.shiftList) {
+                    //An interval object so we can track which shift start dates fall within the specified date range the user defines
+                    Interval dateInterval = new Interval(UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftFilterDateFrom), UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftFilterDateTo));
 
-                    if (!shift.punchOutDT.equals(Shift.PUNCHOUT_NONE))
-                        dateInterval = new Interval(DateTime.parse(shift.punchInDT), DateTime.parse(shift.punchOutDT));
+                    for (Shift shift : DataSource.shifts.shiftList) {
 
-                    //if the shift start date falls within the user specified date range
-                    if (dateInterval.contains(DateTime.parse(shift.punchInDT)))
-                        filteredShiftsList.add(shift);
+                        if (!shift.punchOutDT.equals(Shift.PUNCHOUT_NONE))
+
+                            try {
+
+                                //dateInterval = new Interval(UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftFilterDateFrom), UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftFilterDateTo));
+
+                                DateTime shiftStart = UniversalFunctions.stringToDate(UniversalVariables.dateFormatDateTime, shift.punchInDT);
+
+                                if (UniversalFunctions.isDateInRangeInclusive
+                                        (UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftFilterDateFrom),
+                                                UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftFilterDateTo),
+                                                UniversalFunctions.stringToDate(UniversalVariables.dateFormatDateTime, shift.punchInDT)))
+                                    filteredShiftsList.add(shift);
+
+                                //if the shift start date falls within the user specified date range
+                                //if (dateInterval.containsNow(UniversalFunctions.stringToDate(UniversalVariables.dateFormatDateTime, shift.punchInDT)))
+                                //filteredShiftsList.add(shift);
+
+
+                            } catch (Exception e) {
+                                String s = e.getMessage();
+                            }
+                    }
 
                 }
 
-        break;
+                else
+                    Toast.makeText(this, R.string.Shift_Begin_Before_End, Toast.LENGTH_SHORT).show();
+
+
+                break;
 
         }
 
@@ -239,7 +268,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
         totalHoursTextView.setText(totalShiftsHourDuration[0] + ":" + String.format("%02d", totalShiftsHourDuration[1]));
 
-}
+    }
 
 
 }

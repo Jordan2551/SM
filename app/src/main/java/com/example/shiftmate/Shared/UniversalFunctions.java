@@ -5,6 +5,8 @@ import com.example.shiftmate.Database.Tables.Shifts.Shift;
 
 import org.joda.time.DateTime;
 import org.joda.time.Hours;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormatter;
 
 import java.text.SimpleDateFormat;
@@ -95,5 +97,18 @@ public class UniversalFunctions {
     }
 
 
+    /**
+     * Checks if a date is within a specific date range (the specified date target is inclusive to the date range!)
+     *
+     * @param startDate The start date for the date range
+     * @param endDate The end date for the date range
+     * @param targetDate The target date to be checked in the date range
+     * @return An indication if the target date is equal to or within the end points of the date range
+     */
+    public static boolean isDateInRangeInclusive(DateTime startDate, DateTime endDate, DateTime targetDate){
+        //Check if the target is not before the start date which means: the target date is equal or larger than the start date
+        // AND check if the start date is not after the end date which means: the target date is equal or smaller than the end date
+        return !targetDate.isBefore(startDate) && !targetDate.isAfter(endDate);
+    }
 
 }

@@ -61,6 +61,7 @@ public class ShiftTableAdapter extends TableDataAdapter<Shift> {
             case 0:
                 textViewToAdd.setMaxLines(2);
                 textViewToAdd.setText(UniversalFunctions.getShiftDateRangeString(shift.punchInDT, shift.punchOutDT));
+                String hello = UniversalFunctions.getShiftDateRangeString(shift.punchInDT, shift.punchOutDT);
                 textViewToAdd.setTextSize(17);
                 break;
             case 1:
