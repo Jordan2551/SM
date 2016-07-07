@@ -28,7 +28,7 @@ import org.joda.time.Period;
 
 import java.util.Calendar;
 
-//Indicates what data and Text Views should be updated according to the corresponding Text View which started the DatePicker/TimePicker dialog
+//Indicates what data and Text Views should be updated according to the logic of the activity
 enum UpdateRequest {
 
     UPDATE_BEGIN_DATE,
@@ -217,8 +217,8 @@ public class NewShiftActivity extends AppCompatActivity {
     //Updates the period and gets the hour and minute difference for the currently selected shift being and end dates
     private void updatePeriod() {
 
-        datePeriod = new Period(UniversalFunctions.stringToDate(UniversalVariables.dateFormatDateTime, shiftBeginDate + " " + shiftBeginTime),
-                UniversalFunctions.stringToDate(UniversalVariables.dateFormatDateTime, shiftEndDate + " " + shiftEndTime));
+        datePeriod = new Period(UniversalFunctions.stringToDateTime(UniversalVariables.dateFormatDateTime, shiftBeginDate + " " + shiftBeginTime),
+                UniversalFunctions.stringToDateTime(UniversalVariables.dateFormatDateTime, shiftEndDate + " " + shiftEndTime));
 
         hourDifference = datePeriod.getHours() + datePeriod.getDays() * 24 + ((datePeriod.getWeeks() * 7) * 24) + (((datePeriod.getMonths() * 4) * 7) * 24) + ((((datePeriod.getYears() * 12) * 4) * 7) * 24);
         hourDifference = hourDifference < 0 ? 0 : hourDifference;
@@ -284,8 +284,8 @@ public class NewShiftActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //If the start of the shift is before the end of the shift date
-                if (UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftBeginDate).isBefore(UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftEndDate))
-                        || UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftBeginDate).isEqual(UniversalFunctions.stringToDate(UniversalVariables.dateFormatDate, shiftEndDate))) {
+                if (UniversalFunctions.stringToDateTime(UniversalVariables.dateFormatDate, shiftBeginDate).isBefore(UniversalFunctions.stringToDateTime(UniversalVariables.dateFormatDate, shiftEndDate))
+                        || UniversalFunctions.stringToDateTime(UniversalVariables.dateFormatDate, shiftBeginDate).isEqual(UniversalFunctions.stringToDateTime(UniversalVariables.dateFormatDate, shiftEndDate))) {
 
                     Shift shift = new Shift();
                     shift.punchInDT = shiftBeginDate + " " + shiftBeginTime;
@@ -492,7 +492,7 @@ public class NewShiftActivity extends AppCompatActivity {
             //Get the Id of the shift we are requested to the EndShift function on
             shiftEndId = getIntent().getLongExtra("shiftEndId", 0);
 
-            DateTime punchInDT = UniversalFunctions.stringToDate(UniversalVariables.dateFormatDateTime, getIntent().getStringExtra("punchInDT"));
+            DateTime punchInDT = UniversalFunctions.stringToDateTime(UniversalVariables.dateFormatDateTime, getIntent().getStringExtra("punchInDT"));
             DateTime punchOutDT = DateTime.now();
 
             shiftBeginDate = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, punchInDT, null);

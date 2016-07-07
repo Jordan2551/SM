@@ -41,72 +41,107 @@
             android:layout_alignEnd="@+id/shiftsFilterToText"
             android:textAlignment="center" />
 
-        <TextView
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/button3"
+            android:layout_toStartOf="@+id/button3"
+            android:layout_below="@+id/shiftRangeSpinner"
+            android:id="@+id/dateFilterLayout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="From:"
+                android:id="@+id/fromText"
+                android:textAlignment="inherit"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_below="@+id/shiftRangeSpinner" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="New Text"
+                android:id="@+id/shiftsFilterFromText"
+                android:layout_weight="0.81"
+                android:textSize="14dp"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackground"
+                android:textStyle="bold"
+                android:layout_alignTop="@+id/fromText"
+                android:layout_toRightOf="@+id/fromText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="To:"
+                android:id="@+id/toText"
+                android:textAlignment="inherit"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_below="@+id/shiftRangeSpinner"
+                android:layout_toRightOf="@+id/shiftsFilterFromText"
+                android:layout_toEndOf="@+id/shiftsFilterFromText"
+                android:layout_marginLeft="29dp"
+                android:layout_marginStart="29dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="New Text"
+                android:id="@+id/shiftsFilterToText"
+                android:layout_weight="0.81"
+                android:textSize="14dp"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackground"
+                android:textStyle="bold"
+                android:layout_below="@+id/shiftRangeSpinner"
+                android:layout_toRightOf="@+id/toText" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="343dp"
+        android:layout_height="36dp">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="From:"
-            android:id="@+id/textView17"
-            android:textAlignment="inherit"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_below="@+id/shiftRangeSpinner" />
+            android:text="&lt;---"
+            android:id="@+id/prevIntervalBtn"
+            android:layout_weight="1" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:text="New Text"
-            android:id="@+id/shiftsFilterFromText"
-            android:layout_weight="0.81"
-            android:textSize="14dp"
-            android:clickable="true"
-            android:background="?attr/selectableItemBackground"
-            android:textStyle="bold"
-            android:layout_alignTop="@+id/textView17"
-            android:layout_toRightOf="@+id/textView17" />
-
-        <TextView
+        <Button
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="To:"
-            android:id="@+id/textView19"
-            android:textAlignment="inherit"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_below="@+id/shiftRangeSpinner"
-            android:layout_toRightOf="@+id/shiftsFilterFromText"
-            android:layout_toEndOf="@+id/shiftsFilterFromText"
-            android:layout_marginLeft="29dp"
-            android:layout_marginStart="29dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:text="New Text"
-            android:id="@+id/shiftsFilterToText"
-            android:layout_weight="0.81"
-            android:textSize="14dp"
-            android:clickable="true"
-            android:background="?attr/selectableItemBackground"
-            android:textStyle="bold"
-            android:layout_below="@+id/shiftRangeSpinner"
-            android:layout_toRightOf="@+id/textView19" />
+            android:text="--->"
+            android:id="@+id/nxtIntervalBtn"
+            android:layout_weight="1" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Print"
             android:id="@+id/button3"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-    </RelativeLayout>
+            android:layout_alignParentEnd="true"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="403dp">
+        android:layout_height="376dp">
 
         <de.codecrafters.tableview.SortableTableView
             android:id="@+id/tableView"

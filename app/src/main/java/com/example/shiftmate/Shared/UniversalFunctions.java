@@ -9,6 +9,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -62,12 +63,22 @@ public class UniversalFunctions {
             return new SimpleDateFormat(format).format(dateJava);
     }
 
-    public static DateTime stringToDate(DateTimeFormatter formatter, String stringToConvert) {
+    public static DateTime stringToDateTime(DateTimeFormatter formatter, String stringToConvert) {
         return DateTime.parse(stringToConvert, formatter);
     }
 
     public static String changeDateStringFormat(DateTimeFormatter formatterDTF, String formatterStr, String stringToChange) {
-        return stringToDate(formatterDTF, stringToChange).toString(formatterStr);
+        return stringToDateTime(formatterDTF, stringToChange).toString(formatterStr);
+    }
+
+    //Converts a java date object to the corresponding JodaTime DateTime object
+    public static DateTime dateToDateTime(String formatter, DateTimeFormatter formatterDTF,  Date javaDate){
+        return DateTime.parse(dateToString(formatter, null, javaDate), formatterDTF);
+    }
+
+    //Converts a JodaTime DateTime object to the corresponding Java Date object
+    public static Date dateTimeToDate(String formatter, DateTime jodaDate) throws ParseException {
+        return new SimpleDateFormat(formatter).parse(dateToString(formatter, jodaDate, null));
     }
 
     /**
@@ -81,8 +92,8 @@ public class UniversalFunctions {
      */
     public static String getShiftDateRangeString(String shiftBeginDateString, String shiftEndDateString) {
 
-        DateTime shiftBeginDate = stringToDate(UniversalVariables.dateFormatDateTime, shiftBeginDateString);
-        DateTime shiftEndDate = stringToDate(UniversalVariables.dateFormatDateTime, shiftEndDateString);
+        DateTime shiftBeginDate = stringToDateTime(UniversalVariables.dateFormatDateTime, shiftBeginDateString);
+        DateTime shiftEndDate = stringToDateTime(UniversalVariables.dateFormatDateTime, shiftEndDateString);
 
         if (shiftBeginDate.dayOfMonth().get() == shiftEndDate.dayOfMonth().get())
             return changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatDateDisplayString, shiftBeginDateString) + System.getProperty("line.separator") +
