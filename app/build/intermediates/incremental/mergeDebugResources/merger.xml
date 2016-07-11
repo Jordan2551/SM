@@ -1457,6 +1457,7 @@
         <item>All Shifts</item>
         <item>Shifts by Date</item>
         <item>Shifts by Week</item>
+        <item>Shifts by Month</item>
         <item>Shifts by Year</item>
     </array><string name="Shift_Begin_Before_End">Shift begin date must be before shift end date.</string></file><file path="C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->

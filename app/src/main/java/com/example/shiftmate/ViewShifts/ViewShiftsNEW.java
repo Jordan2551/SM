@@ -1,7 +1,10 @@
 package com.example.shiftmate.ViewShifts;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -42,7 +45,8 @@ public class ViewShiftsNEW extends AppCompatActivity {
     private static final byte SPINNER_OPTION_ALL_SHIFTS = 0;
     private static final byte SPINNER_OPTION_SHIFTS_BY_DATE = 1;
     private static final byte SPINNER_OPTION_SHIFTS_BY_WEEK = 2;
-    private static final byte SPINNER_OPTION_SHIFTS_BY_YEAR = 3;
+    private static final byte SPINNER_OPTION_SHIFTS_BY_MONTH = 3;
+    private static final byte SPINNER_OPTION_SHIFTS_BY_YEAR = 4;
 
     private static final byte COLUMN_COUNT = 7;
 
@@ -70,6 +74,9 @@ public class ViewShiftsNEW extends AppCompatActivity {
     private SortableTableView tableView;
     private Spinner shiftRangeSpinner;
 
+    // 1. Instantiate an AlertDialog.Builder with its constructor
+    //AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
     DatePickerDialog.OnDateSetListener shiftFilterDateFromSetListener = new DatePickerDialog.OnDateSetListener() {
 
         @Override
@@ -83,16 +90,45 @@ public class ViewShiftsNEW extends AppCompatActivity {
             //Convert the returned date from the calendar object to DateTime. This is because java Date sucks balls
             DateTime selectedDate = UniversalFunctions.dateToDateTime(UniversalVariables.dateFormatDateString, UniversalVariables.dateFormatDate, myCalendar.getTime());
 
-            if (shiftRangeSpinner.getSelectedItemPosition() == SPINNER_OPTION_SHIFTS_BY_WEEK) {
+            switch(shiftRangeSpinner.getSelectedItemPosition()){
 
-                //If the date filteration by week was selected, then set the from date to the sunday of that same selected dates' week.
-                //Note: we set the date minus 7 days because JodaTime has monday as it's first day of the week, and setting sunday without - 7 days will simply return the sunday of the next week.
-                selectedDate = selectedDate.withDayOfWeek(DateTimeConstants.SUNDAY).minusDays(7);
+                case SPINNER_OPTION_SHIFTS_BY_WEEK:
 
-                //Set to date automatically when the filteration by week option is selected
-                //Set the to date to saturday (the last day of the week)
-                shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, selectedDate.plusDays(6), null);
-                shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                    //If the date filteration by week was selected, then set the from date to the sunday of that same selected dates' week.
+                    //Note: we set the date minus 7 days because JodaTime has monday as it's first day of the week, and setting sunday without - 7 days will simply return the sunday of the next week.
+                    selectedDate = selectedDate.withDayOfWeek(DateTimeConstants.SUNDAY).minusDays(7);
+
+                    //Set to date automatically when the filteration by week option is selected
+                    //Set the to date to saturday (the last day of the week)
+                    shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, selectedDate.plusDays(6), null);
+                    shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+
+                    break;
+
+                case SPINNER_OPTION_SHIFTS_BY_MONTH:
+
+                    //If the date filteration by week was selected, then set the from date to the sunday of that same selected dates' week.
+                    //Note: we set the date minus 7 days because JodaTime has monday as it's first day of the week, and setting sunday without - 7 days will simply return the sunday of the next week.
+                    selectedDate = selectedDate.withDayOfMonth(1);
+
+                    //Set to date automatically when the filteration by week option is selected
+                    //Set the to date to saturday (the last day of the week)
+                    shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, selectedDate.plusMonths(1).minusDays(1), null);
+                    shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+
+                    break;
+
+                case SPINNER_OPTION_SHIFTS_BY_YEAR:
+
+                    //If the date filteration by year was selected, then set the from date to the first day of the selected year
+                    selectedDate = selectedDate.withDate(selectedDate.getYear(), 1, DateTimeConstants.JANUARY);
+
+                    //Set to date automatically when the filteration by year option is selected
+                    //Set the to date to saturday (the last day of the week)
+                    shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, selectedDate.plusYears(1).minusDays(1), null);
+                    shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+
+                    break;
 
             }
 
@@ -129,7 +165,18 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
     };
 
-
+    /*public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Choose")
+                .setItems(new String[]{"Update", "Change", "Delete"}, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // The 'which' argument contains the index position
+                        // of the selected item
+                    }
+                });
+        return builder.create();
+    }
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,20 +193,51 @@ public class ViewShiftsNEW extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Set the new date week range interval to the week before the selected week in the shiftFilterDateFrom
-                DateTime previousWeekStart =  UniversalFunctions.stringToDateTime(UniversalVariables.dateFormatDate, shiftFilterDateFrom).minusDays(7);
+                DateTime previousDateStart = UniversalFunctions.stringToDateTime(UniversalVariables.dateFormatDate, shiftFilterDateFrom);
 
-                shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousWeekStart, null);
-                shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+                switch (shiftRangeSpinner.getSelectedItemPosition()) {
 
-                shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousWeekStart.plusDays(6), null);
-                shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                    case SPINNER_OPTION_SHIFTS_BY_WEEK:
+
+                        //Set date from to previous week (sunday-satruday of previous week)
+                        shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousDateStart.minusDays(7), null);
+                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+
+                        shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousDateStart.minusDays(1), null);
+                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+
+                        break;
+
+                    case SPINNER_OPTION_SHIFTS_BY_MONTH:
+
+                        //Set date from to previous week (sunday-satruday of previous week)
+                        shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousDateStart.minusMonths(1), null);
+                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+
+                        shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousDateStart.minusDays(1), null);
+                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+
+                        break;
+
+                    case SPINNER_OPTION_SHIFTS_BY_YEAR:
+
+                        //Set date from to previous year
+                        shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousDateStart.minusYears(1), null);
+                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+
+                        shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousDateStart.minusDays(1), null);
+                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+
+                        break;
+
+                }
 
                 //Refresh the filtered shifts
                 setFilteredShifts(shiftRangeSpinner.getSelectedItemPosition());
                 tableView.setDataAdapter(new ShiftTableAdapter(getBaseContext(), filteredShiftsList));
 
             }
+
         });
 
         nxtIntervalBtn.setOnClickListener(new View.OnClickListener() {
@@ -167,14 +245,48 @@ public class ViewShiftsNEW extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //builder.show();
+
                 //Set the new date week range interval to the week after the selected week in the shiftFilterDateFrom
-                DateTime nextWeekStart =  UniversalFunctions.stringToDateTime(UniversalVariables.dateFormatDate, shiftFilterDateFrom).plusDays(7);
+                DateTime nextDateStart = UniversalFunctions.stringToDateTime(UniversalVariables.dateFormatDate, shiftFilterDateFrom);
 
-                shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextWeekStart, null);
-                shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+                switch (shiftRangeSpinner.getSelectedItemPosition()) {
 
-                shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextWeekStart.plusDays(6), null);
-                shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                    case SPINNER_OPTION_SHIFTS_BY_WEEK:
+
+                        //Set date from to next week (sunday-satruday of next week)
+                        shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextDateStart.plusDays(7), null);
+                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+
+                        shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextDateStart.plusDays(13), null);
+                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+
+                        break;
+
+                    case SPINNER_OPTION_SHIFTS_BY_MONTH:
+
+                        //Set date from to next week (sunday-satruday of next week)
+                        shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextDateStart.plusMonths(1), null);
+                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+
+                        shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextDateStart.plusMonths(2).minusDays(1), null);
+                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+
+                        break;
+
+                    case SPINNER_OPTION_SHIFTS_BY_YEAR:
+
+                        //Set date from to next year
+                        shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextDateStart.plusYears(1), null);
+                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+
+                        shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextDateStart.plusYears(2).minusDays(1), null);
+                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+
+
+                        break;
+
+                }
 
                 //Refresh the filtered shifts
                 setFilteredShifts(shiftRangeSpinner.getSelectedItemPosition());
@@ -182,6 +294,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
             }
         });
+
 
         shiftFilterDateFromText = (TextView) findViewById(R.id.shiftsFilterFromText);
         shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
@@ -269,6 +382,27 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
                         break;
 
+                    case SPINNER_OPTION_SHIFTS_BY_MONTH:
+
+                        //When the filter by week option is selected, we want to set the current week by default
+                        DateTime firstDayOfMonth = DateTime.now().withDayOfMonth(1);
+                        shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, firstDayOfMonth, null);
+                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+                        shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, firstDayOfMonth.plusMonths(1).minusDays(1), null);
+                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+
+                        break;
+
+                    case SPINNER_OPTION_SHIFTS_BY_YEAR:
+
+                        DateTime firstDayOfYear = DateTime.now().withDate(DateTime.now().getYear(), 1, DateTimeConstants.JANUARY);
+                        shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, firstDayOfYear, null);
+                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+                        shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, firstDayOfYear.plusYears(1).minusDays(1), null);
+                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+
+                        break;
+
                 }
 
                 setFilteredShifts(shiftRangeSpinner.getSelectedItemPosition());
@@ -309,6 +443,8 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
             case SPINNER_OPTION_SHIFTS_BY_DATE:
             case SPINNER_OPTION_SHIFTS_BY_WEEK:
+            case SPINNER_OPTION_SHIFTS_BY_MONTH:
+            case SPINNER_OPTION_SHIFTS_BY_YEAR:
 
                 //Only allow a date range where the before date is before the after date
                 if (UniversalFunctions.stringToDateTime(UniversalVariables.dateFormatDate, shiftFilterDateFrom).isBefore(UniversalFunctions.stringToDateTime(UniversalVariables.dateFormatDate, shiftFilterDateTo))
@@ -383,6 +519,8 @@ public class ViewShiftsNEW extends AppCompatActivity {
                 break;
 
             case SPINNER_OPTION_SHIFTS_BY_WEEK:
+            case SPINNER_OPTION_SHIFTS_BY_MONTH:
+            case SPINNER_OPTION_SHIFTS_BY_YEAR:
 
                 fromText.setVisibility(View.VISIBLE);
                 toText.setVisibility(View.VISIBLE);

@@ -117,9 +117,10 @@ public class UniversalFunctions {
      * @return An indication if the target date is equal to or within the end points of the date range
      */
     public static boolean isDateInRangeInclusive(DateTime startDate, DateTime endDate, DateTime targetDate){
+
         //Check if the target is not before the start date which means: the target date is equal or larger than the start date
         // AND check if the start date is not after the end date which means: the target date is equal or smaller than the end date
-        return !targetDate.isBefore(startDate) && !targetDate.isAfter(endDate);
+        return !targetDate.toLocalDate().isBefore(startDate.toLocalDate()) && !targetDate.toLocalDate().isAfter(endDate.toLocalDate());
     }
 
 }

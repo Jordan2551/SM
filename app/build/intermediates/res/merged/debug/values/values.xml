@@ -4,6 +4,7 @@
         <item>All Shifts</item>
         <item>Shifts by Date</item>
         <item>Shifts by Week</item>
+        <item>Shifts by Month</item>
         <item>Shifts by Year</item>
     </array>
     <attr format="reference" name="drawerArrowStyle"/>
