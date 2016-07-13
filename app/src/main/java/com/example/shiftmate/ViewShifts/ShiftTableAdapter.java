@@ -59,33 +59,37 @@ public class ShiftTableAdapter extends TableDataAdapter<Shift> {
         switch (columnIndex) {
 
             case 0:
-                textViewToAdd.setMaxLines(2);
-                textViewToAdd.setText(UniversalFunctions.getShiftDateRangeString(shift.punchInDT, shift.punchOutDT));
-                String hello = UniversalFunctions.getShiftDateRangeString(shift.punchInDT, shift.punchOutDT);
-                textViewToAdd.setTextSize(17);
+                textViewToAdd.setMaxLines(0);
+                textViewToAdd.setText(String.valueOf(shift.Id));
+                textViewToAdd.setTextSize(0);
                 break;
             case 1:
+                textViewToAdd.setMaxLines(2);
+                textViewToAdd.setText(UniversalFunctions.getShiftDateRangeString(shift.punchInDT, shift.punchOutDT));
+                textViewToAdd.setTextSize(17);
+                break;
+            case 2:
                 totalHoursAndMinutes = UniversalFunctions.getHoursAndMinutes(shift.totalMinutes);
                 textViewToAdd.setText(totalHoursAndMinutes[0] + ":" + totalHoursAndMinutes[1]);
                 textViewToAdd.setPadding(90, 0, 0, 0);
                 break;
-            case 2:
+            case 3:
                 textViewToAdd.setText(Integer.toString(shift.breakTime));
                 textViewToAdd.setPadding(90, 0, 0, 0);
                 break;
-            case 3:
+            case 4:
                 textViewToAdd.setText(Integer.toString(shift.payPerHour));
                 textViewToAdd.setPadding(90, 0, 0, 0);
                 break;
-            case 4:
+            case 5:
                 textViewToAdd.setText(Integer.toString(shift.tips));
                 textViewToAdd.setPadding(90, 0, 0, 0);
                 break;
-            case 5:
+            case 6:
                 textViewToAdd.setText(Integer.toString(shift.sales));
                 textViewToAdd.setPadding(90, 0, 0, 0);
                 break;
-            case 6:
+            case 7:
                 textViewToAdd.setText(shift.notes);
                 textViewToAdd.setPadding(40, 0, 0, 0);
                 break;

@@ -38,6 +38,15 @@ enum UpdateRequest {
 
 }
 
+//Indicates how this activity was created for dealing with shift saving/updating logic
+enum ActivityRequester{
+
+    MAIN_ACTIVITY,
+    END_SHIFT,
+    VIEW_SHIFTS_ACTIVITY
+
+}
+
 public class NewShiftActivity extends AppCompatActivity {
 
     //DDOS#1 see if you can find a more elegant way to implement the DatePickerDialog
@@ -55,7 +64,7 @@ public class NewShiftActivity extends AppCompatActivity {
     private long shiftEndId;
 
     //Indicates how this activity started
-    private boolean calledFromQuickShift = false;
+    private ActivityRequester activityRequester = ActivityRequester.MAIN_ACTIVITY;
 
     //endregion
 
@@ -325,7 +334,7 @@ public class NewShiftActivity extends AppCompatActivity {
                     }
 
                     //If this activity was called by end quick shift then just call the EndShift function
-                    if (calledFromQuickShift) {
+                    if (activityRequester == ActivityRequester.END_SHIFT) {
 
                         shift.Id = shiftEndId;//Supply the Id of the shift to end
 
@@ -485,9 +494,9 @@ public class NewShiftActivity extends AppCompatActivity {
 
         //Acquire data from MainActivity (for when a quick shift was requested to be ended)
         //If this activity was started from selecting the New Shift button then the data below will be null!
-        if (getIntent().getStringExtra("punchInDT") != null) {
+        if (getIntent().getBooleanExtra("endShiftRequest", false)) {
 
-            calledFromQuickShift = true;
+            activityRequester = ActivityRequester.END_SHIFT;
 
             //Get the Id of the shift we are requested to the EndShift function on
             shiftEndId = getIntent().getLongExtra("shiftEndId", 0);
@@ -515,6 +524,40 @@ public class NewShiftActivity extends AppCompatActivity {
 
         }
 
+        //If this activity was started from selecting to update a shift from ViewShiftsActivity then fill in in that particular shifts' details
+        else if (getIntent().getBooleanExtra("updateShiftRequest", false)) {
+
+            activityRequester = ActivityRequester.VIEW_SHIFTS_ACTIVITY;
+
+            //Get tall the data for the requested Shift to update:
+            shiftEndId = getIntent().getLongExtra("Id", 0);
+
+            shiftBeginDate = UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatDateString, getIntent().getStringExtra("punchInDT"));
+            shiftBeginDateText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftBeginDate));
+
+            shiftEndDate = UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatDateString, getIntent().getStringExtra("punchOutDT"));
+            shiftEndDateText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftEndDate));
+
+            shiftBeginTime = UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatTimeString, getIntent().getStringExtra("punchInDT"));
+            shiftBeginTimeText.setText(shiftBeginTime);
+
+            shiftEndTime = UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatTimeString, getIntent().getStringExtra("punchOutDT"));
+            shiftEndTimeText.setText(shiftEndTime);
+
+            breakTime = getIntent().getIntExtra("breakTime", 0);
+            breakTimeText.setText(String.valueOf(breakTime));
+
+            notesText.setText(getIntent().getStringExtra("notes"));
+            tipsText.setText(String.valueOf(getIntent().getIntExtra("tips", 0) != 0 ? getIntent().getIntExtra("tips", 0) : 0));
+            salesText.setText(String.valueOf(getIntent().getIntExtra("sales", 0) != 0 ? getIntent().getIntExtra("sales", 0) : 0));
+
+            //Update the period according to the data updated above
+            updatePeriod();
+
+            //Update Total Hours and Total Paid Hours
+            updateTotalAndPaidHours();
+
+        }
 
     }
 

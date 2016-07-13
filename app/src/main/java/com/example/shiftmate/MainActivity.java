@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
                     //Transition to the NewShiftActivity with the data for the punchInDT
                     Intent intent = new Intent(MainActivity.this, NewShiftActivity.class);
+                    intent.putExtra("endShiftRequest", true);
                     intent.putExtra("punchInDT", Shifts.shiftList.get(lastOpenShiftId).punchInDT);
                     intent.putExtra("shiftEndId", Shifts.shiftList.get(lastOpenShiftId).Id);
                     startActivityForResult(intent, END_SHIFT_REQUEST_CODE);

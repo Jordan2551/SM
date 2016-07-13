@@ -3,6 +3,7 @@ package com.example.shiftmate.ViewShifts;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,8 @@ import android.widget.Toast;
 
 import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Shifts.Shift;
+import com.example.shiftmate.Database.Tables.Shifts.Shifts;
+import com.example.shiftmate.NewShiftActivity;
 import com.example.shiftmate.R;
 import com.example.shiftmate.Shared.UniversalFunctions;
 import com.example.shiftmate.Shared.UniversalVariables;
@@ -35,6 +38,7 @@ import java.util.Calendar;
 
 
 import de.codecrafters.tableview.SortableTableView;
+import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 import de.codecrafters.tableview.toolkit.TableDataRowColorizers;
 
@@ -62,6 +66,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
     private Calendar myCalendar = Calendar.getInstance();
 
+
     private Button prevIntervalBtn;
     private Button nxtIntervalBtn;
 
@@ -73,9 +78,6 @@ public class ViewShiftsNEW extends AppCompatActivity {
     private TextView totalHoursTextView;
     private SortableTableView tableView;
     private Spinner shiftRangeSpinner;
-
-    // 1. Instantiate an AlertDialog.Builder with its constructor
-    //AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
     DatePickerDialog.OnDateSetListener shiftFilterDateFromSetListener = new DatePickerDialog.OnDateSetListener() {
 
@@ -165,18 +167,6 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
     };
 
-    /*public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Choose")
-                .setItems(new String[]{"Update", "Change", "Delete"}, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // The 'which' argument contains the index position
-                        // of the selected item
-                    }
-                });
-        return builder.create();
-    }
-*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -331,20 +321,24 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
         tableView = (SortableTableView) findViewById(R.id.tableView);
 
-        tableView.setColumnWeight(0, 4);
-        tableView.setColumnWeight(1, 2);
+        tableView.addDataClickListener(new ShiftClickListener());
+
+        tableView.setColumnWeight(0, 0);
+        tableView.setColumnWeight(1, 4);
         tableView.setColumnWeight(2, 2);
-        tableView.setColumnWeight(5, 2);
+        tableView.setColumnWeight(3, 2);
         tableView.setColumnWeight(6, 2);
+        tableView.setColumnWeight(7, 2);
 
-        tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, new String[]{"Date", "Duration", "Break", "Pay", "Tips", "Sales", "Notes"}));
+        //Note: the Id colum is there for getting the specified shift's Id for functionality like deleting or updating the selected shift from the table
+        tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, new String[]{"Id", "Date", "Duration", "Break", "Pay", "Tips", "Sales", "Notes"}));
 
-        tableView.setColumnComparator(0, new ViewShiftsComparators().getDateComparator());
-        tableView.setColumnComparator(1, new ViewShiftsComparators().getShiftDurationComparator());
-        tableView.setColumnComparator(2, new ViewShiftsComparators().getBreakComparator());
-        tableView.setColumnComparator(3, new ViewShiftsComparators().getPayComparator());
-        tableView.setColumnComparator(4, new ViewShiftsComparators().getTipsComparator());
-        tableView.setColumnComparator(5, new ViewShiftsComparators().getSalesComparator());
+        tableView.setColumnComparator(1, new ViewShiftsComparators().getDateComparator());
+        tableView.setColumnComparator(2, new ViewShiftsComparators().getShiftDurationComparator());
+        tableView.setColumnComparator(3, new ViewShiftsComparators().getBreakComparator());
+        tableView.setColumnComparator(4, new ViewShiftsComparators().getPayComparator());
+        tableView.setColumnComparator(5, new ViewShiftsComparators().getTipsComparator());
+        tableView.setColumnComparator(6, new ViewShiftsComparators().getSalesComparator());
 
         int colorEvenRows = ContextCompat.getColor(this, R.color.LIGHT_GREY);
         int colorOddRows = ContextCompat.getColor(this, R.color.SILVER);
@@ -415,6 +409,51 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    //A custom table row click handler
+    private class ShiftClickListener implements TableDataClickListener<Shift> {
+        @Override
+        //Overrides the onDataClicked event to obtain the data of the shift that was clicked on the table
+        public void onDataClicked(int rowIndex, final Shift clickedShift) {
+
+            //Show the user a dialog of options regarding the clicked shift
+            new AlertDialog.Builder(ViewShiftsNEW.this)
+                    .setTitle("Choose Option")
+                    .setItems(new String[]{"Update Shift", "Delete", "Cancel"}, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int position) {
+
+                            switch(position){
+                                case 0:
+
+                                    //Transition to the NewShiftActivity with the data for the selected Shift to update
+                                    Intent intent = new Intent(ViewShiftsNEW.this, NewShiftActivity.class);
+
+                                    intent.putExtra("updateShiftRequest", true);
+                                    intent.putExtra("Id", clickedShift.Id);
+                                    intent.putExtra("punchInDT", clickedShift.punchInDT);
+                                    intent.putExtra("punchOutDT", clickedShift.punchOutDT);
+                                    intent.putExtra("payPerHour", clickedShift.payPerHour);
+                                    intent.putExtra("breakTime", clickedShift.breakTime);
+                                    intent.putExtra("notes", clickedShift.notes);
+                                    intent.putExtra("tips", clickedShift.tips);
+                                    intent.putExtra("sales", clickedShift.sales);
+
+                                    startActivityForResult(intent, 0);
+
+                                    break;
+                                case 1:
+
+                                    break;
+                            }
+                        }
+                    })
+                    .setIcon(android.R.drawable.sym_def_app_icon)
+                    .show();
+
+        }
 
     }
 
