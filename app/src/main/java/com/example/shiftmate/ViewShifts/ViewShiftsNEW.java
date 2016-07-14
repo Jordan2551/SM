@@ -54,6 +54,8 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
     private static final byte COLUMN_COUNT = 7;
 
+    static final int UPDATE_SHIFT_REQUEST_CODE = 1; // Request code for startActivityForResult for NewShift callback
+
     //A list containing Shifts which have been selected according to a filter.
     //For example: a date filter from 7/15/2016 - 7/22/2016 will make this list contain
     //Only shifts from within that date range
@@ -441,10 +443,28 @@ public class ViewShiftsNEW extends AppCompatActivity {
                                     intent.putExtra("tips", clickedShift.tips);
                                     intent.putExtra("sales", clickedShift.sales);
 
-                                    startActivityForResult(intent, 0);
+                                    startActivityForResult(intent, UPDATE_SHIFT_REQUEST_CODE);
 
                                     break;
+
                                 case 1:
+
+                                    //Add a second confirmation dialog for deletion
+                                    new AlertDialog.Builder(ViewShiftsNEW.this)
+                                            .setTitle("Delete this shift?")
+                                            .setPositiveButton("Cancel", null)
+                                    .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                            //The user clicked the delete button, so delete the Shift, and reset the table view's data to reflect the deleted shift
+                                            DataSource.DeleteRecord(DataSource.shifts.tableName, clickedShift.Id);
+                                            DataSource.shifts.GetRecords(DataSource.shifts.tableName);
+                                            setFilteredShifts(shiftRangeSpinner.getSelectedItemPosition());
+                                            tableView.setDataAdapter(new ShiftTableAdapter(getBaseContext(), filteredShiftsList));
+
+                                        }
+                                    }).show();
 
                                     break;
                             }
@@ -573,6 +593,19 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
         }
 
+    }
+
+    //Gets a response from NetShiftActivity regarding the updating of a shift
+    // Once the NewShiftActivity finishes closing a quick shift we reset the tableView
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == UPDATE_SHIFT_REQUEST_CODE) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                setFilteredShifts(shiftRangeSpinner.getSelectedItemPosition());
+                tableView.setDataAdapter(new ShiftTableAdapter(getBaseContext(), filteredShiftsList));
+            }
+        }
     }
 
 

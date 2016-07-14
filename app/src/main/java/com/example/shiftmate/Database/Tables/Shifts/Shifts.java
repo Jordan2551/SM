@@ -81,11 +81,13 @@ public class Shifts extends TableItem {
 
     }
 
-    //Ends a quick shift by updating the Punchout datetime of the supplied Shift Id, as well as tips, sales, notes, etc
-    public void EndShift(String tableName, Shift shift) {
+    //Updates/Ends a Shift according to the shift's Id
+    public void UpdateOrEndShift(String tableName, Shift shift) {
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_PUNCHOUTDT, UniversalFunctions.dateToString(UniversalVariables.dateFormatDateTimeString, DateTime.now(), null));
+
+        values.put(COLUMN_PUNCHOUTDT, shift.punchInDT);
+        values.put(COLUMN_PUNCHOUTDT, shift.punchOutDT);
         values.put(COLUMN_TOTALTMINUTES, shift.totalMinutes);
         values.put(COLUMN_TIPS, shift.tips);
         values.put(COLUMN_SALES, shift.sales);

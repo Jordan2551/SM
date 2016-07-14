@@ -58,7 +58,7 @@ public class NewShiftActivity extends AppCompatActivity {
 
     //region Quick shift end related
 
-    static final int END_SHIFT_REQUEST_CODE = 1;  // Request code for startActivityForResult for NewShift callback
+    static final int UPDATE_OR_END_SHIFT_REQUEST_CODE = 1;  // Request code for startActivityForResult for NewShift callback
 
     //The Id of the quick shift that is requested to be ended
     private long shiftEndId;
@@ -333,23 +333,28 @@ public class NewShiftActivity extends AppCompatActivity {
                         return;
                     }
 
-                    //If this activity was called by end quick shift then just call the EndShift function
-                    if (activityRequester == ActivityRequester.END_SHIFT) {
+                    //Save/update the Shift (depending on who called for this activity)
+                    switch(activityRequester){
 
-                        shift.Id = shiftEndId;//Supply the Id of the shift to end
+                        case MAIN_ACTIVITY:
+                            DataSource.shifts.CreateShift(DataSource.shifts.tableName, shift);
+                            break;
 
-                        DataSource.shifts.EndShift(DataSource.shifts.tableName, shift);
+                        case END_SHIFT:
+                        case VIEW_SHIFTS_ACTIVITY:
 
-                        //Set up the return intent for the MainActivity containing an OK code
-                        Intent returnIntent = new Intent();
-                        //returnIntent.putExtra("result",END_SHIFT_REQUEST_CODE);
-                        setResult(Activity.RESULT_OK,returnIntent);
+                            shift.Id = shiftEndId;//Supply the Id of the shift to end
+
+                            DataSource.shifts.UpdateOrEndShift(DataSource.shifts.tableName, shift);
+
+                            //Set up the return intent for the MainActivity containing an OK code
+                            Intent returnIntent = new Intent();
+                            setResult(Activity.RESULT_OK,returnIntent);
+
+                            break;
+
 
                     }
-
-                    //Otherwise, this activity started regularly(by clicking Create Shift), so create a new shift
-                    else
-                        DataSource.shifts.CreateShift(DataSource.shifts.tableName, shift);
 
                     Toast.makeText(getApplicationContext(), String.format("Your shift of %d:%02d hours has been saved!", hourDifference, minuteDifference), Toast.LENGTH_LONG).show();
 
@@ -529,6 +534,9 @@ public class NewShiftActivity extends AppCompatActivity {
 
             activityRequester = ActivityRequester.VIEW_SHIFTS_ACTIVITY;
 
+            //Change the save shift button text to update shift
+            ssButton.setText("Update Shift");
+
             //Get tall the data for the requested Shift to update:
             shiftEndId = getIntent().getLongExtra("Id", 0);
 
@@ -545,11 +553,11 @@ public class NewShiftActivity extends AppCompatActivity {
             shiftEndTimeText.setText(shiftEndTime);
 
             breakTime = getIntent().getIntExtra("breakTime", 0);
-            breakTimeText.setText(String.valueOf(breakTime));
+            breakTimeText.setText(String.valueOf(breakTime != Shift.NO_BREAK ? breakTime : ""));
 
             notesText.setText(getIntent().getStringExtra("notes"));
-            tipsText.setText(String.valueOf(getIntent().getIntExtra("tips", 0) != 0 ? getIntent().getIntExtra("tips", 0) : 0));
-            salesText.setText(String.valueOf(getIntent().getIntExtra("sales", 0) != 0 ? getIntent().getIntExtra("sales", 0) : 0));
+            tipsText.setText(String.valueOf(getIntent().getIntExtra("tips", 0) != Shift.NO_TIPS ? getIntent().getIntExtra("tips", 0) : ""));
+            salesText.setText(String.valueOf(getIntent().getIntExtra("sales", 0) != Shift.NO_SALES ? getIntent().getIntExtra("sales", 0) : ""));
 
             //Update the period according to the data updated above
             updatePeriod();
