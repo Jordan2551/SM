@@ -224,12 +224,12 @@
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout\\design_navigation_menu_item.xml"
     },
     {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_radio.xml"
-    },
-    {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\listitem_shift.xml",
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\layout\\listitem_shift.xml"
+    },
+    {
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_radio.xml"
     },
     {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",

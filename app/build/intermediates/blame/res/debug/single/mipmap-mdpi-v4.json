@@ -2,5 +2,9 @@
     {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_monetization_on_black_24dp.png",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\mipmap-mdpi\\ic_monetization_on_black_24dp.png"
     }
 ]

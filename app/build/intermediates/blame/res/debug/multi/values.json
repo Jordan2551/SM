@@ -4843,11 +4843,11 @@
                 "from": {
                     "file": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
-                        "startLine": 15,
+                        "startLine": 17,
                         "startColumn": 4,
-                        "startOffset": 540,
+                        "startOffset": 544,
                         "endColumn": 90,
-                        "endOffset": 626
+                        "endOffset": 630
                     }
                 }
             },
@@ -4863,12 +4863,12 @@
                 "from": {
                     "file": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 384,
-                        "endLine": 13,
+                        "startOffset": 388,
+                        "endLine": 15,
                         "endColumn": 12,
-                        "endOffset": 532
+                        "endOffset": 536
                     }
                 }
             },
@@ -4883,11 +4883,11 @@
                 "from": {
                     "file": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
-                        "startLine": 17,
+                        "startLine": 19,
                         "startColumn": 4,
-                        "startOffset": 634,
+                        "startOffset": 638,
                         "endColumn": 80,
-                        "endOffset": 710
+                        "endOffset": 714
                     }
                 }
             },

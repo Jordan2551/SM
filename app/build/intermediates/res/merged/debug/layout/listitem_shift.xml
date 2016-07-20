@@ -14,7 +14,6 @@
             android:id="@+id/shiftStatusIV"
             android:layout_width="70dp"
             android:layout_height="93dp"
-            android:src="@drawable/shift_in_progress"
             android:layout_alignTop="@+id/shiftStartTV"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

@@ -53,13 +53,11 @@ public class ShiftListAdapter extends ArrayAdapter<Shift> {
         if (requestedItem.punchOutDT.equals(Shift.PUNCHOUT_NONE)) {
 
             shiftEndTV.setText("Shift in progress");
-            shiftStatusIV.setImageDrawable(getContext().getResources().getDrawable(R.drawable.shift_in_progress));
             totalHoursTV.setText("N/A");
 
         } else {
 
             shiftEndTV.setText(requestedItem.punchOutDT);
-            shiftStatusIV.setImageDrawable(getContext().getResources().getDrawable(R.drawable.shift_ended));
 
             try {
 

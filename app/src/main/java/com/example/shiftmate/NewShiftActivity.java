@@ -277,15 +277,6 @@ public class NewShiftActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         ssButton = (Button) findViewById(R.id.ssButton);
 
         ssButton.setOnClickListener(new View.OnClickListener() {
@@ -420,7 +411,7 @@ public class NewShiftActivity extends AppCompatActivity {
             }
         });
 
-        shiftEndDateText = (TextView) findViewById(R.id.totalHoursTextView);
+        shiftEndDateText = (TextView) findViewById(R.id.shiftEndDateText);
         shiftEndDateText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftEndDate));
 
         //DDOS#1

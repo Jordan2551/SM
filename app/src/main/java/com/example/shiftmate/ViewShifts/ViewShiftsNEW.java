@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -77,7 +78,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
     private TextView shiftFilterDateFromText;
     private TextView shiftFilterDateToText;
 
-    private TextView totalHoursTextView;
+    private TextView totalHoursText;
     private SortableTableView tableView;
     private Spinner shiftRangeSpinner;
 
@@ -319,7 +320,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
         });
 
 
-        totalHoursTextView = (TextView) findViewById(R.id.totalHoursTextView);
+        totalHoursText = (TextView) findViewById(R.id.totalHoursText);
 
         tableView = (SortableTableView) findViewById(R.id.tableView);
 
@@ -329,8 +330,10 @@ public class ViewShiftsNEW extends AppCompatActivity {
         tableView.setColumnWeight(1, 4);
         tableView.setColumnWeight(2, 2);
         tableView.setColumnWeight(3, 2);
+        tableView.setColumnWeight(4, 2);
+        tableView.setColumnWeight(5, 2);
         tableView.setColumnWeight(6, 2);
-        tableView.setColumnWeight(7, 2);
+        tableView.setColumnWeight(7, 3);
 
         //Note: the Id colum is there for getting the specified shift's Id for functionality like deleting or updating the selected shift from the table
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, new String[]{"Id", "Date", "Duration", "Break", "Pay", "Tips", "Sales", "Notes"}));
@@ -544,7 +547,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
         //In hours for all of the shifts to display for totalHoursTextView
         int[] totalShiftsHourDuration = UniversalFunctions.getAllShiftDurations(filteredShiftsList);
 
-        totalHoursTextView.setText(totalShiftsHourDuration[0] + ":" + String.format("%02d", totalShiftsHourDuration[1]));
+        totalHoursText.setText(totalShiftsHourDuration[0] + ":" + String.format("%02d", totalShiftsHourDuration[1]));
 
     }
 
