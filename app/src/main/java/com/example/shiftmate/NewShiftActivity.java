@@ -277,6 +277,9 @@ public class NewShiftActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        setTitle("New Shift");
+
+
         ssButton = (Button) findViewById(R.id.ssButton);
 
         ssButton.setOnClickListener(new View.OnClickListener() {
@@ -483,14 +486,16 @@ public class NewShiftActivity extends AppCompatActivity {
         notesText.setText("");
 
         totalHoursText = (TextView) findViewById(R.id.totalHoursText);
-        totalHoursText.setText("");
+        totalHoursText.setText("0");
 
         totalPaidHoursText = (TextView) findViewById(R.id.totalPaidHoursText);
-        totalPaidHoursText.setText("");
+        totalPaidHoursText.setText("0");
 
         //Acquire data from MainActivity (for when a quick shift was requested to be ended)
         //If this activity was started from selecting the New Shift button then the data below will be null!
         if (getIntent().getBooleanExtra("endShiftRequest", false)) {
+
+            setTitle("End Shift");
 
             activityRequester = ActivityRequester.END_SHIFT;
 
@@ -522,6 +527,8 @@ public class NewShiftActivity extends AppCompatActivity {
 
         //If this activity was started from selecting to update a shift from ViewShiftsActivity then fill in in that particular shifts' details
         else if (getIntent().getBooleanExtra("updateShiftRequest", false)) {
+
+            setTitle("Update Shift");
 
             activityRequester = ActivityRequester.VIEW_SHIFTS_ACTIVITY;
 

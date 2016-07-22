@@ -175,6 +175,9 @@ public class ViewShiftsNEW extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_shifts_new);
 
+        setTitle("View Shifts");
+
+
         fromText = (TextView) findViewById(R.id.fromText);
         toText = (TextView) findViewById(R.id.toText);
 

@@ -54,7 +54,8 @@
         android:layout_marginTop="20dp"
         android:text="New Shift"
         android:id="@+id/nsButton"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        style="@style/ButtonTextColor" />
 
     <Button
         android:layout_width="136dp"
@@ -62,7 +63,8 @@
         android:layout_marginTop="20dp"
         android:text="Quick Shift"
         android:id="@+id/qsButton"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        style="@style/ButtonTextColor" />
 
     <Button
         android:layout_width="142dp"
@@ -70,7 +72,8 @@
         android:layout_marginTop="20dp"
         android:text="View Shifts"
         android:id="@+id/vsButton"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        style="@style/ButtonTextColor" />
 
     <Button
         android:layout_width="146dp"
@@ -78,7 +81,8 @@
         android:layout_marginTop="20dp"
         android:text="Delete Records"
         android:id="@+id/drButton"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        style="@style/ButtonTextColor" />
 
     <Button
         android:layout_width="146dp"
@@ -90,6 +94,7 @@
         android:layout_alignRight="@+id/nsButton"
         android:layout_alignEnd="@+id/nsButton"
         android:layout_alignLeft="@+id/nsButton"
-        android:layout_alignStart="@+id/nsButton" />
+        android:layout_alignStart="@+id/nsButton"
+        style="@style/ButtonTextColor" />
 
 </LinearLayout>

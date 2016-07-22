@@ -24,6 +24,7 @@
     <color name="LIGHT_BLUE">#03A9F4</color>
     <color name="LIGHT_GREEN">#8BC34A</color>
     <color name="LIGHT_GREY">#CFD8DC</color>
+    <color name="LIGHT_PURPLE">#db78ff</color>
     <color name="SILVER">#B6B6B6</color>
     <color name="SLATE_GREY">#455A64</color>
     <color name="WHITE">#FFFFFF</color>
@@ -46,8 +47,8 @@
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#d0c7d6</color>
+    <color name="colorPrimaryDark">#b2a4b7</color>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
     <color name="design_fab_shadow_mid_color">#14000000</color>
     <color name="design_fab_shadow_start_color">#44000000</color>
@@ -1280,6 +1281,12 @@
         <item name="tabBackground">?attr/selectableItemBackground</item>
         <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
         <item name="tabSelectedTextColor">?android:textColorPrimary</item>
+    </style>
+    <style name="ButtonTextColor" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:background">@color/LIGHT_PURPLE</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
     </style>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>

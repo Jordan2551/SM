@@ -25,10 +25,15 @@
         <activity
             android:name=".NewShiftActivity"
             android:label="@string/title_activity_new_shift"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ViewShifts.ViewShiftsNEW" />
         <activity android:name=".MessingAround" />
         <activity android:name=".ViewShifts.ShiftTableAdapter"></activity>
     </application>
+
+    <supports-screens>
+
+    </supports-screens>
 
 </manifest>
