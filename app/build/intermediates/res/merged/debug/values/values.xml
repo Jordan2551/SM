@@ -21,13 +21,13 @@
     <bool name="abc_config_showMenuShortcutsWhenKeyboardPresent">false</bool>
     <color name="BLUE_GREY">#607D8B</color>
     <color name="GREEN">#4CAF50</color>
-    <color name="LIGHT_BLUE">#03A9F4</color>
+    <color name="LIGHT_BLUE">#03a9f4</color>
     <color name="LIGHT_GREEN">#8BC34A</color>
     <color name="LIGHT_GREY">#CFD8DC</color>
     <color name="LIGHT_PURPLE">#db78ff</color>
     <color name="SILVER">#B6B6B6</color>
     <color name="SLATE_GREY">#455A64</color>
-    <color name="WHITE">#FFFFFF</color>
+    <color name="WHITE">#ffffff</color>
     <color name="abc_input_method_navigation_guard">@android:color/black</color>
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
@@ -305,7 +305,7 @@
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -1431,6 +1431,11 @@
     <style name="RtlUnderlay.Widget.AppCompat.ActionButton.Overflow" parent="Base.Widget.AppCompat.ActionButton">
         <item name="android:paddingLeft">@dimen/abc_action_bar_overflow_padding_start_material</item>
         <item name="android:paddingRight">@dimen/abc_action_bar_overflow_padding_end_material</item>
+    </style>
+    <style name="SpinnerStyle" parent="Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
+        <item name="android:textAppearance">@color/WHITE</item>
+        <item name="android:checkMark">?android:attr/listChoiceIndicatorSingle</item>
+
     </style>
     <style name="TextAppearance.AppCompat" parent="Base.TextAppearance.AppCompat"/>
     <style name="TextAppearance.AppCompat.Body1" parent="Base.TextAppearance.AppCompat.Body1"/>

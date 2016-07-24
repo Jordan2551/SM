@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -70,8 +71,8 @@ public class ViewShiftsNEW extends AppCompatActivity {
     private Calendar myCalendar = Calendar.getInstance();
 
 
-    private Button prevIntervalBtn;
-    private Button nxtIntervalBtn;
+    private ImageButton prevIntervalBtn;
+    private ImageButton nxtIntervalBtn;
 
     private TextView fromText;
     private TextView toText;
@@ -181,8 +182,8 @@ public class ViewShiftsNEW extends AppCompatActivity {
         fromText = (TextView) findViewById(R.id.fromText);
         toText = (TextView) findViewById(R.id.toText);
 
-        prevIntervalBtn = (Button) findViewById(R.id.prevIntervalBtn);
-        nxtIntervalBtn = (Button) findViewById(R.id.nxtIntervalBtn);
+        prevIntervalBtn = (ImageButton) findViewById(R.id.prevIntervalBtn);
+        nxtIntervalBtn = (ImageButton) findViewById(R.id.nxtIntervalBtn);
 
         prevIntervalBtn.setOnClickListener(new View.OnClickListener() {
 

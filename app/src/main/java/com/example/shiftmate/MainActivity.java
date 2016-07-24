@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
     Button nsButton;
     Button qsButton;
     Button vsButton;
-    Button drButton;
-    Button testButton;
     TextView latestShiftTV;
 
     //endregion
@@ -51,16 +50,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        setTitle("Home");
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        setTitle("Shift Mate");
 
         //Open the database connection
         dbConnector = new DBConnector(this);
@@ -88,22 +78,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //endregion
-
-        //region Test
-
-        testButton = (Button) findViewById(R.id.testButton);
-
-        testButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                UpdateGUI();
-
-            }
-        });
-
-        //endreigon
-
 
         //region Quick Shift Button
 
@@ -170,24 +144,6 @@ public class MainActivity extends AppCompatActivity {
 
         //endregion
 
-        //region Delete Records Button
-
-        drButton = (Button) findViewById(R.id.drButton);
-
-        //When the quick shift button is clicked we want to add a new database record that contains
-        //an id and a start date and time(we leave the end date as null to indicate we have not finished a shift yet)
-        drButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                DataSource.DeleteAllRecords(DataSource.shifts.tableName);
-                UpdateGUI();
-
-            }
-        });
-
-        //endregion
-
         //Request to update the buttons displayed for the GUI based on the database's data
         UpdateGUI();
 
@@ -225,12 +181,14 @@ public class MainActivity extends AppCompatActivity {
 
             latestShiftTV.setText("Latest Quick Shift Started: " + UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatDateTimeDisplayString, DataSource.shifts.shiftList.get(DataSource.shifts.shiftList.size() - 1).punchInDT));
             latestShiftTV.setVisibility(View.VISIBLE);
-            qsButton.setText("End Shift");
+            qsButton.setText("Punch Out");
+            qsButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_quick_punch_out, 0, 0, 0);
 
         } else {
 
             latestShiftTV.setText("Select 'Quick Shift' to punch in!");
-            qsButton.setText("Quick Shift");
+            qsButton.setText("Quickly Punch In");
+            qsButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_quick_punch_in, 0, 0, 0);
 
         }
 

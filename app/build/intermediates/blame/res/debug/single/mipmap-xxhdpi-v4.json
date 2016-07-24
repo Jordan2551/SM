@@ -24,14 +24,6 @@
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_dark_sorted_asc.png"
     },
     {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_star_rate.png",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_star_rate.png"
-    },
-    {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_monetization_on_black_24dp.png",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_monetization_on_black_24dp.png"
-    },
-    {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_light_sorted_desc.png",
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_light_sorted_desc.png"
     }

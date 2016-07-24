@@ -6,56 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ViewShifts.ViewShiftsNEW"
-    >
+    android:weightSum="10">
 
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/button3"
-        android:layout_toStartOf="@+id/button3"
-        android:layout_below="@+id/shiftRangeSpinner"
-        android:id="@+id/dateFilterLayout"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Show:"
-            android:id="@+id/textView16"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/shiftRangeSpinner"
-            android:spinnerMode="dropdown"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/textView16"
-            android:layout_alignRight="@+id/shiftsFilterToText"
-            android:layout_alignEnd="@+id/shiftsFilterToText"
-            android:textAlignment="center"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -112,52 +75,55 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="35dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="5dp"
+        android:background="@color/LIGHT_PURPLE"
+        android:layout_weight="0.2">
 
-        <Button
-            style="@style/ButtonTextColor"
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="fill_parent"
+            android:background="@drawable/ic_arrow_back"
+            android:id="@+id/prevIntervalBtn" />
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="fill_parent"
+            android:background="@drawable/ic_arrow_forward"
+            android:id="@+id/nxtIntervalBtn"
+            android:layout_marginLeft="3dp" />
+
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&lt;---"
-            android:id="@+id/prevIntervalBtn"
+            android:layout_height="fill_parent"
+            android:background="@drawable/ic_print"
+            android:id="@+id/printBtn"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp" />
+
+        <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="33dp"
+            android:id="@+id/shiftRangeSpinner"
+            android:spinnerMode="dropdown"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/textView16"
+            android:layout_alignRight="@+id/shiftsFilterToText"
+            android:layout_alignEnd="@+id/shiftsFilterToText"
+            android:textAlignment="center"
+            android:layout_gravity="center"
             android:layout_weight="1" />
 
-        <Button
-            style="@style/ButtonTextColor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="--->"
-            android:id="@+id/nxtIntervalBtn"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Print"
-            android:id="@+id/button3"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_weight="1"
-            style="@style/ButtonTextColor"
-            android:layout_marginLeft="10dp" />
     </LinearLayout>
 
     <HorizontalScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
         android:layout_alignParentStart="false"
         android:layout_marginTop="10dp"
-        android:layout_weight="140"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_weight="7.5">
 
     <de.codecrafters.tableview.SortableTableView
         android:id="@+id/tableView"
@@ -166,16 +132,15 @@
         android:layout_height="match_parent"
         android:textAlignment="center"
         custom:tableView_columnCount="8"
-        custom:tableView_headerColor="@color/LIGHT_BLUE"
-        custom:tableView_headerElevation="10"
-        android:theme="@style/Base.AlertDialog.AppCompat.Light" />
+        custom:tableView_headerColor="@color/LIGHT_PURPLE"
+        custom:tableView_headerElevation="10" />
 
 </HorizontalScrollView>
 
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="185dp"
-            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            android:layout_height="0dp"
             android:gravity="center"
             android:layout_gravity="center_horizontal"
             android:layout_alignParentTop="true"

@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/LIGHT_BLUE">
 
 
     <LinearLayout
@@ -135,6 +136,18 @@
         android:layout_gravity="center_horizontal" >
 
 
+        <Button
+            style="@style/ButtonTextColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quickly Punch In"
+            android:id="@+id/button"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageView3"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@drawable/ic_calendar"
+            android:layout_alignParentEnd="true" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="4dp"
@@ -166,5 +179,11 @@
             android:layout_centerHorizontal="true"
             android:layout_weight="1" />
     </LinearLayout>
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_calendar"
+        android:id="@+id/imageButton" />
 
 </LinearLayout>

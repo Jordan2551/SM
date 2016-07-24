@@ -13,9 +13,4 @@
         android:icon="@drawable/ic_star_rate"
         android:title="Test"
         app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/action_settings2"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
 </menu>
