@@ -37,7 +37,8 @@
         android:layout_alignLeft="@+id/relativeLayout2"
         android:layout_alignStart="@+id/relativeLayout2"
         android:layout_marginLeft="10dp"
-        android:layout_weight="0.05" />
+        android:layout_weight="0.05"
+        android:textColor="@color/BLUE_GREY" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -121,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Settings"
-            android:id="@+id/button2"
+            android:id="@+id/settingsButton"
             android:layout_gravity="center_horizontal"
             android:drawableLeft="@drawable/ic_settings_gear"
             android:textAlignment="viewStart"

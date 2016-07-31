@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,7 @@ import com.example.shiftmate.Shared.UniversalVariables;
 
 import org.joda.time.DateTime;
 import org.joda.time.Period;
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
@@ -39,7 +41,7 @@ enum UpdateRequest {
 }
 
 //Indicates how this activity was created for dealing with shift saving/updating logic
-enum ActivityRequester{
+enum ActivityRequester {
 
     MAIN_ACTIVITY,
     END_SHIFT,
@@ -89,6 +91,8 @@ public class NewShiftActivity extends AppCompatActivity {
     //Holds the total paid hours and minutes according to the hourDifference and minuteDifference passed along with the break time (if applicable, in minutes)
     int[] totalPaidHrsAndMins;
 
+    float payPerHour = 0;
+
     TextView breakTimeText;
 
     TextView shiftBeginDateText;
@@ -97,12 +101,14 @@ public class NewShiftActivity extends AppCompatActivity {
     TextView shiftBeginTimeText;
     TextView shiftEndTimeText;
 
+    TextView payPerHourText;
     TextView tipsText;
     TextView salesText;
     TextView notesText;
 
     TextView totalHoursText;
     TextView totalPaidHoursText;
+    TextView totalPayText;
 
     Calendar myCalendar = Calendar.getInstance();
 
@@ -219,7 +225,7 @@ public class NewShiftActivity extends AppCompatActivity {
         updatePeriod();
 
         //Update Total Hours and Total Paid Hours
-        updateTotalAndPaidHours();
+        updateHoursAndPayment();
 
     }
 
@@ -238,7 +244,8 @@ public class NewShiftActivity extends AppCompatActivity {
 
     }
 
-    private void updateTotalAndPaidHours() {
+    //Updates the total hours, paid hours and total payment for the shift based on the date range and pay per hour
+    private void updateHoursAndPayment() {
 
         //If the two selected dates and times actually have a difference between them (the shift begin is before shift end)
         if (hourDifference * 60 + minuteDifference > 0) {
@@ -250,12 +257,17 @@ public class NewShiftActivity extends AppCompatActivity {
                 totalPaidHrsAndMins = UniversalFunctions.getHoursAndMinutes((hourDifference * 60 + minuteDifference) - breakTime);
                 totalPaidHoursText.setText(totalPaidHrsAndMins[0] + ":" + String.format("%02d", totalPaidHrsAndMins[1]));
 
+                //Update total pay
+                totalPayText.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol +
+                        String.valueOf((float) Math.round(((totalPaidHrsAndMins[0] + (Float.valueOf(totalPaidHrsAndMins[1]) / 60)) * payPerHour) * 100) / 100));
+
             }
 
             //Otherwise, the break time (in minutes) is larger than the total shift time (in minutes) then set the Total Hours and Paid Hours Text Views to 0
             else {
                 totalHoursText.setText("0");
                 totalPaidHoursText.setText("0");
+                totalPayText.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol + "0");
             }
 
         }
@@ -264,6 +276,7 @@ public class NewShiftActivity extends AppCompatActivity {
         else {
             totalHoursText.setText("0");
             totalPaidHoursText.setText("0");
+            totalPayText.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol + "0");
         }
 
     }
@@ -293,7 +306,7 @@ public class NewShiftActivity extends AppCompatActivity {
                     Shift shift = new Shift();
                     shift.punchInDT = shiftBeginDate + " " + shiftBeginTime;
                     shift.punchOutDT = shiftEndDate + " " + shiftEndTime;
-                    shift.payPerHour = 0;
+                    shift.totalPay = 0;
                     shift.totalMinutes = hourDifference * 60 + minuteDifference;
 
                     if (tipsText.length() > 0)
@@ -328,7 +341,7 @@ public class NewShiftActivity extends AppCompatActivity {
                     }
 
                     //Save/update the Shift (depending on who called for this activity)
-                    switch(activityRequester){
+                    switch (activityRequester) {
 
                         case MAIN_ACTIVITY:
                             DataSource.shifts.CreateShift(DataSource.shifts.tableName, shift);
@@ -343,7 +356,7 @@ public class NewShiftActivity extends AppCompatActivity {
 
                             //Set up the return intent for the MainActivity containing an OK code
                             Intent returnIntent = new Intent();
-                            setResult(Activity.RESULT_OK,returnIntent);
+                            setResult(Activity.RESULT_OK, returnIntent);
 
                             break;
 
@@ -388,7 +401,7 @@ public class NewShiftActivity extends AppCompatActivity {
                     breakTime = Shift.NO_BREAK;
 
                 //Update the total and paid hours data, because break time affects this data
-                updateTotalAndPaidHours();
+                updateHoursAndPayment();
 
             }
 
@@ -476,6 +489,38 @@ public class NewShiftActivity extends AppCompatActivity {
             }
         });
 
+        payPerHour = Float.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString(Settings.KEY_PAY_PER_HOUR, "0"));
+
+        payPerHourText = (TextView) findViewById(R.id.payPerHourText);
+        payPerHourText.setText(PreferenceManager.getDefaultSharedPreferences(this).getString(Settings.KEY_PAY_PER_HOUR, "0"));
+
+
+        payPerHourText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() != 0) {
+                    payPerHour = Float.valueOf(Float.valueOf(s.toString()));
+                    updateHoursAndPayment();
+                }
+                else
+                {
+                    payPerHour = 0;
+                    updateHoursAndPayment();
+                }
+            }
+
+            //Change the total pay after the user changes the total pay per hour
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         tipsText = (TextView) findViewById(R.id.tipsText);
         tipsText.setText("");
 
@@ -490,6 +535,9 @@ public class NewShiftActivity extends AppCompatActivity {
 
         totalPaidHoursText = (TextView) findViewById(R.id.totalPaidHoursText);
         totalPaidHoursText.setText("0");
+
+        totalPayText = (TextView) findViewById(R.id.totalPayText);
+        totalPayText.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol + "0");
 
         //Acquire data from MainActivity (for when a quick shift was requested to be ended)
         //If this activity was started from selecting the New Shift button then the data below will be null!
@@ -521,7 +569,7 @@ public class NewShiftActivity extends AppCompatActivity {
             updatePeriod();
 
             //Update Total Hours and Total Paid Hours
-            updateTotalAndPaidHours();
+            updateHoursAndPayment();
 
         }
 
@@ -553,6 +601,7 @@ public class NewShiftActivity extends AppCompatActivity {
             breakTime = getIntent().getIntExtra("breakTime", 0);
             breakTimeText.setText(String.valueOf(breakTime != Shift.NO_BREAK ? breakTime : ""));
 
+            payPerHourText.setText(PreferenceManager.getDefaultSharedPreferences(this).getString(Settings.KEY_PAY_PER_HOUR, "0"));
             notesText.setText(getIntent().getStringExtra("notes"));
             tipsText.setText(String.valueOf(getIntent().getIntExtra("tips", 0) != Shift.NO_TIPS ? getIntent().getIntExtra("tips", 0) : ""));
             salesText.setText(String.valueOf(getIntent().getIntExtra("sales", 0) != Shift.NO_SALES ? getIntent().getIntExtra("sales", 0) : ""));
@@ -561,12 +610,11 @@ public class NewShiftActivity extends AppCompatActivity {
             updatePeriod();
 
             //Update Total Hours and Total Paid Hours
-            updateTotalAndPaidHours();
+            updateHoursAndPayment();
 
         }
 
     }
-
 
 
 }

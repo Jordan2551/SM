@@ -32,7 +32,7 @@ public class Shifts extends TableItem {
     private static final String COLUMN_PUNCHOUTDT = "punchOutDT";
     private static final String COLUMN_TOTALTMINUTES = "totalHours";
     private static final String COLUMN_BREAKTIME = "breakTime";
-    private static final String COLUMN_PAYPERHOUR = "payPerHour";
+    private static final String COLUMN_TOTAL_PAY = "totalPay";
     private static final String COLUMN_TIPS = "tips";
     private static final String COLUMN_SALES = "sales";
     private static final String COLUMN_NOTES = "notes";
@@ -44,7 +44,7 @@ public class Shifts extends TableItem {
 
     public Shifts() {
 
-        super("Shifts", "SHIFTS", new String[]{COLUMN_ID, COLUMN_PUNCHINDT, COLUMN_PUNCHOUTDT, COLUMN_TOTALTMINUTES, COLUMN_BREAKTIME, COLUMN_PAYPERHOUR, COLUMN_TIPS, COLUMN_SALES, COLUMN_NOTES},
+        super("Shifts", "SHIFTS", new String[]{COLUMN_ID, COLUMN_PUNCHINDT, COLUMN_PUNCHOUTDT, COLUMN_TOTALTMINUTES, COLUMN_BREAKTIME, COLUMN_TOTAL_PAY, COLUMN_TIPS, COLUMN_SALES, COLUMN_NOTES},
                 "CREATE TABLE Shifts ("
                         + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + COLUMN_PUNCHINDT + " TEXT, "
@@ -54,7 +54,7 @@ public class Shifts extends TableItem {
                         + COLUMN_TIPS + " INTEGER, "
                         + COLUMN_SALES + " INTEGER, "
                         + COLUMN_NOTES + " TEXT, "
-                        + COLUMN_PAYPERHOUR + " INTEGER);");
+                        + COLUMN_TOTAL_PAY + " DOUBLE);");
 
     }
 
@@ -69,7 +69,7 @@ public class Shifts extends TableItem {
         values.put(COLUMN_PUNCHOUTDT, shift.punchOutDT);
         values.put(COLUMN_TOTALTMINUTES, shift.totalMinutes);
         values.put(COLUMN_BREAKTIME, shift.breakTime);
-        values.put(COLUMN_PAYPERHOUR, shift.payPerHour);
+        values.put(COLUMN_TOTAL_PAY, shift.totalPay);
         values.put(COLUMN_TIPS, shift.tips);
         values.put(COLUMN_SALES, shift.sales);
         values.put(COLUMN_NOTES, shift.notes);
@@ -89,6 +89,7 @@ public class Shifts extends TableItem {
         values.put(COLUMN_PUNCHOUTDT, shift.punchInDT);
         values.put(COLUMN_PUNCHOUTDT, shift.punchOutDT);
         values.put(COLUMN_TOTALTMINUTES, shift.totalMinutes);
+        values.put(COLUMN_TOTAL_PAY, shift.totalPay);
         values.put(COLUMN_TIPS, shift.tips);
         values.put(COLUMN_SALES, shift.sales);
         values.put(COLUMN_NOTES, shift.notes);
@@ -126,7 +127,7 @@ public class Shifts extends TableItem {
                 shift.punchOutDT = cursor.getString(cursor.getColumnIndex(COLUMN_PUNCHOUTDT));
                 shift.totalMinutes = cursor.getInt(cursor.getColumnIndex(COLUMN_TOTALTMINUTES));
                 shift.breakTime = cursor.getInt(cursor.getColumnIndex(COLUMN_BREAKTIME));
-                shift.payPerHour = cursor.getInt(cursor.getColumnIndex(COLUMN_PAYPERHOUR));
+                shift.totalPay = cursor.getInt(cursor.getColumnIndex(COLUMN_TOTAL_PAY));
                 shift.tips = cursor.getInt(cursor.getColumnIndex(COLUMN_TIPS));
                 shift.sales = cursor.getInt(cursor.getColumnIndex(COLUMN_SALES));
                 shift.notes = cursor.getString(cursor.getColumnIndex(COLUMN_NOTES));
@@ -138,11 +139,6 @@ public class Shifts extends TableItem {
         }
 
         return tableItems;
-
-    }
-
-
-    public void DeleteTableEntry(String tableName, long Id) {
 
     }
 

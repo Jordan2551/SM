@@ -14,10 +14,10 @@ import java.util.List;
 public class TableItem {
 
     //Shared properties for children
-    public static String tableName;
-    public static String logTag;
-    public static String createQuery;
-    public static String[] columnNameStructure;//Contains the column structure of the table(for pulling data from the db according to this models column name structure)
+    public String tableName;
+    public String logTag;
+    public String createQuery;
+    public String[] columnNameStructure;//Contains the column structure of the table(for pulling data from the db according to this models column name structure)
 
 
     public TableItem(String tableName, String logTag, String[] columnNameStructure, String createQuery) {

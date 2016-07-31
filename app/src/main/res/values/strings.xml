@@ -13,5 +13,868 @@
         <item>Shifts by Month</item>
         <item>Shifts by Year</item>
     </array>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+
+
+<string name="currenciesJSON">
+      {
+    \"currencies\": [
+      {
+        \"Id\": \"0\",
+        \"currencyName\": \"US Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"1\",
+        \"currencyName\": \"Euro\",
+        \"currencySymbol\": \"€\"
+      },
+      {
+        \"Id\": \"2\",
+        \"currencyName\": \"Pound Sterling\",
+        \"currencySymbol\": \"£\"
+      },
+      {
+        \"Id\": \"3\",
+        \"currencyName\": \"Australian Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"4\",
+        \"currencyName\": \"Canadian Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"5\",
+        \"currencyName\": \"Yen\",
+        \"currencySymbol\": \"¥\"
+      },
+      {
+        \"Id\": \"6\",
+        \"currencyName\": \"UAE Dirham\",
+        \"currencySymbol\": \"AED\"
+      },
+      {
+        \"Id\": \"7\",
+        \"currencyName\": \"Afghani\",
+        \"currencySymbol\": \"AFN\"
+      },
+      {
+        \"Id\": \"8\",
+        \"currencyName\": \"Lek\",
+        \"currencySymbol\": \"Lek\"
+      },
+      {
+        \"Id\": \"9\",
+        \"currencyName\": \"Armenian Dram\",
+        \"currencySymbol\": \"AMD\"
+      },
+      {
+        \"Id\": \"10\",
+        \"currencyName\": \"Netherlands Antillian Guilder\",
+        \"currencySymbol\": \"ƒ\"
+      },
+      {
+        \"Id\": \"11\",
+        \"currencyName\": \"Kwanza\",
+        \"currencySymbol\": \"AOA\"
+      },
+      {
+        \"Id\": \"12\",
+        \"currencyName\": \"Argentine Peso\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"13\",
+        \"currencyName\": \"Aruban Guilder\",
+        \"currencySymbol\": \"ƒ\"
+      },
+      {
+        \"Id\": \"14\",
+        \"currencyName\": \"Azerbaijanian Manat\",
+        \"currencySymbol\": \"ман\"
+      },
+      {
+        \"Id\": \"15\",
+        \"currencyName\": \"Convertible Marks\",
+        \"currencySymbol\": \"KM\"
+      },
+      {
+        \"Id\": \"16\",
+        \"currencyName\": \"Barbados Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"17\",
+        \"currencyName\": \"Taka\",
+        \"currencySymbol\": \"BDT\"
+      },
+      {
+        \"Id\": \"18\",
+        \"currencyName\": \"Bulgarian Lev\",
+        \"currencySymbol\": \"!!\"
+      },
+      {
+        \"Id\": \"19\",
+        \"currencyName\": \"Bahraini Dinar\",
+        \"currencySymbol\": \"BHD\"
+      },
+      {
+        \"Id\": \"20\",
+        \"currencyName\": \"Burundi Franc\",
+        \"currencySymbol\": \"BIF\"
+      },
+      {
+        \"Id\": \"21\",
+        \"currencyName\": \"Bermudian Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"22\",
+        \"currencyName\": \"Brunei Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"23\",
+        \"currencyName\": \"Boliviano Mvdol\",
+        \"currencySymbol\": \"$b\"
+      },
+      {
+        \"Id\": \"24\",
+        \"currencyName\": \"Brazilian Real\",
+        \"currencySymbol\": \"R$\"
+      },
+      {
+        \"Id\": \"25\",
+        \"currencyName\": \"Bahamian Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"26\",
+        \"currencyName\": \"Pula\",
+        \"currencySymbol\": \"P\"
+      },
+      {
+        \"Id\": \"27\",
+        \"currencyName\": \"Belarussian Ruble\",
+        \"currencySymbol\": \"p.\"
+      },
+      {
+        \"Id\": \"28\",
+        \"currencyName\": \"Belize Dollar\",
+        \"currencySymbol\": \"BZ$\"
+      },
+      {
+        \"Id\": \"29\",
+        \"currencyName\": \"Congolese Franc\",
+        \"currencySymbol\": \"CDF\"
+      },
+      {
+        \"Id\": \"30\",
+        \"currencyName\": \"Swiss Franc\",
+        \"currencySymbol\": \"CHF\"
+      },
+      {
+        \"Id\": \"31\",
+        \"currencyName\": \"Chilean Peso Unidades de fomento\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"32\",
+        \"currencyName\": \"Yuan Renminbi\",
+        \"currencySymbol\": \"¥\"
+      },
+      {
+        \"Id\": \"33\",
+        \"currencyName\": \"Colombian Peso Unidad de Valor Real\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"34\",
+        \"currencyName\": \"Costa Rican Colon\",
+        \"currencySymbol\": \"¢\"
+      },
+      {
+        \"Id\": \"35\",
+        \"currencyName\": \"Cuban Peso Peso Convertible\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"36\",
+        \"currencyName\": \"Cape Verde Escudo\",
+        \"currencySymbol\": \"CVE\"
+      },
+      {
+        \"Id\": \"37\",
+        \"currencyName\": \"Czech Koruna\",
+        \"currencySymbol\": \"Kc\"
+      },
+      {
+        \"Id\": \"38\",
+        \"currencyName\": \"Djibouti Franc\",
+        \"currencySymbol\": \"DJF\"
+      },
+      {
+        \"Id\": \"39\",
+        \"currencyName\": \"Danish Krone\",
+        \"currencySymbol\": \"kr\"
+      },
+      {
+        \"Id\": \"40\",
+        \"currencyName\": \"Dominican Peso\",
+        \"currencySymbol\": \"RD$\"
+      },
+      {
+        \"Id\": \"41\",
+        \"currencyName\": \"Algerian Dinar\",
+        \"currencySymbol\": \"DZD\"
+      },
+      {
+        \"Id\": \"42\",
+        \"currencyName\": \"Kroon\",
+        \"currencySymbol\": \"EEK\"
+      },
+      {
+        \"Id\": \"43\",
+        \"currencyName\": \"Egyptian Pound\",
+        \"currencySymbol\": \"£\"
+      },
+      {
+        \"Id\": \"44\",
+        \"currencyName\": \"Nakfa\",
+        \"currencySymbol\": \"ERN\"
+      },
+      {
+        \"Id\": \"45\",
+        \"currencyName\": \"Ethiopian Birr\",
+        \"currencySymbol\": \"ETB\"
+      },
+      {
+        \"Id\": \"46\",
+        \"currencyName\": \"Fiji Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"47\",
+        \"currencyName\": \"Falkland Islands Pound\",
+        \"currencySymbol\": \"£\"
+      },
+      {
+        \"Id\": \"48\",
+        \"currencyName\": \"Lari\",
+        \"currencySymbol\": \"GEL\"
+      },
+      {
+        \"Id\": \"49\",
+        \"currencyName\": \"Cedi\",
+        \"currencySymbol\": \"GHS\"
+      },
+      {
+        \"Id\": \"50\",
+        \"currencyName\": \"Gibraltar Pound\",
+        \"currencySymbol\": \"£\"
+      },
+      {
+        \"Id\": \"51\",
+        \"currencyName\": \"Dalasi\",
+        \"currencySymbol\": \"GMD\"
+      },
+      {
+        \"Id\": \"52\",
+        \"currencyName\": \"Guinea Franc\",
+        \"currencySymbol\": \"GNF\"
+      },
+      {
+        \"Id\": \"53\",
+        \"currencyName\": \"Quetzal\",
+        \"currencySymbol\": \"Q\"
+      },
+      {
+        \"Id\": \"54\",
+        \"currencyName\": \"Guyana Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"55\",
+        \"currencyName\": \"Hong Kong Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"56\",
+        \"currencyName\": \"Lempira\",
+        \"currencySymbol\": \"L\"
+      },
+      {
+        \"Id\": \"57\",
+        \"currencyName\": \"Croatian Kuna\",
+        \"currencySymbol\": \"kn\"
+      },
+      {
+        \"Id\": \"58\",
+        \"currencyName\": \"Gourde US Dollar\",
+        \"currencySymbol\": \"HTG USD\"
+      },
+      {
+        \"Id\": \"59\",
+        \"currencyName\": \"Forint\",
+        \"currencySymbol\": \"Ft\"
+      },
+      {
+        \"Id\": \"60\",
+        \"currencyName\": \"Rupiah\",
+        \"currencySymbol\": \"Rp\"
+      },
+      {
+        \"Id\": \"61\",
+        \"currencyName\": \"New Israeli Sheqel\",
+        \"currencySymbol\": \"₪\"
+      },
+      {
+        \"Id\": \"62\",
+        \"currencyName\": \"Indian Rupee\",
+        \"currencySymbol\": \"INR\"
+      },
+      {
+        \"Id\": \"63\",
+        \"currencyName\": \"Indian Rupee Ngultrum\",
+        \"currencySymbol\": \"INR BTN\"
+      },
+      {
+        \"Id\": \"64\",
+        \"currencyName\": \"Iraqi Dinar\",
+        \"currencySymbol\": \"IQD\"
+      },
+      {
+        \"Id\": \"65\",
+        \"currencyName\": \"Iranian Rial\",
+        \"currencySymbol\": \"IRR\"
+      },
+      {
+        \"Id\": \"66\",
+        \"currencyName\": \"Iceland Krona\",
+        \"currencySymbol\": \"kr\"
+      },
+      {
+        \"Id\": \"67\",
+        \"currencyName\": \"Jamaican Dollar\",
+        \"currencySymbol\": \"J$\"
+      },
+      {
+        \"Id\": \"68\",
+        \"currencyName\": \"Jordanian Dinar\",
+        \"currencySymbol\": \"JOD\"
+      },
+      {
+        \"Id\": \"69\",
+        \"currencyName\": \"Kenyan Shilling\",
+        \"currencySymbol\": \"KES\"
+      },
+      {
+        \"Id\": \"70\",
+        \"currencyName\": \"Som\",
+        \"currencySymbol\": \"!!\"
+      },
+      {
+        \"Id\": \"71\",
+        \"currencyName\": \"Riel\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"72\",
+        \"currencyName\": \"Comoro Franc\",
+        \"currencySymbol\": \"KMF\"
+      },
+      {
+        \"Id\": \"73\",
+        \"currencyName\": \"North Korean Won\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"74\",
+        \"currencyName\": \"Won\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"75\",
+        \"currencyName\": \"Kuwaiti Dinar\",
+        \"currencySymbol\": \"KWD\"
+      },
+      {
+        \"Id\": \"76\",
+        \"currencyName\": \"Cayman Islands Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"77\",
+        \"currencyName\": \"Tenge\",
+        \"currencySymbol\": \"!!\"
+      },
+      {
+        \"Id\": \"78\",
+        \"currencyName\": \"Kip\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"79\",
+        \"currencyName\": \"Lebanese Pound\",
+        \"currencySymbol\": \"£\"
+      },
+      {
+        \"Id\": \"80\",
+        \"currencyName\": \"Sri Lanka Rupee\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"81\",
+        \"currencyName\": \"Liberian Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"82\",
+        \"currencyName\": \"Lithuanian Litas\",
+        \"currencySymbol\": \"Lt\"
+      },
+      {
+        \"Id\": \"83\",
+        \"currencyName\": \"Latvian Lats\",
+        \"currencySymbol\": \"Ls\"
+      },
+      {
+        \"Id\": \"84\",
+        \"currencyName\": \"Libyan Dinar\",
+        \"currencySymbol\": \"LYD\"
+      },
+      {
+        \"Id\": \"85\",
+        \"currencyName\": \"Moroccan Dirham\",
+        \"currencySymbol\": \"MAD\"
+      },
+      {
+        \"Id\": \"86\",
+        \"currencyName\": \"Moldovan Leu\",
+        \"currencySymbol\": \"MDL\"
+      },
+      {
+        \"Id\": \"87\",
+        \"currencyName\": \"Malagasy Ariary\",
+        \"currencySymbol\": \"MGA\"
+      },
+      {
+        \"Id\": \"88\",
+        \"currencyName\": \"Denar\",
+        \"currencySymbol\": \"!!!\"
+      },
+      {
+        \"Id\": \"89\",
+        \"currencyName\": \"Kyat\",
+        \"currencySymbol\": \"MMK\"
+      },
+      {
+        \"Id\": \"90\",
+        \"currencyName\": \"Tugrik\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"91\",
+        \"currencyName\": \"Pataca\",
+        \"currencySymbol\": \"MOP\"
+      },
+      {
+        \"Id\": \"92\",
+        \"currencyName\": \"Ouguiya\",
+        \"currencySymbol\": \"MRO\"
+      },
+      {
+        \"Id\": \"93\",
+        \"currencyName\": \"Mauritius Rupee\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"94\",
+        \"currencyName\": \"Rufiyaa\",
+        \"currencySymbol\": \"MVR\"
+      },
+      {
+        \"Id\": \"95\",
+        \"currencyName\": \"Kwacha\",
+        \"currencySymbol\": \"MWK\"
+      },
+      {
+        \"Id\": \"96\",
+        \"currencyName\": \"Mexican Peso \",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"97\",
+        \"currencyName\": \"Malaysian Ringgit\",
+        \"currencySymbol\": \"RM\"
+      },
+      {
+        \"Id\": \"98\",
+        \"currencyName\": \"Metical\",
+        \"currencySymbol\": \"MT\"
+      },
+      {
+        \"Id\": \"99\",
+        \"currencyName\": \"Naira\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"100\",
+        \"currencyName\": \"Cordoba Oro\",
+        \"currencySymbol\": \"C$\"
+      },
+      {
+        \"Id\": \"101\",
+        \"currencyName\": \"Norwegian Krone\",
+        \"currencySymbol\": \"kr\"
+      },
+      {
+        \"Id\": \"102\",
+        \"currencyName\": \"Nepalese Rupee\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"103\",
+        \"currencyName\": \"New Zealand Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"104\",
+        \"currencyName\": \"Rial Omani\",
+        \"currencySymbol\": \"OMR\"
+      },
+      {
+        \"Id\": \"105\",
+        \"currencyName\": \"Balboa US Dollar\",
+        \"currencySymbol\": \"B/.\"
+      },
+      {
+        \"Id\": \"106\",
+        \"currencyName\": \"Nuevo Sol\",
+        \"currencySymbol\": \"S/.\"
+      },
+      {
+        \"Id\": \"107\",
+        \"currencyName\": \"Kina\",
+        \"currencySymbol\": \"PGK\"
+      },
+      {
+        \"Id\": \"108\",
+        \"currencyName\": \"Philippine Peso\",
+        \"currencySymbol\": \"Php\"
+      },
+      {
+        \"Id\": \"109\",
+        \"currencyName\": \"Pakistan Rupee\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"110\",
+        \"currencyName\": \"Zloty\",
+        \"currencySymbol\": \"zl\"
+      },
+      {
+        \"Id\": \"111\",
+        \"currencyName\": \"Guarani\",
+        \"currencySymbol\": \"Gs\"
+      },
+      {
+        \"Id\": \"112\",
+        \"currencyName\": \"Qatari Rial\",
+        \"currencySymbol\": \"QAR\"
+      },
+      {
+        \"Id\": \"113\",
+        \"currencyName\": \"New Leu\",
+        \"currencySymbol\": \"lei\"
+      },
+      {
+        \"Id\": \"114\",
+        \"currencyName\": \"Serbian Dinar\",
+        \"currencySymbol\": \"!!!.\"
+      },
+      {
+        \"Id\": \"115\",
+        \"currencyName\": \"Russian Ruble\",
+        \"currencySymbol\": \"!!!\"
+      },
+      {
+        \"Id\": \"116\",
+        \"currencyName\": \"Rwanda Franc\",
+        \"currencySymbol\": \"RWF\"
+      },
+      {
+        \"Id\": \"117\",
+        \"currencyName\": \"Saudi Riyal\",
+        \"currencySymbol\": \"SAR\"
+      },
+      {
+        \"Id\": \"118\",
+        \"currencyName\": \"Solomon Islands Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"119\",
+        \"currencyName\": \"Seychelles Rupee\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"120\",
+        \"currencyName\": \"Sudanese Pound\",
+        \"currencySymbol\": \"SDG\"
+      },
+      {
+        \"Id\": \"121\",
+        \"currencyName\": \"Swedish Krona\",
+        \"currencySymbol\": \"kr\"
+      },
+      {
+        \"Id\": \"122\",
+        \"currencyName\": \"Singapore Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"123\",
+        \"currencyName\": \"Saint Helena Pound\",
+        \"currencySymbol\": \"£\"
+      },
+      {
+        \"Id\": \"124\",
+        \"currencyName\": \"Leone\",
+        \"currencySymbol\": \"SLL\"
+      },
+      {
+        \"Id\": \"125\",
+        \"currencyName\": \"Somali Shilling\",
+        \"currencySymbol\": \"S\"
+      },
+      {
+        \"Id\": \"126\",
+        \"currencyName\": \"Surinam Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"127\",
+        \"currencyName\": \"Dobra\",
+        \"currencySymbol\": \"STD\"
+      },
+      {
+        \"Id\": \"128\",
+        \"currencyName\": \"El Salvador Colon US Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"129\",
+        \"currencyName\": \"Syrian Pound\",
+        \"currencySymbol\": \"£\"
+      },
+      {
+        \"Id\": \"130\",
+        \"currencyName\": \"Lilangeni\",
+        \"currencySymbol\": \"SZL\"
+      },
+      {
+        \"Id\": \"131\",
+        \"currencyName\": \"Baht\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"132\",
+        \"currencyName\": \"Somoni\",
+        \"currencySymbol\": \"TJS\"
+      },
+      {
+        \"Id\": \"133\",
+        \"currencyName\": \"Manat\",
+        \"currencySymbol\": \"TMT\"
+      },
+      {
+        \"Id\": \"134\",
+        \"currencyName\": \"Tunisian Dinar\",
+        \"currencySymbol\": \"TND\"
+      },
+      {
+        \"Id\": \"135\",
+        \"currencyName\": \"Pa\'anga\",
+        \"currencySymbol\": \"TOP\"
+      },
+      {
+        \"Id\": \"136\",
+        \"currencyName\": \"Turkish Lira\",
+        \"currencySymbol\": \"TL\"
+      },
+      {
+        \"Id\": \"137\",
+        \"currencyName\": \"Trinidad and Tobago Dollar\",
+        \"currencySymbol\": \"TT$\"
+      },
+      {
+        \"Id\": \"138\",
+        \"currencyName\": \"New Taiwan Dollar\",
+        \"currencySymbol\": \"NT$\"
+      },
+      {
+        \"Id\": \"139\",
+        \"currencyName\": \"Tanzanian Shilling\",
+        \"currencySymbol\": \"TZS\"
+      },
+      {
+        \"Id\": \"140\",
+        \"currencyName\": \"Hryvnia\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"141\",
+        \"currencyName\": \"Uganda Shilling\",
+        \"currencySymbol\": \"UGX\"
+      },
+      {
+        \"Id\": \"142\",
+        \"currencyName\": \"Peso Uruguayo \",
+        \"currencySymbol\": \"$U\"
+      },
+      {
+        \"Id\": \"143\",
+        \"currencyName\": \"Uzbekistan Sum\",
+        \"currencySymbol\": \"!!\"
+      },
+      {
+        \"Id\": \"144\",
+        \"currencyName\": \"Bolivar Fuerte\",
+        \"currencySymbol\": \"Bs\"
+      },
+      {
+        \"Id\": \"145\",
+        \"currencyName\": \"Dong\",
+        \"currencySymbol\": \"!\"
+      },
+      {
+        \"Id\": \"146\",
+        \"currencyName\": \"East Caribbean Dollar\",
+        \"currencySymbol\": \"$\"
+      },
+      {
+        \"Id\": \"147\",
+        \"currencyName\": \"SDR\",
+        \"currencySymbol\": \"XDR\"
+      },
+      {
+        \"Id\": \"148\",
+        \"currencyName\": \"UIC-Franc\",
+        \"currencySymbol\": \"XFU\"
+      },
+      {
+        \"Id\": \"149\",
+        \"currencyName\": \"CFA Franc BCEAO\",
+        \"currencySymbol\": \"XOF\"
+      },
+      {
+        \"Id\": \"150\",
+        \"currencyName\": \"Palladium\",
+        \"currencySymbol\": \"XPD\"
+      },
+      {
+        \"Id\": \"151\",
+        \"currencyName\": \"CFP Franc\",
+        \"currencySymbol\": \"XPF\"
+      },
+      {
+        \"Id\": \"152\",
+        \"currencyName\": \"Platinum\",
+        \"currencySymbol\": \"XPT\"
+      },
+      {
+        \"Id\": \"153\",
+        \"currencyName\": \"Yemeni Rial\",
+        \"currencySymbol\": \"YER\"
+      },
+      {
+        \"Id\": \"154\",
+        \"currencyName\": \"Rand\",
+        \"currencySymbol\": \"R\"
+      },
+      {
+        \"Id\": \"155\",
+        \"currencyName\": \"Rand Loti\",
+        \"currencySymbol\": \"ZAR LSL\"
+      },
+      {
+        \"Id\": \"156\",
+        \"currencyName\": \"Rand Namibia Dollar\",
+        \"currencySymbol\": \"ZAR NAD\"
+      },
+      {
+        \"Id\": \"157\",
+        \"currencyName\": \"Zambian Kwacha\",
+        \"currencySymbol\": \"ZMK\"
+      },
+      {
+        \"Id\": \"158\",
+        \"currencyName\": \"Zimbabwe Dollar\",
+        \"currencySymbol\": \"ZWL\"
+      }
+    ]
+  }
+</string>
+
 
 </resources>

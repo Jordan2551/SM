@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,8 @@ import com.example.shiftmate.Database.Tables.Shifts.Shift;
 import com.example.shiftmate.Database.Tables.Shifts.Shifts;
 import com.example.shiftmate.NewShiftActivity;
 import com.example.shiftmate.R;
+import com.example.shiftmate.Settings;
+import com.example.shiftmate.SettingsFragment;
 import com.example.shiftmate.Shared.UniversalFunctions;
 import com.example.shiftmate.Shared.UniversalVariables;
 
@@ -74,8 +77,11 @@ public class ViewShiftsNEW extends AppCompatActivity {
     private ImageButton prevIntervalBtn;
     private ImageButton nxtIntervalBtn;
 
-    private TextView fromText;
-    private TextView toText;
+    private LinearLayout dateFromLL;
+    private LinearLayout dateToLL;
+
+    private TextView paycheckText;
+
     private TextView shiftFilterDateFromText;
     private TextView shiftFilterDateToText;
 
@@ -178,9 +184,10 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
         setTitle("View Shifts");
 
+        dateFromLL = (LinearLayout) findViewById(R.id.dateFromLL);
+        dateToLL = (LinearLayout) findViewById(R.id.dateToLL);
 
-        fromText = (TextView) findViewById(R.id.fromText);
-        toText = (TextView) findViewById(R.id.toText);
+        paycheckText = (TextView) findViewById(R.id.paycheckText);
 
         prevIntervalBtn = (ImageButton) findViewById(R.id.prevIntervalBtn);
         nxtIntervalBtn = (ImageButton) findViewById(R.id.nxtIntervalBtn);
@@ -345,7 +352,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
         tableView.setColumnComparator(1, new ViewShiftsComparators().getDateComparator());
         tableView.setColumnComparator(2, new ViewShiftsComparators().getShiftDurationComparator());
         tableView.setColumnComparator(3, new ViewShiftsComparators().getBreakComparator());
-        tableView.setColumnComparator(4, new ViewShiftsComparators().getPayComparator());
+        tableView.setColumnComparator(4, new ViewShiftsComparators().gettotalPayComparator());
         tableView.setColumnComparator(5, new ViewShiftsComparators().getTipsComparator());
         tableView.setColumnComparator(6, new ViewShiftsComparators().getSalesComparator());
 
@@ -430,6 +437,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
             //Show the user a dialog of options regarding the clicked shift
             new AlertDialog.Builder(ViewShiftsNEW.this)
                     .setTitle("Choose Option")
+                    .setIcon(R.drawable.ic_options)
                     .setItems(new String[]{"Update Shift", "Delete", "Cancel"}, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int position) {
@@ -444,7 +452,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
                                     intent.putExtra("Id", clickedShift.Id);
                                     intent.putExtra("punchInDT", clickedShift.punchInDT);
                                     intent.putExtra("punchOutDT", clickedShift.punchOutDT);
-                                    intent.putExtra("payPerHour", clickedShift.payPerHour);
+                                    intent.putExtra("totalPay", clickedShift.totalPay);
                                     intent.putExtra("breakTime", clickedShift.breakTime);
                                     intent.putExtra("notes", clickedShift.notes);
                                     intent.putExtra("tips", clickedShift.tips);
@@ -552,6 +560,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
         int[] totalShiftsHourDuration = UniversalFunctions.getAllShiftDurations(filteredShiftsList);
 
         totalHoursText.setText(totalShiftsHourDuration[0] + ":" + String.format("%02d", totalShiftsHourDuration[1]));
+        paycheckText.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol);
 
     }
 
@@ -563,10 +572,8 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
             case SPINNER_OPTION_ALL_SHIFTS:
 
-                fromText.setVisibility(View.GONE);
-                toText.setVisibility(View.GONE);
-                shiftFilterDateFromText.setVisibility(View.GONE);
-                shiftFilterDateToText.setVisibility(View.GONE);
+                dateFromLL.setVisibility(View.GONE);
+                dateToLL.setVisibility(View.GONE);
                 prevIntervalBtn.setVisibility(View.GONE);
                 nxtIntervalBtn.setVisibility(View.GONE);
 
@@ -574,10 +581,8 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
             case SPINNER_OPTION_SHIFTS_BY_DATE:
 
-                fromText.setVisibility(View.VISIBLE);
-                toText.setVisibility(View.VISIBLE);
-                shiftFilterDateFromText.setVisibility(View.VISIBLE);
-                shiftFilterDateToText.setVisibility(View.VISIBLE);
+                dateFromLL.setVisibility(View.VISIBLE);
+                dateToLL.setVisibility(View.VISIBLE);
                 prevIntervalBtn.setVisibility(View.GONE);
                 nxtIntervalBtn.setVisibility(View.GONE);
                 shiftFilterDateToText.setEnabled(true);
@@ -588,10 +593,8 @@ public class ViewShiftsNEW extends AppCompatActivity {
             case SPINNER_OPTION_SHIFTS_BY_MONTH:
             case SPINNER_OPTION_SHIFTS_BY_YEAR:
 
-                fromText.setVisibility(View.VISIBLE);
-                toText.setVisibility(View.VISIBLE);
-                shiftFilterDateFromText.setVisibility(View.VISIBLE);
-                shiftFilterDateToText.setVisibility(View.VISIBLE);
+                dateFromLL.setVisibility(View.VISIBLE);
+                dateToLL.setVisibility(View.VISIBLE);
                 prevIntervalBtn.setVisibility(View.VISIBLE);
                 nxtIntervalBtn.setVisibility(View.VISIBLE);
                 shiftFilterDateToText.setEnabled(false);

@@ -13,123 +13,133 @@ ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\sr
 	android:versionCode
 		INJECTED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml
-application
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:5:5-33:19
-MERGED from [com.android.support:appcompat-v7:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:animated-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:design:23.1.1] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:animated-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [de.codecrafters.tableview:tableview:2.0.1] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\de.codecrafters.tableview\tableview\2.0.1\AndroidManifest.xml:11:5-53
-MERGED from [com.android.support:appcompat-v7:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:animated-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-	android:label
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:8:9-41
-	android:supportsRtl
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:9:9-35
-	android:allowBackup
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:6:9-35
-	android:icon
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:7:9-43
-	android:theme
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:10:9-40
-activity#com.example.shiftmate.MainActivity
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:11:9-20:20
-	android:label
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:13:13-45
-	android:theme
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:14:13-56
-	android:name
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:12:13-41
-intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:15:13-19:29
-action#android.intent.action.MAIN
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:16:17-69
-	android:name
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:16:25-66
-category#android.intent.category.LAUNCHER
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:18:17-77
-	android:name
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:18:27-74
-activity#com.example.shiftmate.ViewShiftsActivity
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:21:9-24:59
-	android:label
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:23:13-63
-	android:theme
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:24:13-56
-	android:name
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:22:13-47
-activity#com.example.shiftmate.NewShiftActivity
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:25:9-29:59
-	android:screenOrientation
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:28:13-49
-	android:label
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:27:13-61
-	android:theme
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:29:13-56
-	android:name
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:26:13-45
-activity#com.example.shiftmate.ViewShifts.ViewShiftsNEW
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:30:9-62
-	android:name
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:30:19-59
-activity#com.example.shiftmate.MessingAround
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:31:9-51
-	android:name
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:31:19-48
-activity#com.example.shiftmate.ViewShifts.ShiftTableAdapter
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:32:9-75
-	android:name
-		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:32:19-63
 supports-screens
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:35:5-37:24
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:5:5-25
+application
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:7:5-37:19
+MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\design\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [de.codecrafters.tableview:tableview:2.0.1] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\de.codecrafters.tableview\tableview\2.0.1\AndroidManifest.xml:11:5-53
+MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+	android:label
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:10:9-41
+	android:supportsRtl
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:11:9-35
+	android:allowBackup
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:8:9-35
+	android:icon
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:9:9-43
+	android:theme
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:12:9-40
+activity#com.example.shiftmate.MainActivity
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:13:9-22:20
+	android:label
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:15:13-45
+	android:theme
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:16:13-56
+	android:name
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:14:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:17:13-21:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:18:17-69
+	android:name
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:18:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:20:17-77
+	android:name
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:20:27-74
+activity#com.example.shiftmate.ViewShiftsActivity
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:23:9-26:59
+	android:label
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:25:13-63
+	android:theme
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:26:13-56
+	android:name
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:24:13-47
+activity#com.example.shiftmate.NewShiftActivity
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:27:9-31:59
+	android:screenOrientation
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:30:13-49
+	android:label
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:29:13-61
+	android:theme
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:31:13-56
+	android:name
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:28:13-45
+activity#com.example.shiftmate.ViewShifts.ViewShiftsNEW
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:32:9-62
+	android:name
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:32:19-59
+activity#com.example.shiftmate.MessingAround
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:33:9-51
+	android:name
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:33:19-48
+activity#com.example.shiftmate.ViewShifts.ShiftTableAdapter
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:34:9-66
+	android:name
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:34:19-63
+activity#com.example.shiftmate.SettingsFragment
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:35:9-54
+	android:name
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:35:19-51
+activity#com.example.shiftmate.Settings
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:36:9-55
+	android:name
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:36:19-43
 uses-sdk
 INJECTED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:appcompat-v7:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:5:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:animated-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\AndroidManifest.xml:5:5-44
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:5:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:design:23.1.1] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:5:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:animated-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\AndroidManifest.xml:5:5-44
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:5:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:recyclerview-v7:23.1.1] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:design:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\design\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
 MERGED from [de.codecrafters.tableview:tableview:2.0.1] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\de.codecrafters.tableview\tableview\2.0.1\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:appcompat-v7:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:5:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:animated-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\AndroidManifest.xml:5:5-44
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:5:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
 	tools:overrideLibrary
-		ADDED from [com.android.support:appcompat-v7:23.3.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:23:9-75
+		ADDED from [com.android.support:appcompat-v7:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
 		INJECTED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml

@@ -8,8 +8,7 @@
         android:minSdkVersion="15"
         android:targetSdkVersion="23" />
 
-    <supports-screens>
-    </supports-screens>
+    <supports-screens />
 
     <application
         android:allowBackup="true"
@@ -39,6 +38,8 @@
         <activity android:name="com.example.shiftmate.ViewShifts.ViewShiftsNEW" />
         <activity android:name="com.example.shiftmate.MessingAround" />
         <activity android:name="com.example.shiftmate.ViewShifts.ShiftTableAdapter" />
+        <activity android:name="com.example.shiftmate.SettingsFragment" />
+        <activity android:name="com.example.shiftmate.Settings" />
     </application>
 
 </manifest>

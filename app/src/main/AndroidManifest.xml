@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.shiftmate">
 
+    <supports-screens />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -29,11 +31,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ViewShifts.ViewShiftsNEW" />
         <activity android:name=".MessingAround" />
-        <activity android:name=".ViewShifts.ShiftTableAdapter"></activity>
+        <activity android:name=".ViewShifts.ShiftTableAdapter" />
+        <activity android:name=".SettingsFragment" />
+        <activity android:name=".Settings"></activity>
     </application>
-
-    <supports-screens>
-
-    </supports-screens>
 
 </manifest>

@@ -10,18 +10,19 @@
 
 
     <LinearLayout
+        android:id="@+id/dateFromLL"
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.5"
+        android:layout_weight="0.09"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="From:"
@@ -30,12 +31,13 @@
             android:textSize="16dp"
             android:textStyle="bold"
             android:layout_below="@+id/shiftRangeSpinner"
-            android:layout_weight="1" />
+            android:layout_weight="0.6"
+            android:textColor="@color/BLUE_GREY" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="New Text"
+            android:text="Sun, 23 Jul 2016"
             android:id="@+id/shiftsFilterFromText"
             android:layout_weight="1"
             android:textSize="16dp"
@@ -43,10 +45,26 @@
             android:background="?attr/selectableItemBackground"
             android:textStyle="bold"
             android:layout_alignTop="@+id/fromText"
-            android:layout_toRightOf="@+id/fromText" />
+            android:layout_toRightOf="@+id/fromText"
+            android:textAlignment="textStart"
+            android:textColor="@color/BLUE_GREY" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dateToLL"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.09"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp" >
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="To:"
@@ -57,12 +75,13 @@
             android:layout_below="@+id/shiftRangeSpinner"
             android:layout_toRightOf="@+id/shiftsFilterFromText"
             android:layout_toEndOf="@+id/shiftsFilterFromText"
-            android:layout_weight="1" />
+            android:layout_weight="0.6"
+            android:textColor="@color/BLUE_GREY" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="New Text"
+            android:text="Sun, 24 Jul 2016"
             android:id="@+id/shiftsFilterToText"
             android:layout_weight="1"
             android:textSize="16dp"
@@ -70,7 +89,9 @@
             android:background="?attr/selectableItemBackground"
             android:textStyle="bold"
             android:layout_below="@+id/shiftRangeSpinner"
-            android:layout_toRightOf="@+id/toText" />
+            android:layout_toRightOf="@+id/toText"
+            android:textAlignment="textStart"
+            android:textColor="@color/BLUE_GREY" />
     </LinearLayout>
 
     <LinearLayout
@@ -78,30 +99,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:background="@color/LIGHT_PURPLE"
         android:layout_weight="0.2">
 
         <ImageButton
-            android:layout_width="70dp"
+            android:layout_width="55dp"
             android:layout_height="fill_parent"
             android:background="@drawable/ic_arrow_back"
             android:id="@+id/prevIntervalBtn" />
 
         <ImageButton
-            android:layout_width="70dp"
+            android:layout_width="55dp"
             android:layout_height="fill_parent"
             android:background="@drawable/ic_arrow_forward"
-            android:id="@+id/nxtIntervalBtn"
-            android:layout_marginLeft="3dp" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:background="@drawable/ic_print"
-            android:id="@+id/printBtn"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="5dp" />
+            android:id="@+id/nxtIntervalBtn" />
 
         <Spinner
             android:layout_width="fill_parent"
@@ -116,14 +128,21 @@
             android:layout_gravity="center"
             android:layout_weight="1" />
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@drawable/ic_print"
+            android:id="@+id/printBtn"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
     </LinearLayout>
 
     <HorizontalScrollView
     android:layout_width="fill_parent"
-    android:layout_height="0dp"
+    android:layout_height="fill_parent"
         android:layout_alignParentStart="false"
-        android:layout_marginTop="10dp"
-        android:layout_weight="7.5">
+        android:layout_weight="10">
 
     <de.codecrafters.tableview.SortableTableView
         android:id="@+id/tableView"
@@ -139,14 +158,15 @@
 
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="180dp"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:layout_gravity="center_horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+        android:layout_gravity="center"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-        android:layout_weight="1">
+        android:layout_weight="0.1"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -160,15 +180,14 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_weight="1"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textColor="#448AFF" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="100"
                 android:id="@+id/totalHoursText"
-                android:layout_weight="1"
                 android:textSize="20dp"
                 android:clickable="true"
                 android:background="?attr/selectableItemBackground"
@@ -176,9 +195,55 @@
                 android:layout_alignBottom="@+id/textView21"
                 android:layout_toRightOf="@+id/textView21"
                 android:layout_toEndOf="@+id/textView21"
-                android:gravity="center" />
+                android:gravity="left|center"
+                android:textColor="#448AFF"
+                android:layout_marginLeft="5dp" />
 
         </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_weight="0.09"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="5dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Paycheck:"
+            android:id="@+id/textView17"
+            android:textAlignment="inherit"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:textColor="#4CAF50" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$1000000"
+            android:id="@+id/paycheckText"
+            android:textSize="20dp"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
+            android:textStyle="bold"
+            android:layout_alignBottom="@+id/textView17"
+            android:layout_toRightOf="@+id/textView17"
+            android:layout_toEndOf="@+id/textView17"
+            android:gravity="left|center"
+            android:textColor="#4CAF50"
+            android:layout_marginLeft="5dp" />
+    </LinearLayout>
 
 </LinearLayout>
 

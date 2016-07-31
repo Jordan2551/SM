@@ -1,12 +1,12 @@
 package com.example.shiftmate.Database;
 
-import android.database.Cursor;
-import android.util.Log;
+import android.content.Context;
 
 import com.example.shiftmate.Database.Connector.DBConnector;
-import com.example.shiftmate.Database.Tables.Shifts.Shift;
+import com.example.shiftmate.Database.Tables.Currencies.Currencies;
+import com.example.shiftmate.Database.Tables.Currencies.Currency;
 import com.example.shiftmate.Database.Tables.Shifts.Shifts;
-import com.example.shiftmate.Database.Tables.TableItem;
+import com.example.shiftmate.MainActivity;
 
 import java.util.ArrayList;
 
@@ -18,9 +18,10 @@ public class DataSource {
 
     private static final String LOGTAG = "DataSource";
 
-    //region Table Pointers
+    //region Table & Data List Pointers
 
     public static Shifts shifts = new Shifts();
+    public  static Currencies currencies = new Currencies();
 
     //endregion
 

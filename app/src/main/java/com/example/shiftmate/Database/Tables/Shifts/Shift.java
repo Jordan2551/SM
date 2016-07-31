@@ -19,7 +19,7 @@ public class Shift {
     public String punchOutDT;
     public int totalMinutes;
     public int breakTime;
-    public int payPerHour;
+    public int totalPay;
     public int tips;
     public int sales;
     public String notes;

@@ -1,7 +1,10 @@
 package com.example.shiftmate;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +32,8 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static Context appContext;
+
     public static DBConnector dbConnector;
 
     static final int END_SHIFT_REQUEST_CODE = 1;  // Request code for startActivityForResult for NewShift callback
@@ -38,14 +43,20 @@ public class MainActivity extends AppCompatActivity {
     Button nsButton;
     Button qsButton;
     Button vsButton;
+    Button settingsButton;
     TextView latestShiftTV;
 
     //endregion
+
+    public static Context getContext(){
+        return appContext;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        appContext = this;
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -111,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                     shift.punchInDT = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateTimeString, DateTime.now(), null);
                     shift.punchOutDT = Shift.PUNCHOUT_NONE;
                     shift.breakTime = Shift.NO_BREAK;
-                    shift.payPerHour = 40;
+                    shift.totalPay = 0;
 
                     DataSource.shifts.CreateShift(DataSource.shifts.tableName, shift);
 
@@ -137,6 +148,23 @@ public class MainActivity extends AppCompatActivity {
 
                 //Intent intent = new Intent(MainActivity.this, ViewShiftsActivity.class);
                 Intent intent = new Intent(MainActivity.this, ViewShiftsNEW.class);
+                startActivity(intent);
+
+            }
+        });
+
+        //endregion
+
+        //region Settings Button
+
+        settingsButton = (Button) findViewById(R.id.settingsButton);
+
+        //Clicking on the settings button will open the settings activity
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, Settings.class);
                 startActivity(intent);
 
             }

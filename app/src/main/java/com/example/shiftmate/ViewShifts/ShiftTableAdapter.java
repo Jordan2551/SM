@@ -64,7 +64,7 @@ public class ShiftTableAdapter extends TableDataAdapter<Shift> {
                 textViewToAdd.setTextSize(0);
                 break;
             case 1:
-                textViewToAdd.setMaxLines(2);
+                textViewToAdd.setMaxLines(3);
                 textViewToAdd.setText(UniversalFunctions.getShiftDateRangeString(shift.punchInDT, shift.punchOutDT));
                 textViewToAdd.setTextSize(17);
                 break;
@@ -78,7 +78,7 @@ public class ShiftTableAdapter extends TableDataAdapter<Shift> {
                 textViewToAdd.setPadding(90, 0, 0, 0);
                 break;
             case 4:
-                textViewToAdd.setText(Integer.toString(shift.payPerHour));
+                textViewToAdd.setText(Integer.toString(shift.totalPay));
                 textViewToAdd.setPadding(90, 0, 0, 0);
                 break;
             case 5:

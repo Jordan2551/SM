@@ -53,6 +53,24 @@ public class UniversalFunctions {
 
     }
 
+    /**
+     * Adds all shift's total pay from the supplied Shift list
+     *
+     * @param shiftList the list of shifts to acquire the total pay from
+     * @return The total pay for all the shifts
+     */
+    public static double getAllShiftsTotalPay(ArrayList<Shift> shiftList){
+
+        double totalPay = 0;
+
+        for (Shift shift: shiftList) {
+            totalPay += shift.totalPay;
+        }
+
+        return totalPay;
+
+    }
+
     //DDOS WRITE ABOUT THESE ABOUT CALENDAR FOR STRING TO STRING
     public static String dateToString(String format, DateTime dateJoda, Date dateJava) {
 

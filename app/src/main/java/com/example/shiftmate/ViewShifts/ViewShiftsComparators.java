@@ -23,8 +23,8 @@ public class ViewShiftsComparators {
         return new breakComparator();
     }
 
-    public static Comparator getPayComparator() {
-        return new payComparator();
+    public static Comparator gettotalPayComparator() {
+        return new totalPayComparator();
     }
 
     public static Comparator getTipsComparator() {
@@ -61,10 +61,10 @@ public class ViewShiftsComparators {
         }
     }
 
-    private static class payComparator implements Comparator<Shift> {
+    private static class totalPayComparator implements Comparator<Shift> {
         @Override
         public int compare(Shift lhs, Shift rhs) {
-            if (lhs.payPerHour > rhs.payPerHour) return -1;
+            if (lhs.totalPay > rhs.totalPay) return -1;
             else
                 return 1;
         }

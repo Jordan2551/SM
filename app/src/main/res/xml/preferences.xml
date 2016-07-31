@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="currency_list"
+        android:dialogTitle="Select your currency"
+        android:entries="@array/pref_example_list_values"
+        android:entryValues="@array/pref_sync_frequency_titles"
+        android:title="Currency" />
+
+    <EditTextPreference
+        android:key="payPerHour"
+        android:dialogTitle="How much do you earn per hour?"
+        android:defaultValue="10"
+        android:inputType="numberDecimal"
+        android:title="Pay Per Hour" />
+
+
+</PreferenceScreen>

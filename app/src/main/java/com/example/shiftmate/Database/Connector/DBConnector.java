@@ -4,11 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
+import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Shifts.Shifts;
 import com.example.shiftmate.Database.Tables.TableItem;
-import com.example.shiftmate.ViewShifts.ViewShiftsComparators;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,7 @@ public class DBConnector extends SQLiteOpenHelper {
     //Consts
     private static final String LOGTAG = "DBConnector";
     public static final String DB_NAME = "shiftMateDB";
-    private static final int DB_VERSION = 21;
+    private static final int DB_VERSION = 28;
 
     //Vars
     private List<TableItem> dbDSTableList = new ArrayList<TableItem>();//Contains all the table data sources(which extend TableItem)
