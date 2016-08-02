@@ -21,7 +21,7 @@ public class DBConnector extends SQLiteOpenHelper {
     //Consts
     private static final String LOGTAG = "DBConnector";
     public static final String DB_NAME = "shiftMateDB";
-    private static final int DB_VERSION = 28;
+    private static final int DB_VERSION = 30;
 
     //Vars
     private List<TableItem> dbDSTableList = new ArrayList<TableItem>();//Contains all the table data sources(which extend TableItem)

@@ -23,6 +23,10 @@ public class Shift {
     public int tips;
     public int sales;
     public String notes;
+    public Double payPerHour;
+    public Double salesPercentage;
+    public Boolean wageEnabled;
+    public Boolean commisionEnabled;
 
     public static int getLastOpenShift() {
 

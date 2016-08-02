@@ -9,9 +9,13 @@ import android.preference.PreferenceManager;
 
 public class Settings extends Activity {
 
-    //Consts for each preference key
-    public static final String KEY_CURRENCY_LIST = "currency_list";
+    //Preference key consts
+    public static final String KEY_CURRENCY_LIST = "currencyList";
+    public static final String KEY_PAY_PER_HOUR_SWITCH = "payPerHourSwitch";
     public static final String KEY_PAY_PER_HOUR = "payPerHour";
+    public static final String KEY_TIPS_SWITCH = "tipsSwitch";
+    public static final String KEY_SALES_SWITCH = "salesSwitch";
+    public static final String KEY_SALES_PERCENTAGE = "salesPercentage";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

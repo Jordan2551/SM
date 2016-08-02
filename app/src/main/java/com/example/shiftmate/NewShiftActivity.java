@@ -15,6 +15,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -48,6 +49,8 @@ enum ActivityRequester {
     VIEW_SHIFTS_ACTIVITY
 
 }
+
+//DDOS COMPLETE THE BEHAVIOUR OF CALCULATING TOTAL PAY ACCORDING TO THE NEW SETTINGS AND SET THE NEW DB VALUES UP
 
 public class NewShiftActivity extends AppCompatActivity {
 
@@ -91,7 +94,19 @@ public class NewShiftActivity extends AppCompatActivity {
     //Holds the total paid hours and minutes according to the hourDifference and minuteDifference passed along with the break time (if applicable, in minutes)
     int[] totalPaidHrsAndMins;
 
-    float payPerHour = 0;
+    double payPerHour = 0;
+
+    TextView salesText;
+    double totalSales = 0;
+
+    TextView salesPercentageText;
+    double salesPercentage = 0;
+
+    TextView tipsText;
+    double tips = 0;
+
+    TextView totalPayText;
+    double totalPay = 0;
 
     TextView breakTimeText;
 
@@ -102,13 +117,19 @@ public class NewShiftActivity extends AppCompatActivity {
     TextView shiftEndTimeText;
 
     TextView payPerHourText;
-    TextView tipsText;
-    TextView salesText;
     TextView notesText;
 
     TextView totalHoursText;
-    TextView totalPaidHoursText;
-    TextView totalPayText;
+    TextView currencySymbol;
+
+    //region Linear Layouts
+
+    LinearLayout pphLL;
+    LinearLayout tipsLL;
+    LinearLayout salesLL;
+    LinearLayout notesLL;
+
+    //endreiogn
 
     Calendar myCalendar = Calendar.getInstance();
 
@@ -255,19 +276,16 @@ public class NewShiftActivity extends AppCompatActivity {
 
                 totalHoursText.setText(hourDifference + ":" + String.format("%02d", minuteDifference));
                 totalPaidHrsAndMins = UniversalFunctions.getHoursAndMinutes((hourDifference * 60 + minuteDifference) - breakTime);
-                totalPaidHoursText.setText(totalPaidHrsAndMins[0] + ":" + String.format("%02d", totalPaidHrsAndMins[1]));
 
                 //Update total pay
-                totalPayText.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol +
-                        String.valueOf((float) Math.round(((totalPaidHrsAndMins[0] + (Float.valueOf(totalPaidHrsAndMins[1]) / 60)) * payPerHour) * 100) / 100));
+                totalPayText.setText(String.valueOf((float) Math.round(((totalPaidHrsAndMins[0] + (Float.valueOf(totalPaidHrsAndMins[1]) / 60)) * payPerHour) * 100) / 100));
 
             }
 
             //Otherwise, the break time (in minutes) is larger than the total shift time (in minutes) then set the Total Hours and Paid Hours Text Views to 0
             else {
                 totalHoursText.setText("0");
-                totalPaidHoursText.setText("0");
-                totalPayText.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol + "0");
+                totalPayText.setText("0");
             }
 
         }
@@ -275,8 +293,7 @@ public class NewShiftActivity extends AppCompatActivity {
         //The shift being date is after the shift end date or the shift begin and end date are equal, which means we set the Total Hours and Paid Hours Text Views to 0
         else {
             totalHoursText.setText("0");
-            totalPaidHoursText.setText("0");
-            totalPayText.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol + "0");
+            totalPayText.setText("0");
         }
 
     }
@@ -494,7 +511,6 @@ public class NewShiftActivity extends AppCompatActivity {
         payPerHourText = (TextView) findViewById(R.id.payPerHourText);
         payPerHourText.setText(PreferenceManager.getDefaultSharedPreferences(this).getString(Settings.KEY_PAY_PER_HOUR, "0"));
 
-
         payPerHourText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -506,9 +522,7 @@ public class NewShiftActivity extends AppCompatActivity {
                 if (s.length() != 0) {
                     payPerHour = Float.valueOf(Float.valueOf(s.toString()));
                     updateHoursAndPayment();
-                }
-                else
-                {
+                } else {
                     payPerHour = 0;
                     updateHoursAndPayment();
                 }
@@ -521,11 +535,16 @@ public class NewShiftActivity extends AppCompatActivity {
             }
         });
 
+        salesPercentage = Double.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString(Settings.KEY_SALES_PERCENTAGE, "0"));
+
+        salesPercentageText = (TextView) findViewById(R.id.salesPercentageText);
+        salesPercentageText.setText(PreferenceManager.getDefaultSharedPreferences(this).getString(Settings.KEY_SALES_PERCENTAGE, "0"));
+
         tipsText = (TextView) findViewById(R.id.tipsText);
         tipsText.setText("");
 
         salesText = (TextView) findViewById(R.id.salesText);
-        salesText.setText("");
+        salesText.setText("0");
 
         notesText = (TextView) findViewById(R.id.notesText);
         notesText.setText("");
@@ -533,11 +552,33 @@ public class NewShiftActivity extends AppCompatActivity {
         totalHoursText = (TextView) findViewById(R.id.totalHoursText);
         totalHoursText.setText("0");
 
-        totalPaidHoursText = (TextView) findViewById(R.id.totalPaidHoursText);
-        totalPaidHoursText.setText("0");
+        currencySymbol = (TextView) findViewById(R.id.currencySymbol);
+        currencySymbol.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol);
 
         totalPayText = (TextView) findViewById(R.id.totalPayText);
-        totalPayText.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol + "0");
+        totalPayText.setText("0");
+
+        //region Linear Layouts
+
+        //Set the visibility and usability of components according to the settings
+
+        pphLL = (LinearLayout) findViewById(R.id.pphLL);
+
+        tipsLL = (LinearLayout) findViewById(R.id.tipsLL);
+
+        if(PreferenceManager.getDefaultSharedPreferences(this).getBoolean(Settings.KEY_TIPS_SWITCH, true) == false){
+            tipsLL.setVisibility(View.INVISIBLE);
+        }
+
+        salesLL = (LinearLayout) findViewById(R.id.salesLL);
+
+        if(PreferenceManager.getDefaultSharedPreferences(this).getBoolean(Settings.KEY_SALES_SWITCH, true) == false){
+            salesLL.setVisibility(View.INVISIBLE);
+        }
+
+        notesLL = (LinearLayout) findViewById(R.id.notesLL);
+
+        //endregion
 
         //Acquire data from MainActivity (for when a quick shift was requested to be ended)
         //If this activity was started from selecting the New Shift button then the data below will be null!

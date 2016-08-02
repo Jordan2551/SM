@@ -204,12 +204,12 @@
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_info_black_24dp.png",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\drawable-xxhdpi\\ic_info_black_24dp.png"
-    },
-    {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_info_outline_black_24dp.png",
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_info_outline_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_info_black_24dp.png",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\drawable-xxhdpi\\ic_info_black_24dp.png"
     },
     {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_ic_menu_moreoverflow_mtrl_alpha.png",

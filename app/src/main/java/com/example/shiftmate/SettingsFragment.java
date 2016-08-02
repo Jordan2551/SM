@@ -7,6 +7,8 @@ import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
+import android.preference.SwitchPreference;
 
 import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Currencies.Currency;
@@ -26,11 +28,19 @@ import java.util.ArrayList;
  */
 public class SettingsFragment extends PreferenceFragment {
 
-
-    public static final String KEY_CURRENCY_LIST_PREF = "currency_list";
+    //Preference key consts
+    public static final String KEY_CURRENCY_LIST = "currencyList";
+    public static final String KEY_PAY_PER_HOUR_SWITCH = "payPerHourSwitch";
     public static final String KEY_PAY_PER_HOUR = "payPerHour";
+    public static final String KEY_TIPS_SWITCH = "tipsSwitch";
+    public static final String KEY_SALES_SWITCH = "salesSwitch";
+    public static final String KEY_SALES_PERCENTAGE = "salesPercentage";
 
     public static ListPreference currencyPref;
+    public static SwitchPreference payPerHourEnabledPref;
+    public static EditTextPreference payPerHourPref;
+    public static SwitchPreference salesEnabledPref;
+    public static EditTextPreference salesPercentagePref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +48,8 @@ public class SettingsFragment extends PreferenceFragment {
         addPreferencesFromResource(R.xml.preferences);//Set the layout that this PreferenceFragment will contain
 
         //region Currency List Preference
-        currencyPref = (ListPreference) findPreference(KEY_CURRENCY_LIST_PREF);
+
+        currencyPref = (ListPreference) findPreference(KEY_CURRENCY_LIST);
 
         String[] entries = new String[DataSource.currencies.currencyList.size()];
 
@@ -52,6 +63,75 @@ public class SettingsFragment extends PreferenceFragment {
 
         //endregion
 
+        //region Pay Per Hour Preference
+
+        payPerHourEnabledPref = (SwitchPreference) findPreference(KEY_PAY_PER_HOUR_SWITCH);
+        payPerHourPref = (EditTextPreference) findPreference(KEY_PAY_PER_HOUR);
+
+        if(payPerHourEnabledPref.isChecked())
+            getPreferenceScreen().addPreference(payPerHourPref);
+        else
+            getPreferenceScreen().removePreference(payPerHourPref);
+
+        //endregion
+
+        //region Sales Preference
+
+        salesEnabledPref = (SwitchPreference) findPreference(KEY_SALES_SWITCH);
+        salesPercentagePref = (EditTextPreference) findPreference(KEY_SALES_PERCENTAGE);
+
+        if(salesEnabledPref.isChecked())
+            getPreferenceScreen().addPreference(salesPercentagePref);
+        else
+            getPreferenceScreen().removePreference(salesPercentagePref);
+
+        //endregion
+
+    }
+
+
+    /*
+    Caution: When you call registerOnSharedPreferenceChangeListener(), the preference manager does not currently store a strong reference to the listener.
+    You must store a strong reference to the listener, or it will be susceptible to garbage collection.
+    We recommend you keep a reference to the listener in the instance data of an object that will exist as long as you need the listener.
+    */
+    SharedPreferences.OnSharedPreferenceChangeListener listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+
+            switch(key){
+
+                case KEY_PAY_PER_HOUR_SWITCH:
+                    if (sharedPreferences.getBoolean(key, false))//Enables the user to set a percentage for sales when sales switch is switched to enabled
+                        getPreferenceScreen().addPreference(payPerHourPref);
+                    else
+                        getPreferenceScreen().removePreference(payPerHourPref);
+                    break;
+
+                case KEY_SALES_SWITCH:
+                    if (sharedPreferences.getBoolean(key, false))//Enables the user to set a percentage for sales when sales switch is switched to enabled
+                        getPreferenceScreen().addPreference(salesPercentagePref);
+                    else
+                        getPreferenceScreen().removePreference(salesPercentagePref);
+                    break;
+
+
+            }
+        }
+    };
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getPreferenceScreen().getSharedPreferences()
+                .registerOnSharedPreferenceChangeListener(listener);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getPreferenceScreen().getSharedPreferences()
+                .unregisterOnSharedPreferenceChangeListener(listener);
     }
 
 }

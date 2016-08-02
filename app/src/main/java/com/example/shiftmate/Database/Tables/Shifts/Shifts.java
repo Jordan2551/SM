@@ -19,11 +19,11 @@ import java.util.Date;
 
 /**
  * Created by jorda_000 on 2/3/2016.
- * A database table model for the Shifts table
+ * A database table l for the Shifts table
  */
 public class Shifts extends TableItem {
 
-    //Contains entries of this table's model class
+    //Contains entries of this table's l class
     public static ArrayList<Shift> shiftList = new ArrayList<Shift>();
 
     // region Table Column Name Structure
@@ -36,6 +36,10 @@ public class Shifts extends TableItem {
     private static final String COLUMN_TIPS = "tips";
     private static final String COLUMN_SALES = "sales";
     private static final String COLUMN_NOTES = "notes";
+    private static final String COLUMN_PAY_PER_HOUR = "payPerHour";
+    private static final String COLUMN_SALES_PERCENTAGE = "salesPercentage";
+    private static final String COLUMN_WAGE__ENABLED = "wageEnabled";
+    private static final String COLUMN_COMMISION__ENABLED = "commisionEnabled";
 
 
     //endregion
@@ -44,7 +48,7 @@ public class Shifts extends TableItem {
 
     public Shifts() {
 
-        super("Shifts", "SHIFTS", new String[]{COLUMN_ID, COLUMN_PUNCHINDT, COLUMN_PUNCHOUTDT, COLUMN_TOTALTMINUTES, COLUMN_BREAKTIME, COLUMN_TOTAL_PAY, COLUMN_TIPS, COLUMN_SALES, COLUMN_NOTES},
+        super("Shifts", "SHIFTS", new String[]{COLUMN_ID, COLUMN_PUNCHINDT, COLUMN_PUNCHOUTDT, COLUMN_TOTALTMINUTES, COLUMN_BREAKTIME, COLUMN_TOTAL_PAY, COLUMN_TIPS, COLUMN_SALES, COLUMN_NOTES, COLUMN_PAY_PER_HOUR, COLUMN_SALES_PERCENTAGE, COLUMN_WAGE__ENABLED, COLUMN_COMMISION__ENABLED},
                 "CREATE TABLE Shifts ("
                         + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + COLUMN_PUNCHINDT + " TEXT, "
@@ -54,8 +58,11 @@ public class Shifts extends TableItem {
                         + COLUMN_TIPS + " INTEGER, "
                         + COLUMN_SALES + " INTEGER, "
                         + COLUMN_NOTES + " TEXT, "
-                        + COLUMN_TOTAL_PAY + " DOUBLE);");
-
+                        + COLUMN_TOTAL_PAY + " DOUBLE, "
+                        + COLUMN_PAY_PER_HOUR + " DOUBLE, "
+                        + COLUMN_SALES_PERCENTAGE + " DOUBLE, "
+                        + COLUMN_WAGE__ENABLED + " BOOLEAN, "
+                        + COLUMN_COMMISION__ENABLED + " BOOLEAN);");
     }
 
     //endregion
@@ -73,6 +80,11 @@ public class Shifts extends TableItem {
         values.put(COLUMN_TIPS, shift.tips);
         values.put(COLUMN_SALES, shift.sales);
         values.put(COLUMN_NOTES, shift.notes);
+        values.put(COLUMN_TOTAL_PAY, shift.totalPay);
+        values.put(COLUMN_PAY_PER_HOUR, shift.payPerHour);
+        values.put(COLUMN_SALES_PERCENTAGE, shift.salesPercentage);
+        values.put(COLUMN_WAGE__ENABLED, shift.wageEnabled);
+        values.put(COLUMN_COMMISION__ENABLED, shift.commisionEnabled);
 
         DBConnector.database.insert(tableName, null, values);
 
@@ -93,6 +105,8 @@ public class Shifts extends TableItem {
         values.put(COLUMN_TIPS, shift.tips);
         values.put(COLUMN_SALES, shift.sales);
         values.put(COLUMN_NOTES, shift.notes);
+        values.put(COLUMN_PAY_PER_HOUR, shift.payPerHour);
+        values.put(COLUMN_SALES_PERCENTAGE, shift.salesPercentage);
 
         DBConnector.database.update(tableName, values, "Id = " + shift.Id, null);
 
@@ -131,6 +145,11 @@ public class Shifts extends TableItem {
                 shift.tips = cursor.getInt(cursor.getColumnIndex(COLUMN_TIPS));
                 shift.sales = cursor.getInt(cursor.getColumnIndex(COLUMN_SALES));
                 shift.notes = cursor.getString(cursor.getColumnIndex(COLUMN_NOTES));
+                shift.payPerHour = cursor.getDouble(cursor.getColumnIndex(COLUMN_PAY_PER_HOUR));
+                shift.salesPercentage = cursor.getDouble(cursor.getColumnIndex(COLUMN_SALES_PERCENTAGE));
+                shift.wageEnabled = cursor.getInt(cursor.getColumnIndex(COLUMN_WAGE__ENABLED)) > 0;
+                shift.commisionEnabled = cursor.getInt(cursor.getColumnIndex(COLUMN_COMMISION__ENABLED)) > 0;
+
 
                 tableItems.add(shift);
 

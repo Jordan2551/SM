@@ -32,6 +32,8 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    //DDOS ADD BEHAVIOUR TO THIS ACTIVITY WITH THE SETTINGS AND ADDING THE
+
     private static Context appContext;
 
     public static DBConnector dbConnector;
