@@ -147,10 +147,10 @@
     <de.codecrafters.tableview.SortableTableView
         android:id="@+id/tableView"
         android:layout_below="@id/toolbar"
-        android:layout_width="980dp"
+        android:layout_width="1000dp"
         android:layout_height="match_parent"
         android:textAlignment="center"
-        custom:tableView_columnCount="8"
+        custom:tableView_columnCount="9"
         custom:tableView_headerColor="@color/LIGHT_PURPLE"
         custom:tableView_headerElevation="10" />
 

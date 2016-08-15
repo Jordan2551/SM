@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                int lastOpenShiftId = Shift.getLastOpenShift();
+                int lastOpenShiftId = Shifts.getLastOpenShift();
 
                 //End the shift if there is at least one shift without a punch out date time (an open shift)
                 if (lastOpenShiftId != -1) {
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, NewShiftActivity.class);
                     intent.putExtra("endShiftRequest", true);
                     intent.putExtra("punchInDT", Shifts.shiftList.get(lastOpenShiftId).punchInDT);
-                    intent.putExtra("shiftEndId", Shifts.shiftList.get(lastOpenShiftId).Id);
+                    intent.putExtra("shiftEndIndex", lastOpenShiftId);
                     startActivityForResult(intent, END_SHIFT_REQUEST_CODE);
 
                 }
@@ -123,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
                     Shift shift = new Shift();
                     shift.punchInDT = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateTimeString, DateTime.now(), null);
                     shift.punchOutDT = Shift.PUNCHOUT_NONE;
-                    shift.breakTime = Shift.NO_BREAK;
-                    shift.totalPay = 0;
+                    shift.breakTime = 0;
+                    shift.totalPay = 0.0;
 
                     DataSource.shifts.CreateShift(DataSource.shifts.tableName, shift);
 
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
 
         //If there is at least 1 shift with a punchOutDT of PUNCHOUT_NONE (an open shift) then we display "End Shift" and some helpful GUI elements
         //Otherwise, there is no open shift so we just display "Quick Shift" to let the user open a new quick shift
-        if (Shift.getLastOpenShift() != -1) {
+        if (Shifts.getLastOpenShift() != -1) {
 
             latestShiftTV.setText("Latest Quick Shift Started: " + UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatDateTimeDisplayString, DataSource.shifts.shiftList.get(DataSource.shifts.shiftList.size() - 1).punchInDT));
             latestShiftTV.setVisibility(View.VISIBLE);

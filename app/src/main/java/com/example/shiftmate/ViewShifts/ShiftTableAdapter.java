@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Shifts.Shift;
 import com.example.shiftmate.R;
+import com.example.shiftmate.Settings;
 import com.example.shiftmate.Shared.UniversalFunctions;
 import com.example.shiftmate.Shared.UniversalVariables;
 
@@ -67,31 +68,35 @@ public class ShiftTableAdapter extends TableDataAdapter<Shift> {
                 textViewToAdd.setMaxLines(3);
                 textViewToAdd.setText(UniversalFunctions.getShiftDateRangeString(shift.punchInDT, shift.punchOutDT));
                 textViewToAdd.setTextSize(17);
+                textViewToAdd.setPadding(30, 0, 0, 0);
                 break;
             case 2:
                 totalHoursAndMinutes = UniversalFunctions.getHoursAndMinutes(shift.totalMinutes);
                 textViewToAdd.setText(totalHoursAndMinutes[0] + ":" + totalHoursAndMinutes[1]);
-                textViewToAdd.setPadding(90, 0, 0, 0);
+                textViewToAdd.setPadding(40, 0, 0, 0);
                 break;
             case 3:
                 textViewToAdd.setText(Integer.toString(shift.breakTime));
-                textViewToAdd.setPadding(90, 0, 0, 0);
+                textViewToAdd.setPadding(40, 0, 0, 0);
                 break;
             case 4:
-                textViewToAdd.setText(Integer.toString(shift.totalPay));
-                textViewToAdd.setPadding(90, 0, 0, 0);
+                textViewToAdd.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol + String.valueOf(shift.totalPay));
+                textViewToAdd.setPadding(40, 0, 0, 0);
                 break;
             case 5:
-                textViewToAdd.setText(Integer.toString(shift.tips));
-                textViewToAdd.setPadding(90, 0, 0, 0);
+                textViewToAdd.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol + String.valueOf((shift.totalMinutes / 60) * shift.payPerHour));
+                textViewToAdd.setPadding(40, 0, 0, 0);
                 break;
             case 6:
-                textViewToAdd.setText(Integer.toString(shift.sales));
-                textViewToAdd.setPadding(90, 0, 0, 0);
+                textViewToAdd.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol + String.valueOf(shift.sales));
+                textViewToAdd.setPadding(40, 0, 0, 0);
                 break;
             case 7:
-                textViewToAdd.setText(shift.notes);
+                textViewToAdd.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol + String.valueOf(shift.tips));
                 textViewToAdd.setPadding(40, 0, 0, 0);
+                break;
+            case 8:
+                textViewToAdd.setText(shift.notes);
                 break;
 
         }

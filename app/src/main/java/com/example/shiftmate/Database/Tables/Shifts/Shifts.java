@@ -55,8 +55,8 @@ public class Shifts extends TableItem {
                         + COLUMN_PUNCHOUTDT + " TEXT, "
                         + COLUMN_TOTALTMINUTES + " INTEGER, "
                         + COLUMN_BREAKTIME + " INTEGER, "
-                        + COLUMN_TIPS + " INTEGER, "
-                        + COLUMN_SALES + " INTEGER, "
+                        + COLUMN_TIPS + " DOUBLE, "
+                        + COLUMN_SALES + " DOUBLE, "
                         + COLUMN_NOTES + " TEXT, "
                         + COLUMN_TOTAL_PAY + " DOUBLE, "
                         + COLUMN_PAY_PER_HOUR + " DOUBLE, "
@@ -141,9 +141,9 @@ public class Shifts extends TableItem {
                 shift.punchOutDT = cursor.getString(cursor.getColumnIndex(COLUMN_PUNCHOUTDT));
                 shift.totalMinutes = cursor.getInt(cursor.getColumnIndex(COLUMN_TOTALTMINUTES));
                 shift.breakTime = cursor.getInt(cursor.getColumnIndex(COLUMN_BREAKTIME));
-                shift.totalPay = cursor.getInt(cursor.getColumnIndex(COLUMN_TOTAL_PAY));
-                shift.tips = cursor.getInt(cursor.getColumnIndex(COLUMN_TIPS));
-                shift.sales = cursor.getInt(cursor.getColumnIndex(COLUMN_SALES));
+                shift.totalPay = cursor.getDouble(cursor.getColumnIndex(COLUMN_TOTAL_PAY));
+                shift.tips = cursor.getDouble(cursor.getColumnIndex(COLUMN_TIPS));
+                shift.sales = cursor.getDouble(cursor.getColumnIndex(COLUMN_SALES));
                 shift.notes = cursor.getString(cursor.getColumnIndex(COLUMN_NOTES));
                 shift.payPerHour = cursor.getDouble(cursor.getColumnIndex(COLUMN_PAY_PER_HOUR));
                 shift.salesPercentage = cursor.getDouble(cursor.getColumnIndex(COLUMN_SALES_PERCENTAGE));
@@ -161,7 +161,19 @@ public class Shifts extends TableItem {
 
     }
 
-    //endregion
+    //Retrieves the last shift with a punch out date of none
+    public static int getLastOpenShift() {
+
+        int index = -1;
+
+        for (int i = 0; i < Shifts.shiftList.size(); i++) {
+            if (Shifts.shiftList.get(i).punchOutDT.equals(Shift.PUNCHOUT_NONE))
+                index = i;
+        }
+
+        return index;
+
+    }
 
 }
 

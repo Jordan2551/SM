@@ -27,6 +27,8 @@ public class ViewShiftsComparators {
         return new totalPayComparator();
     }
 
+    public static Comparator gettotalPayPerHourComparator(){return new totalPayPerHourComparator();}
+
     public static Comparator getTipsComparator() {
         return new tipsComparator();
     }
@@ -70,10 +72,10 @@ public class ViewShiftsComparators {
         }
     }
 
-    private static class tipsComparator implements Comparator<Shift> {
+    private static class totalPayPerHourComparator implements Comparator<Shift> {
         @Override
         public int compare(Shift lhs, Shift rhs) {
-            if (lhs.tips > rhs.tips) return -1;
+            if (((lhs.totalMinutes / 60) * lhs.payPerHour) >((rhs.totalMinutes / 60) * rhs.payPerHour)) return -1;
             else
                 return 1;
         }
@@ -83,6 +85,15 @@ public class ViewShiftsComparators {
         @Override
         public int compare(Shift lhs, Shift rhs) {
             if (lhs.sales > rhs.sales) return -1;
+            else
+                return 1;
+        }
+    }
+
+    private static class tipsComparator implements Comparator<Shift> {
+        @Override
+        public int compare(Shift lhs, Shift rhs) {
+            if (lhs.tips > rhs.tips) return -1;
             else
                 return 1;
         }

@@ -83,7 +83,7 @@ public class ShiftListAdapter extends ArrayAdapter<Shift> {
                     totalHoursTV.setText(String.valueOf(hourDifference + ":" + minuteDifference));
                     totalPaidHoursTV.setText(String.valueOf(totalPaidHrsAndMins[0] + ":" + totalPaidHrsAndMins[1]));
 
-                    if(requestedItem.breakTime == Shift.NO_BREAK)
+                    if(requestedItem.breakTime == 0)
                         breakTimeTV.setText("No break");
 
                     else

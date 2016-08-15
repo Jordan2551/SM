@@ -344,17 +344,19 @@ public class ViewShiftsNEW extends AppCompatActivity {
         tableView.setColumnWeight(4, 2);
         tableView.setColumnWeight(5, 2);
         tableView.setColumnWeight(6, 2);
-        tableView.setColumnWeight(7, 3);
+        tableView.setColumnWeight(7, 2);
+        tableView.setColumnWeight(8, 3);
 
         //Note: the Id colum is there for getting the specified shift's Id for functionality like deleting or updating the selected shift from the table
-        tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, new String[]{"Id", "Date", "Duration", "Break", "Pay", "Tips", "Sales", "Notes"}));
+        tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, new String[]{"Id", "Date", "Duration", "Break", "Total", "Wage", "Sales", "Tips", "Notes"}));
 
         tableView.setColumnComparator(1, new ViewShiftsComparators().getDateComparator());
         tableView.setColumnComparator(2, new ViewShiftsComparators().getShiftDurationComparator());
         tableView.setColumnComparator(3, new ViewShiftsComparators().getBreakComparator());
         tableView.setColumnComparator(4, new ViewShiftsComparators().gettotalPayComparator());
-        tableView.setColumnComparator(5, new ViewShiftsComparators().getTipsComparator());
+        tableView.setColumnComparator(5, new ViewShiftsComparators().gettotalPayPerHourComparator());
         tableView.setColumnComparator(6, new ViewShiftsComparators().getSalesComparator());
+        tableView.setColumnComparator(7, new ViewShiftsComparators().getTipsComparator());
 
         int colorEvenRows = ContextCompat.getColor(this, R.color.LIGHT_GREY);
         int colorOddRows = ContextCompat.getColor(this, R.color.SILVER);
@@ -449,7 +451,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
                                     Intent intent = new Intent(ViewShiftsNEW.this, NewShiftActivity.class);
 
                                     intent.putExtra("updateShiftRequest", true);
-                                    intent.putExtra("Id", clickedShift.Id);
+                                    intent.putExtra("shiftEndIndex", DataSource.shifts.shiftList.indexOf(clickedShift));
                                     intent.putExtra("punchInDT", clickedShift.punchInDT);
                                     intent.putExtra("punchOutDT", clickedShift.punchOutDT);
                                     intent.putExtra("totalPay", clickedShift.totalPay);
