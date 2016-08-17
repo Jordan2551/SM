@@ -1,41 +1,38 @@
 package com.example.shiftmate.ViewShifts;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.preference.PreferenceManager;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Shifts.Shift;
-import com.example.shiftmate.Database.Tables.Shifts.Shifts;
 import com.example.shiftmate.NewShiftActivity;
 import com.example.shiftmate.R;
 import com.example.shiftmate.Settings;
-import com.example.shiftmate.SettingsFragment;
+import com.example.shiftmate.Shared.Animator;
 import com.example.shiftmate.Shared.UniversalFunctions;
 import com.example.shiftmate.Shared.UniversalVariables;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.Interval;
-import org.w3c.dom.Text;
 
 
 import java.util.ArrayList;
@@ -73,19 +70,22 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
     private Calendar myCalendar = Calendar.getInstance();
 
-
     private ImageButton prevIntervalBtn;
     private ImageButton nxtIntervalBtn;
+    private ImageButton totalPayMoreInfoButton;
 
     private LinearLayout dateFromLL;
     private LinearLayout dateToLL;
+    private LinearLayout totalPayMoreInfoLL;
 
     private TextView paycheckText;
+    private TextView totalHoursText;
+    private TextView basePayText;
+    private TextView totalTipsText;
 
     private TextView shiftFilterDateFromText;
     private TextView shiftFilterDateToText;
 
-    private TextView totalHoursText;
     private SortableTableView tableView;
     private Spinner shiftRangeSpinner;
 
@@ -102,7 +102,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
             //Convert the returned date from the calendar object to DateTime. This is because java Date sucks balls
             DateTime selectedDate = UniversalFunctions.dateToDateTime(UniversalVariables.dateFormatDateString, UniversalVariables.dateFormatDate, myCalendar.getTime());
 
-            switch(shiftRangeSpinner.getSelectedItemPosition()){
+            switch (shiftRangeSpinner.getSelectedItemPosition()) {
 
                 case SPINNER_OPTION_SHIFTS_BY_WEEK:
 
@@ -186,11 +186,15 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
         dateFromLL = (LinearLayout) findViewById(R.id.dateFromLL);
         dateToLL = (LinearLayout) findViewById(R.id.dateToLL);
+        totalPayMoreInfoLL = (LinearLayout) findViewById(R.id.totalPayMoreInfoLL);
+
+        totalPayMoreInfoLL.setVisibility(View.GONE);
 
         paycheckText = (TextView) findViewById(R.id.paycheckText);
 
         prevIntervalBtn = (ImageButton) findViewById(R.id.prevIntervalBtn);
         nxtIntervalBtn = (ImageButton) findViewById(R.id.nxtIntervalBtn);
+        totalPayMoreInfoButton = (ImageButton) findViewById(R.id.totalPayMoreInfoButton);
 
         prevIntervalBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -299,6 +303,21 @@ public class ViewShiftsNEW extends AppCompatActivity {
             }
         });
 
+        totalPayMoreInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (totalPayMoreInfoLL.getVisibility() == View.GONE) {
+                    totalPayMoreInfoButton.setBackgroundResource(R.drawable.ic_expand_less);
+                    totalPayMoreInfoLL.setVisibility(View.VISIBLE);
+                    Animator.fade(totalPayMoreInfoLL, true);
+
+                } else {
+                    totalPayMoreInfoButton.setBackgroundResource(R.drawable.ic_expand_more);
+                    Animator.fade(totalPayMoreInfoLL, false);
+                    totalPayMoreInfoLL.setVisibility(View.GONE);
+                }
+            }
+        });
 
         shiftFilterDateFromText = (TextView) findViewById(R.id.shiftsFilterFromText);
         shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
@@ -332,6 +351,8 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
 
         totalHoursText = (TextView) findViewById(R.id.totalHoursText);
+        basePayText = (TextView) findViewById(R.id.basePayText);
+        totalTipsText = (TextView) findViewById(R.id.totalTipsText);
 
         tableView = (SortableTableView) findViewById(R.id.tableView);
 
@@ -381,7 +402,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                switch(position){
+                switch (position) {
 
                     case SPINNER_OPTION_SHIFTS_BY_WEEK:
 
@@ -444,7 +465,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int position) {
 
-                            switch(position){
+                            switch (position) {
                                 case 0:
 
                                     //Transition to the NewShiftActivity with the data for the selected Shift to update
@@ -470,18 +491,18 @@ public class ViewShiftsNEW extends AppCompatActivity {
                                     new AlertDialog.Builder(ViewShiftsNEW.this)
                                             .setTitle("Delete this shift?")
                                             .setPositiveButton("Cancel", null)
-                                    .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
+                                            .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
 
-                                            //The user clicked the delete button, so delete the Shift, and reset the table view's data to reflect the deleted shift
-                                            DataSource.DeleteRecord(DataSource.shifts.tableName, clickedShift.Id);
-                                            DataSource.shifts.GetRecords(DataSource.shifts.tableName);
-                                            setFilteredShifts(shiftRangeSpinner.getSelectedItemPosition());
-                                            tableView.setDataAdapter(new ShiftTableAdapter(getBaseContext(), filteredShiftsList));
+                                                    //The user clicked the delete button, so delete the Shift, and reset the table view's data to reflect the deleted shift
+                                                    DataSource.DeleteRecord(DataSource.shifts.tableName, clickedShift.Id);
+                                                    DataSource.shifts.GetRecords(DataSource.shifts.tableName);
+                                                    setFilteredShifts(shiftRangeSpinner.getSelectedItemPosition());
+                                                    tableView.setDataAdapter(new ShiftTableAdapter(getBaseContext(), filteredShiftsList));
 
-                                        }
-                                    }).show();
+                                                }
+                                            }).show();
 
                                     break;
                             }
@@ -561,16 +582,18 @@ public class ViewShiftsNEW extends AppCompatActivity {
         //In hours for all of the shifts to display for totalHoursTextView
         int[] totalShiftsHourDuration = UniversalFunctions.getAllShiftDurations(filteredShiftsList);
 
+        paycheckText.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol + UniversalFunctions.getAllShiftsTotalPay(filteredShiftsList, UniversalFunctions.GETALLSHIFTSTOTALPAY_TOTAL_PAY));
+        basePayText.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol + UniversalFunctions.getAllShiftsTotalPay(filteredShiftsList, UniversalFunctions.GETALLSHIFTSTOTALPAY_BASE_PAY));
+        totalTipsText.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol + UniversalFunctions.getAllShiftsTotalPay(filteredShiftsList, UniversalFunctions.GETALLSHIFTSTOTALPAY_TIPS_ONLY));
         totalHoursText.setText(totalShiftsHourDuration[0] + ":" + String.format("%02d", totalShiftsHourDuration[1]));
-        paycheckText.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol);
 
     }
 
     //Show/hides the necessary components according to the spinner option selected
-    private void updateGUI(int spinnerSelection){
+    private void updateGUI(int spinnerSelection) {
 
 
-        switch(spinnerSelection){
+        switch (spinnerSelection) {
 
             case SPINNER_OPTION_ALL_SHIFTS:
 

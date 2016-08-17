@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
@@ -36,6 +37,7 @@ public class SettingsFragment extends PreferenceFragment {
     public static final String KEY_SALES_SWITCH = "salesSwitch";
     public static final String KEY_SALES_PERCENTAGE = "salesPercentage";
 
+    public static PreferenceCategory paymentMethodsCategory;
     public static ListPreference currencyPref;
     public static SwitchPreference payPerHourEnabledPref;
     public static EditTextPreference payPerHourPref;
@@ -46,6 +48,8 @@ public class SettingsFragment extends PreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);//Set the layout that this PreferenceFragment will contain
+
+        paymentMethodsCategory = (PreferenceCategory) findPreference("paymentMethods");
 
         //region Currency List Preference
 
@@ -68,8 +72,10 @@ public class SettingsFragment extends PreferenceFragment {
         payPerHourEnabledPref = (SwitchPreference) findPreference(KEY_PAY_PER_HOUR_SWITCH);
         payPerHourPref = (EditTextPreference) findPreference(KEY_PAY_PER_HOUR);
 
-        if(payPerHourEnabledPref.isChecked())
-            getPreferenceScreen().addPreference(payPerHourPref);
+        if(payPerHourEnabledPref.isChecked()) {
+            paymentMethodsCategory.addPreference(payPerHourPref);
+            //getPreferenceScreen().addPreference(payPerHourPref);
+        }
         else
             getPreferenceScreen().removePreference(payPerHourPref);
 
@@ -80,8 +86,9 @@ public class SettingsFragment extends PreferenceFragment {
         salesEnabledPref = (SwitchPreference) findPreference(KEY_SALES_SWITCH);
         salesPercentagePref = (EditTextPreference) findPreference(KEY_SALES_PERCENTAGE);
 
-        if(salesEnabledPref.isChecked())
-            getPreferenceScreen().addPreference(salesPercentagePref);
+        if(salesEnabledPref.isChecked()) {
+            paymentMethodsCategory.addPreference(salesPercentagePref);
+        }
         else
             getPreferenceScreen().removePreference(salesPercentagePref);
 

@@ -13,6 +13,8 @@ import android.text.Html;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -32,8 +34,6 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    //DDOS ADD BEHAVIOUR TO THIS ACTIVITY WITH THE SETTINGS AND ADDING THE
-
     private static Context appContext;
 
     public static DBConnector dbConnector;
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     //endregion
 
-    public static Context getContext(){
+    public static Context getContext() {
         return appContext;
     }
 

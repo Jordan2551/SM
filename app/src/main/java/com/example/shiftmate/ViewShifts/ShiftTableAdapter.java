@@ -25,7 +25,7 @@ import de.codecrafters.tableview.TableDataAdapter;
 
 public class ShiftTableAdapter extends TableDataAdapter<Shift> {
 
-    private final byte TEXT_SIZE = 18;
+    private final byte TEXT_SIZE = 16;
 
     private int[] totalHoursAndMinutes = new int[]{0,0};//Holds the values from the getHoursAndMinutes function
 
@@ -67,7 +67,6 @@ public class ShiftTableAdapter extends TableDataAdapter<Shift> {
             case 1:
                 textViewToAdd.setMaxLines(3);
                 textViewToAdd.setText(UniversalFunctions.getShiftDateRangeString(shift.punchInDT, shift.punchOutDT));
-                textViewToAdd.setTextSize(17);
                 textViewToAdd.setPadding(30, 0, 0, 0);
                 break;
             case 2:

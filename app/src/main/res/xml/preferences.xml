@@ -1,49 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ListPreference
-        android:key="currencyList"
-        android:dialogTitle="Select your currency"
-        android:entries="@array/pref_example_list_values"
-        android:entryValues="@array/pref_sync_frequency_titles"
-        android:title="Currency" />
+    <PreferenceCategory
+        android:key="generalSettings"
+        android:title="General">
+        <ListPreference
+            android:dialogTitle="Select your currency"
+            android:entries="@array/pref_example_list_values"
+            android:entryValues="@array/pref_sync_frequency_titles"
+            android:key="currencyList"
+            android:title="Currency" />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="tipsSwitch"
+            android:switchTextOff="Disabled"
+            android:switchTextOn="Enabled"
+            android:title="Enable Tips" />
+    </PreferenceCategory>
 
-    <SwitchPreference
-        android:key="payPerHourSwitch"
-        android:title="Enable Wages"
-        android:disableDependentsState="false"
-        android:switchTextOn="Enabled"
-        android:switchTextOff="Disabled"
-        />
+    <PreferenceCategory
+        android:key="paymentMethods"
+        android:title="Payment Methods">
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="payPerHourSwitch"
+            android:switchTextOff="Disabled"
+            android:switchTextOn="Enabled"
+            android:title="Enable Wages" />
 
-    <EditTextPreference
-        android:key="payPerHour"
-        android:dialogTitle="How much do you earn per hour?"
-        android:defaultValue="10"
-        android:inputType="numberDecimal"
-        android:title="Pay Per Hour" />
+        <EditTextPreference
+            android:defaultValue="10"
+            android:dialogTitle="How much do you earn per hour?"
+            android:inputType="numberDecimal"
+            android:key="payPerHour"
+            android:title="Pay Per Hour" />
 
-    <SwitchPreference
-        android:key="tipsSwitch"
-        android:title="Enable Tips"
-        android:disableDependentsState="false"
-        android:switchTextOn="Enabled"
-        android:switchTextOff="Disabled"
-        />
+        <SwitchPreference
+            android:disableDependentsState="false"
+            android:key="salesSwitch"
+            android:switchTextOff="Disabled"
+            android:switchTextOn="Enabled"
+            android:title="Enable Commision" />
 
-    <SwitchPreference
-        android:key="salesSwitch"
-        android:title="Enable Commision"
-        android:disableDependentsState="false"
-        android:switchTextOn="Enabled"
-        android:switchTextOff="Disabled"
-        />
+        <EditTextPreference
+            android:defaultValue="10"
+            android:dialogTitle="What is your sales percentage?"
+            android:inputType="numberDecimal"
+            android:key="salesPercentage"
+            android:title="Percentage" />
+    </PreferenceCategory>
 
-    <EditTextPreference
-        android:key="salesPercentage"
-        android:dialogTitle="What is your sales percentage?"
-        android:defaultValue="10"
-        android:inputType="numberDecimal"
-        android:title="Percentage" />
 
 </PreferenceScreen>

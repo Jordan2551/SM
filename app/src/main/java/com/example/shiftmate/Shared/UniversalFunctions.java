@@ -13,14 +13,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 
 /**
  * Created by jorda_000 on 6/3/2016.
- * <p>
+ * <p/>
  * A class which holds functions used by several other classes
  */
-public class UniversalFunctions {
 
+public class UniversalFunctions {
 
     //Gets the total hours and minutes given an integer (representing minutes)
     //ARGUMENTS:
@@ -42,11 +43,11 @@ public class UniversalFunctions {
     public static int[] getAllShiftDurations(ArrayList<Shift> shiftList) {
 
         int totalShiftMinutes = 0;
-        int[] totalHoursAndMinutes = new int[]{0,0};//Holds the values from the getHoursAndMinutes function
+        int[] totalHoursAndMinutes = new int[]{0, 0};//Holds the values from the getHoursAndMinutes function
 
-        for (Shift shift: shiftList) {
-                totalHoursAndMinutes = getHoursAndMinutes(shift.totalMinutes);
-                totalShiftMinutes += totalHoursAndMinutes[0] * 60 + totalHoursAndMinutes[1];
+        for (Shift shift : shiftList) {
+            totalHoursAndMinutes = getHoursAndMinutes(shift.totalMinutes);
+            totalShiftMinutes += totalHoursAndMinutes[0] * 60 + totalHoursAndMinutes[1];
         }
 
         return getHoursAndMinutes(totalShiftMinutes);
@@ -56,15 +57,29 @@ public class UniversalFunctions {
     /**
      * Adds all shift's total pay from the supplied Shift list
      *
-     * @param shiftList the list of shifts to acquire the total pay from
+     * @param shiftList The list of shifts to acquire the total pay from
+     * @param payOption Specifies what data should be used to calculate the total pay
      * @return The total pay for all the shifts
      */
-    public static double getAllShiftsTotalPay(ArrayList<Shift> shiftList){
+    public static final int GETALLSHIFTSTOTALPAY_BASE_PAY = 0;
+    public static final int GETALLSHIFTSTOTALPAY_TIPS_ONLY = 1;
+    public static final int GETALLSHIFTSTOTALPAY_TOTAL_PAY = 2;
+
+    public static double getAllShiftsTotalPay(ArrayList<Shift> shiftList, int payOption) {
 
         double totalPay = 0;
 
-        for (Shift shift: shiftList) {
-            totalPay += shift.totalPay;
+        if (payOption == GETALLSHIFTSTOTALPAY_BASE_PAY) {
+            for (Shift shift : shiftList)
+                totalPay += shift.totalPay - shift.tips;
+
+        } else if (payOption == GETALLSHIFTSTOTALPAY_TIPS_ONLY) {
+            for (Shift shift : shiftList)
+                totalPay += shift.tips;
+
+        } else if (payOption == GETALLSHIFTSTOTALPAY_TOTAL_PAY) {
+            for (Shift shift : shiftList)
+                totalPay += shift.totalPay;
         }
 
         return totalPay;
@@ -90,7 +105,7 @@ public class UniversalFunctions {
     }
 
     //Converts a java date object to the corresponding JodaTime DateTime object
-    public static DateTime dateToDateTime(String formatter, DateTimeFormatter formatterDTF,  Date javaDate){
+    public static DateTime dateToDateTime(String formatter, DateTimeFormatter formatterDTF, Date javaDate) {
         return DateTime.parse(dateToString(formatter, null, javaDate), formatterDTF);
     }
 
@@ -116,7 +131,7 @@ public class UniversalFunctions {
         if (shiftBeginDate.dayOfMonth().get() == shiftEndDate.dayOfMonth().get())
             return changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatDateDisplayString, shiftBeginDateString) + System.getProperty("line.separator") +
                     changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatTimeString, shiftBeginDateString) + " - " +
-                    changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatTimeString,shiftEndDateString);
+                    changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatTimeString, shiftEndDateString);
 
         else
             return changeDateStringFormat(UniversalVariables.dateFormatDateTime, UniversalVariables.dateFormatDateTimeDisplayString, shiftBeginDateString) + System.getProperty("line.separator") +
@@ -129,12 +144,12 @@ public class UniversalFunctions {
     /**
      * Checks if a date is within a specific date range (the specified date target is inclusive to the date range!)
      *
-     * @param startDate The start date for the date range
-     * @param endDate The end date for the date range
+     * @param startDate  The start date for the date range
+     * @param endDate    The end date for the date range
      * @param targetDate The target date to be checked in the date range
      * @return An indication if the target date is equal to or within the end points of the date range
      */
-    public static boolean isDateInRangeInclusive(DateTime startDate, DateTime endDate, DateTime targetDate){
+    public static boolean isDateInRangeInclusive(DateTime startDate, DateTime endDate, DateTime targetDate) {
 
         //Check if the target is not before the start date which means: the target date is equal or larger than the start date
         // AND check if the start date is not after the end date which means: the target date is equal or smaller than the end date
