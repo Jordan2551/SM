@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shiftmate.DataChart;
 import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Shifts.Shift;
 import com.example.shiftmate.NewShiftActivity;
@@ -48,11 +49,11 @@ import de.codecrafters.tableview.toolkit.TableDataRowColorizers;
 public class ViewShiftsNEW extends AppCompatActivity {
 
     //Shift Range Spinner option consts
-    private static final byte SPINNER_OPTION_ALL_SHIFTS = 0;
-    private static final byte SPINNER_OPTION_SHIFTS_BY_DATE = 1;
-    private static final byte SPINNER_OPTION_SHIFTS_BY_WEEK = 2;
-    private static final byte SPINNER_OPTION_SHIFTS_BY_MONTH = 3;
-    private static final byte SPINNER_OPTION_SHIFTS_BY_YEAR = 4;
+    private final byte SPINNER_OPTION_ALL_SHIFTS = 0;
+    private final byte SPINNER_OPTION_SHIFTS_BY_DATE = 1;
+    private final byte SPINNER_OPTION_SHIFTS_BY_WEEK = 2;
+    private final byte SPINNER_OPTION_SHIFTS_BY_MONTH = 3;
+    private final byte SPINNER_OPTION_SHIFTS_BY_YEAR = 4;
 
     private static final byte COLUMN_COUNT = 7;
 
@@ -73,6 +74,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
     private ImageButton prevIntervalBtn;
     private ImageButton nxtIntervalBtn;
     private ImageButton totalPayMoreInfoButton;
+    private ImageButton chartButton;
 
     private LinearLayout dateFromLL;
     private LinearLayout dateToLL;
@@ -195,6 +197,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
         prevIntervalBtn = (ImageButton) findViewById(R.id.prevIntervalBtn);
         nxtIntervalBtn = (ImageButton) findViewById(R.id.nxtIntervalBtn);
         totalPayMoreInfoButton = (ImageButton) findViewById(R.id.totalPayMoreInfoButton);
+        chartButton = (ImageButton) findViewById(R.id.chartButton);
 
         prevIntervalBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -316,6 +319,14 @@ public class ViewShiftsNEW extends AppCompatActivity {
                     Animator.fade(totalPayMoreInfoLL, false);
                     totalPayMoreInfoLL.setVisibility(View.GONE);
                 }
+            }
+        });
+
+        chartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewShiftsNEW.this, DataChart.class);
+                startActivity(intent);
             }
         });
 

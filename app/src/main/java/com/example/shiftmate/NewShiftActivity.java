@@ -269,65 +269,43 @@ public class NewShiftActivity extends AppCompatActivity {
     //Updates the total hours, paid hours and total payment for the shift based on the date range and pay per hour
     private void updateHoursAndPayment() {
 
-        //If the two selected dates and times actually have a difference between them (the shift begin is before shift end)
-        if (hourDifference * 60 + minuteDifference > 0) {
+        totalHoursText.setText(hourDifference + ":" + String.format("%02d", minuteDifference));
+        totalPaidHrsAndMins = UniversalFunctions.getHoursAndMinutes((hourDifference * 60 + minuteDifference) - breakTime);
 
-            //If the total shift time in minutes is larger than the break time then set the Total Hours and Paid Hours Text Views accordingly
-            if (hourDifference * 60 + minuteDifference > breakTime) {
+        //Reset the total pay
+        totalPay = 0;
 
-                totalHoursText.setText(hourDifference + ":" + String.format("%02d", minuteDifference));
-                totalPaidHrsAndMins = UniversalFunctions.getHoursAndMinutes((hourDifference * 60 + minuteDifference) - breakTime);
+        //The total pay gets calculated according to the initiating activity
+        if (activityRequester == ActivityRequester.MAIN_ACTIVITY || activityRequester == ActivityRequester.END_SHIFT) {
 
-                //Reset the total pay
-                totalPay = 0;
+            //If it was either the main activity or end shift function that initiated this activity, then we want to calculate the total pay
+            //according to the settings the user has chosen.
+            //For example: the user enabled commision based pay only so we check if that settings was enabled and calculate accordingly
 
-                //The total pay gets calculated according to the initiating activity
-                if (activityRequester == ActivityRequester.MAIN_ACTIVITY || activityRequester == ActivityRequester.END_SHIFT) {
+            if (PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean(Settings.KEY_PAY_PER_HOUR_SWITCH, true))
+                totalPay += Math.round(((totalPaidHrsAndMins[0] + ((Double.valueOf(totalPaidHrsAndMins[1])) / 60)) * payPerHour) * 100) / 100;
 
-                    //If it was either the main activity or end shift function that initiated this activity, then we want to calculate the total pay
-                    //according to the settings the user has chosen.
-                    //For example: the user enabled commision based pay only so we check if that settings was enabled and calculate accordingly
-
-                    if (PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean(Settings.KEY_PAY_PER_HOUR_SWITCH, true))
-                        totalPay += Math.round(((totalPaidHrsAndMins[0] + ((Double.valueOf(totalPaidHrsAndMins[1])) / 60)) * payPerHour) * 100) / 100;
-
-                    if (PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean(Settings.KEY_SALES_SWITCH, true))
-                        totalPay += (Math.round(totalSales * (salesPercentage / 100)) * 100) / 100;
+            if (PreferenceManager.getDefaultSharedPreferences(getBaseContext()).getBoolean(Settings.KEY_SALES_SWITCH, true))
+                totalPay += (Math.round(totalSales * (salesPercentage / 100)) * 100) / 100;
 
 
-                } else if (activityRequester == ActivityRequester.VIEW_SHIFTS_ACTIVITY) {
+        } else if (activityRequester == ActivityRequester.VIEW_SHIFTS_ACTIVITY) {
 
-                    //If it was ViewShiftActivity that initiated this activity, then we want to calculate the total pay
-                    //according to the data set to the chosen shift to be updated.
-                    //For example: the user enabled wage based pay only so we check the requested shift's wageEnabled boolean value and calculate accordingly
+            //If it was ViewShiftActivity that initiated this activity, then we want to calculate the total pay
+            //according to the data set to the chosen shift to be updated.
+            //For example: the user enabled wage based pay only so we check the requested shift's wageEnabled boolean value and calculate accordingly
 
-                    if (shiftToEnd.wageEnabled)
-                        totalPay += Math.round(((totalPaidHrsAndMins[0] + ((Double.valueOf(totalPaidHrsAndMins[1])) / 60)) * payPerHour) * 100) / 100;
+            if (shiftToEnd.wageEnabled)
+                totalPay += Math.round(((totalPaidHrsAndMins[0] + ((Double.valueOf(totalPaidHrsAndMins[1])) / 60)) * payPerHour) * 100) / 100;
 
-                    if (shiftToEnd.commisionEnabled)
-                        totalPay += (Math.round(totalSales * (salesPercentage / 100)) * 100) / 100;
-
-                }
-
-                //Add the tips
-                totalPay += tips;
-                totalPayText.setText(String.valueOf(totalPay));
-
-            }
-
-            //Otherwise, the break time (in minutes) is larger than the total shift time (in minutes) then set the Total Hours and Paid Hours Text Views to 0
-            else {
-                totalHoursText.setText("0");
-                totalPayText.setText("0");
-            }
+            if (shiftToEnd.commisionEnabled)
+                totalPay += (Math.round(totalSales * (salesPercentage / 100)) * 100) / 100;
 
         }
 
-        //The shift being date is after the shift end date or the shift begin and end date are equal, which means we set the Total Hours and Paid Hours Text Views to 0
-        else {
-            totalHoursText.setText("0");
-            totalPayText.setText("0");
-        }
+        //Add the tips
+        totalPay += tips;
+        totalPayText.setText(String.valueOf(totalPay));
 
     }
 
@@ -401,7 +379,6 @@ public class NewShiftActivity extends AppCompatActivity {
 
                     shift.payPerHour = payPerHour;
 
-
                     //If the total time of the shift (in minutes) is bigger or equal to the break time then allow the user to save the shift
                     if (hourDifference * 60 + minuteDifference >= breakTime)
                         shift.breakTime = breakTime;
@@ -451,6 +428,7 @@ public class NewShiftActivity extends AppCompatActivity {
         });
 
         breakTimeText = (TextView) findViewById(R.id.breakTimeText);
+        breakTimeText.setSelectAllOnFocus(true);
 
         breakTimeText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -570,12 +548,15 @@ public class NewShiftActivity extends AppCompatActivity {
         salesPercentage = Double.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString(Settings.KEY_SALES_PERCENTAGE, "0"));
 
         salesPercentageText = (TextView) findViewById(R.id.salesPercentageText);
+        salesPercentageText.setSelectAllOnFocus(true);
         salesPercentageText.setText(PreferenceManager.getDefaultSharedPreferences(this).getString(Settings.KEY_SALES_PERCENTAGE, "0"));
 
         tipsText = (TextView) findViewById(R.id.tipsText);
+        tipsText.setSelectAllOnFocus(true);
         tipsText.setText("");
 
         salesText = (TextView) findViewById(R.id.salesText);
+        salesText.setSelectAllOnFocus(true);
         salesText.setText("0");
 
         notesText = (TextView) findViewById(R.id.notesText);
@@ -588,6 +569,7 @@ public class NewShiftActivity extends AppCompatActivity {
         currencySymbol.setText(DataSource.currencies.currencyList.get(Settings.getCurrencyListSelectedIndex()).currencySymbol);
 
         totalPayText = (TextView) findViewById(R.id.totalPayText);
+        totalPayText.setSelectAllOnFocus(true);
         totalPayText.setText("0");
 
         //region Linear Layouts
@@ -605,6 +587,7 @@ public class NewShiftActivity extends AppCompatActivity {
         salesPercentageText.addTextChangedListener(totalPayCalculationTextWatcher);
         salesText.addTextChangedListener(totalPayCalculationTextWatcher);
         tipsText.addTextChangedListener(totalPayCalculationTextWatcher);
+        totalPayText.addTextChangedListener(totalPayCalculationTextWatcher);
 
         //endregion
 
@@ -674,12 +657,11 @@ public class NewShiftActivity extends AppCompatActivity {
             notesText.setText(shiftToEnd.notes);
             tipsText.setText(String.valueOf(shiftToEnd.tips != 0 ? shiftToEnd.tips : ""));
             salesText.setText(String.valueOf(shiftToEnd.sales != 0 ? shiftToEnd.sales : ""));
+            totalPay = shiftToEnd.totalPay;
+            totalPayText.setText(String.valueOf(totalPay));
 
             //Update the period according to the data updated above
             updatePeriod();
-
-            //Update Total Hours and Total Paid Hours
-            updateHoursAndPayment();
 
         }
 
@@ -696,44 +678,53 @@ public class NewShiftActivity extends AppCompatActivity {
 
         /*
         Each EditText has its own Spannable. TextWatcher's events has this Spannable as s parameter. I check their hashCode (unique Id of each object).
-        myEditText1.getText() returns that Spannable. So if the myEditText1.getText().hashCode() equals with s.hashCode() it means that s belongs to myEditText1
+        myEditText1.getText() returns that Spannable. So if the myEditText1.getText().hashCode() equals with s.hashCode() it means that s belongs to myEditText
          */
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            if (s.hashCode() == payPerHourText.getText().hashCode()) {
+            if (s.hashCode() == totalPayText.getText().hashCode()) {
 
                 if (s.length() > 0)
-                    payPerHour = Double.valueOf(Double.valueOf(s.toString()));
+                    totalPay = Double.valueOf(Double.valueOf(s.toString()));
                 else
-                    payPerHour = 0;
+                    totalPay = 0;
 
-            } else if (s.hashCode() == salesText.getText().hashCode()) {
+            } else {
 
-                if (s.length() > 0)
-                    totalSales = Double.valueOf(Double.valueOf(s.toString()));
-                else
-                    totalSales = 0;
+                if (s.hashCode() == payPerHourText.getText().hashCode()) {
 
-            } else if (s.hashCode() == salesPercentageText.getText().hashCode()) {
+                    if (s.length() > 0)
+                        payPerHour = Double.valueOf(Double.valueOf(s.toString()));
+                    else
+                        payPerHour = 0;
 
-                if (s.length() > 0)
-                    salesPercentage = Double.valueOf(Double.valueOf(s.toString()));
-                else
-                    salesPercentage = 0;
+                } else if (s.hashCode() == salesText.getText().hashCode()) {
 
-            } else if (s.hashCode() == tipsText.getText().hashCode()) {
+                    if (s.length() > 0)
+                        totalSales = Double.valueOf(Double.valueOf(s.toString()));
+                    else
+                        totalSales = 0;
 
-                if (s.length() > 0)
-                    tips = Double.valueOf(Double.valueOf(s.toString()));
-                else
-                    tips = 0;
+                } else if (s.hashCode() == salesPercentageText.getText().hashCode()) {
+
+                    if (s.length() > 0)
+                        salesPercentage = Double.valueOf(Double.valueOf(s.toString()));
+                    else
+                        salesPercentage = 0;
+
+                } else if (s.hashCode() == tipsText.getText().hashCode()) {
+
+                    if (s.length() > 0)
+                        tips = Double.valueOf(Double.valueOf(s.toString()));
+                    else
+                        tips = 0;
+
+                }
+                //Update the total pay calculation
+                updateHoursAndPayment();
 
             }
-
-            //Update the total pay calculation
-            updateHoursAndPayment();
-
         }
 
         @Override

@@ -12,7 +12,7 @@
     <LinearLayout
         android:id="@+id/dateFromLL"
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
@@ -47,19 +47,20 @@
             android:layout_alignTop="@+id/fromText"
             android:layout_toRightOf="@+id/fromText"
             android:textAlignment="textStart"
-            android:textColor="@color/BLUE_GREY" />
+            android:textColor="@color/BLUE_GREY"
+            android:layout_marginLeft="5dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/dateToLL"
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.09"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp" >
 
@@ -91,7 +92,8 @@
             android:layout_below="@+id/shiftRangeSpinner"
             android:layout_toRightOf="@+id/toText"
             android:textAlignment="textStart"
-            android:textColor="@color/BLUE_GREY" />
+            android:textColor="@color/BLUE_GREY"
+            android:layout_marginLeft="5dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -132,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:background="@drawable/ic_print"
-            android:id="@+id/printBtn"
+            android:id="@+id/chartButton"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp" />
 
@@ -280,7 +282,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/ic_expand_more"
             android:id="@+id/totalPayMoreInfoButton"
-            android:layout_weight="1.06" />
+            android:layout_weight="1.06"
+            android:layout_marginRight="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -295,7 +298,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:gravity="center"
-            android:textColor="#4CAF50" />
+            android:textColor="#03a9f4" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -310,7 +313,7 @@
             android:layout_toRightOf="@+id/textView17"
             android:layout_toEndOf="@+id/textView17"
             android:gravity="left|center"
-            android:textColor="#4CAF50"
+            android:textColor="#03a9f4"
             android:layout_marginLeft="5dp" />
     </LinearLayout>
 
@@ -323,8 +326,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
         android:layout_weight="0.1"
-        android:gravity="center_vertical|center_horizontal"
-        android:layout_marginTop="5dp">
+        android:gravity="center_vertical|center_horizontal">
 
             <TextView
                 android:layout_width="wrap_content"

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:2:1-39:12
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:2:1-40:12
 	package
 		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:3:5-36
 		INJECTED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml
@@ -16,7 +16,7 @@ ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\sr
 supports-screens
 ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:5:5-25
 application
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:7:5-37:19
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:7:5-38:19
 MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
@@ -106,9 +106,13 @@ ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\sr
 	android:name
 		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:35:19-51
 activity#com.example.shiftmate.Settings
-ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:36:9-55
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:36:9-46
 	android:name
 		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:36:19-43
+activity#com.example.shiftmate.DataChart
+ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:37:9-56
+	android:name
+		ADDED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml:37:19-44
 uses-sdk
 INJECTED from C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\jorda_000\Documents\Android Studio\Projects\ShiftMate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78

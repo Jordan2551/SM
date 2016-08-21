@@ -13,6 +13,31 @@
         <item>Shifts by Month</item>
         <item>Shifts by Year</item>
     </array>
+
+  <array name="data_chart_data_spinner_choices">
+    <item>Shift Durations</item>
+    <item>Total Pay</item>
+    <item>Total Pay (Wage)</item>
+    <item>Total Sales</item>
+    <item>Total Tips</item>
+  </array>
+
+  <array name="data_chart_month_spinner_choices">
+    <item>All Months</item>
+    <item>January</item>
+    <item>February</item>
+    <item>March</item>
+    <item>April</item>
+    <item>May</item>
+    <item>June</item>
+    <item>July</item>
+    <item>August</item>
+    <item>September</item>
+    <item>October</item>
+    <item>November</item>
+    <item>December</item>
+  </array>
+
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->

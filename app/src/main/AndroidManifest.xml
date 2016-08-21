@@ -33,7 +33,8 @@
         <activity android:name=".MessingAround" />
         <activity android:name=".ViewShifts.ShiftTableAdapter" />
         <activity android:name=".SettingsFragment" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".DataChart"></activity>
     </application>
 
 </manifest>

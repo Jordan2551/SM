@@ -48,22 +48,21 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:weightSum="1"
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/textView5"
-                android:layout_width="10dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView7"
                 android:layout_alignParentTop="true"
                 android:layout_alignStart="@+id/textView7"
-                android:layout_weight="0.7"
                 android:clickable="true"
                 android:text="From"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -78,13 +77,14 @@
                 android:layout_alignLeft="@+id/notesText"
                 android:layout_alignStart="@+id/notesText"
                 android:layout_alignTop="@+id/textView5"
-                android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:text="New Text"
                 android:textAlignment="center"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp" />
 
             <TextView
                 android:id="@+id/shiftBeginTimeText"
@@ -94,32 +94,31 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_toRightOf="@+id/shiftBeginDateText"
-                android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:text="New Text"
                 android:textAlignment="center"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="fill_horizontal|center"
+            android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/textView27"
-                android:layout_width="10dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView7"
                 android:layout_alignParentTop="true"
                 android:layout_alignStart="@+id/textView7"
-                android:layout_weight="0.7"
                 android:clickable="true"
                 android:text="To"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -138,7 +137,8 @@
                 android:text="New Text"
                 android:textAlignment="center"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="40dp" />
 
             <TextView
                 android:id="@+id/shiftEndTimeText"
@@ -154,17 +154,19 @@
                 android:text="New Text"
                 android:textAlignment="center"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="15dp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="fill_horizontal|center"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp">
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/textView13"
@@ -173,7 +175,6 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignTop="@+id/breakTimeText"
-                android:layout_weight="1"
                 android:clickable="true"
                 android:text="Break (unpaid)"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -188,10 +189,9 @@
                 android:layout_alignTop="@+id/textView11"
                 android:layout_toLeftOf="@+id/shiftEndTimeText"
                 android:layout_toStartOf="@+id/shiftEndTimeText"
-                android:layout_weight="1.30"
                 android:ems="10"
                 android:inputType="number"
-                android:maxLength="3"
+                android:maxLength="5"
                 android:textAlignment="center"
                 android:textColor="@color/BLUE_GREY" />
 
@@ -203,7 +203,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/shiftEndTimeText"
                 android:layout_marginLeft="15dp"
-                android:layout_weight="1"
                 android:clickable="true"
                 android:text="Minutes"
                 android:textAlignment="center"
@@ -249,7 +248,7 @@
                 android:layout_toStartOf="@+id/shiftEndTimeText"
                 android:ems="10"
                 android:inputType="number"
-                android:maxLength="4"
+                android:maxLength="6"
                 android:textAlignment="center"
                 android:textColor="@color/BLUE_GREY" />
 
@@ -299,10 +298,10 @@
                 android:layout_toLeftOf="@+id/shiftBeginTimeText"
                 android:layout_toStartOf="@+id/shiftBeginTimeText"
                 android:ems="10"
-                android:inputType="number"
                 android:maxLength="7"
                 android:textAlignment="center"
-                android:textColor="@color/BLUE_GREY" />
+                android:textColor="@color/BLUE_GREY"
+                android:inputType="numberDecimal" />
 
             <TextView
                 android:id="@+id/textView34"
@@ -326,7 +325,7 @@
                 android:layout_toLeftOf="@+id/shiftBeginTimeText"
                 android:layout_toStartOf="@+id/shiftBeginTimeText"
                 android:ems="10"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:maxLength="3"
                 android:textAlignment="center"
                 android:textColor="@color/BLUE_GREY" />
@@ -376,8 +375,8 @@
                 android:layout_below="@+id/breakTimeText"
                 android:layout_marginLeft="20dp"
                 android:ems="10"
-                android:inputType="number"
-                android:maxLength="3"
+                android:inputType="numberDecimal"
+                android:maxLength="7"
                 android:textAlignment="center"
                 android:textColor="@color/BLUE_GREY" />
 
@@ -520,7 +519,7 @@
 
             <EditText
                 android:id="@+id/totalPayText"
-                android:layout_width="63dp"
+                android:layout_width="77dp"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/totalHoursText"
                 android:layout_alignStart="@+id/totalHoursText"
@@ -528,9 +527,9 @@
                 android:layout_toLeftOf="@+id/shiftEndTimeText"
                 android:layout_toStartOf="@+id/shiftEndTimeText"
                 android:ems="10"
-                android:inputType="number"
-                android:maxLength="4"
-                android:text="1000000.00"
+                android:inputType="numberDecimal"
+                android:maxLength="8"
+                android:text="100000000"
                 android:textSize="16sp" />
 
         </LinearLayout>

@@ -40,6 +40,7 @@
         <activity android:name="com.example.shiftmate.ViewShifts.ShiftTableAdapter" />
         <activity android:name="com.example.shiftmate.SettingsFragment" />
         <activity android:name="com.example.shiftmate.Settings" />
+        <activity android:name="com.example.shiftmate.DataChart" />
     </application>
 
 </manifest>

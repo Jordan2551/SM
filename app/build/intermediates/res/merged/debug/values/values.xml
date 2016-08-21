@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <array name="data_chart_data_spinner_choices">
+    <item>Shift Durations</item>
+    <item>Total Pay</item>
+    <item>Total Pay (Wage)</item>
+    <item>Total Sales</item>
+    <item>Total Tips</item>
+  </array>
+    <array name="data_chart_month_spinner_choices">
+    <item>All Months</item>
+    <item>January</item>
+    <item>February</item>
+    <item>March</item>
+    <item>April</item>
+    <item>May</item>
+    <item>June</item>
+    <item>July</item>
+    <item>August</item>
+    <item>September</item>
+    <item>October</item>
+    <item>November</item>
+    <item>December</item>
+  </array>
     <string-array name="pref_example_list_titles">
         <item>Always</item>
         <item>When possible</item>
@@ -50,7 +72,7 @@
     <color name="LIGHT_BLUE">#03a9f4</color>
     <color name="LIGHT_GREEN">#8BC34A</color>
     <color name="LIGHT_GREY">#CFD8DC</color>
-    <color name="LIGHT_PURPLE">#db78ff</color>
+    <color name="LIGHT_PURPLE">#ea80fc</color>
     <color name="SILVER">#B6B6B6</color>
     <color name="SLATE_GREY">#455A64</color>
     <color name="WHITE">#ffffff</color>
