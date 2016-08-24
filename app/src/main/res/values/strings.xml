@@ -900,6 +900,8 @@
     ]
   }
 </string>
+  <string name="data_chart_help">1. Choose what type of data you wish to view on the graph</string>
+  <string name="title_activity_data_chart">Data Graph</string>
 
 
 </resources>

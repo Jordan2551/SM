@@ -5,95 +5,92 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewShifts.ViewShiftsNEW"
-    android:weightSum="10">
+    tools:context=".ViewShifts.ViewShifts"
+    android:weightSum="10"
+    android:paddingTop="45dp">
 
 
     <LinearLayout
         android:id="@+id/dateFromLL"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.09"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="From:"
-            android:id="@+id/fromText"
-            android:textAlignment="inherit"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_below="@+id/shiftRangeSpinner"
-            android:layout_weight="0.6"
-            android:textColor="@color/BLUE_GREY" />
+        android:layout_marginTop="15dp"
+        android:visibility="visible">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Sun, 23 Jul 2016"
-            android:id="@+id/shiftsFilterFromText"
-            android:layout_weight="1"
-            android:textSize="16dp"
-            android:clickable="true"
-            android:background="?attr/selectableItemBackground"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="From:"
+            android:id="@+id/textView22"
+            android:textAlignment="inherit"
+            android:textSize="17dp"
             android:textStyle="bold"
-            android:layout_alignTop="@+id/fromText"
-            android:layout_toRightOf="@+id/fromText"
-            android:textAlignment="textStart"
+            android:layout_below="@+id/shiftRangeSpinner"
+            android:layout_weight="0.6"
             android:textColor="@color/BLUE_GREY"
-            android:layout_marginLeft="5dp" />
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp" />
+
+        <Button
+            style="@style/ButtonTextColor"
+            android:id="@+id/shiftsFilterFromButton"
+            android:layout_width="150dp"
+            android:layout_height="31dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:text="Sun, 23 Jul 2016"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="To:"
+            android:id="@+id/textView23"
+            android:textAlignment="inherit"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:layout_below="@+id/shiftRangeSpinner"
+            android:layout_weight="0.6"
+            android:textColor="@color/BLUE_GREY"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:layout_marginTop="3dp" />
+
+        <Button
+            style="@style/ButtonTextColor"
+            android:id="@+id/shiftsFilterToButton"
+            android:layout_width="150dp"
+            android:layout_height="31dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:text="Mon, 24 Jul 2016"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginLeft="10dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/dateToLL"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.09"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp" >
+        android:visibility="visible"
+        android:gravity="center">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="To:"
-            android:id="@+id/toText"
-            android:textAlignment="inherit"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_below="@+id/shiftRangeSpinner"
-            android:layout_toRightOf="@+id/shiftsFilterFromText"
-            android:layout_toEndOf="@+id/shiftsFilterFromText"
-            android:layout_weight="0.6"
-            android:textColor="@color/BLUE_GREY" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Sun, 24 Jul 2016"
-            android:id="@+id/shiftsFilterToText"
-            android:layout_weight="1"
-            android:textSize="16dp"
-            android:clickable="true"
-            android:background="?attr/selectableItemBackground"
-            android:textStyle="bold"
-            android:layout_below="@+id/shiftRangeSpinner"
-            android:layout_toRightOf="@+id/toText"
-            android:textAlignment="textStart"
-            android:textColor="@color/BLUE_GREY"
-            android:layout_marginLeft="5dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -101,21 +98,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
         android:background="@color/LIGHT_PURPLE"
-        android:layout_weight="0.2">
+        android:layout_marginTop="5dp">
 
         <ImageButton
             android:layout_width="55dp"
             android:layout_height="fill_parent"
             android:background="@drawable/ic_arrow_back"
-            android:id="@+id/prevIntervalBtn" />
+            android:id="@+id/prevIntervalBtn"
+            android:visibility="gone" />
 
         <ImageButton
             android:layout_width="55dp"
             android:layout_height="fill_parent"
             android:background="@drawable/ic_arrow_forward"
-            android:id="@+id/nxtIntervalBtn" />
+            android:id="@+id/nxtIntervalBtn"
+            android:visibility="gone" />
 
         <Spinner
             android:layout_width="fill_parent"
@@ -132,31 +130,30 @@
 
         <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:background="@drawable/ic_print"
-            android:id="@+id/chartButton"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_help_white"
+            android:id="@+id/helpButton"
+            android:layout_marginLeft="5dp" />
 
     </LinearLayout>
 
     <HorizontalScrollView
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_alignParentStart="false"
         android:layout_weight="10">
 
-    <de.codecrafters.tableview.SortableTableView
-        android:id="@+id/tableView"
-        android:layout_below="@id/toolbar"
-        android:layout_width="1000dp"
-        android:layout_height="match_parent"
-        android:textAlignment="center"
-        custom:tableView_columnCount="9"
-        custom:tableView_headerColor="@color/LIGHT_PURPLE"
-        custom:tableView_headerElevation="10" />
+        <de.codecrafters.tableview.SortableTableView
+            android:id="@+id/tableView"
+            android:layout_below="@id/toolbar"
+            android:layout_width="1000dp"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            custom:tableView_columnCount="9"
+            custom:tableView_headerColor="@color/LIGHT_PURPLE"
+            custom:tableView_headerElevation="10" />
 
-</HorizontalScrollView>
+    </HorizontalScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -166,18 +163,19 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_weight="0"
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
-        android:id="@+id/totalPayMoreInfoLL">
+        android:id="@+id/totalPayMoreInfoLL"
+        android:visibility="gone">
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:layout_weight="1"
-            android:layout_marginLeft="16dp">
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="42dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -192,10 +190,11 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:textColor="@color/BLUE_GREY"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:layout_weight="0" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="$1000000"
                 android:id="@+id/basePayText"
@@ -214,10 +213,12 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -232,10 +233,11 @@
                 android:gravity="center_horizontal"
                 android:layout_below="@+id/textView32"
                 android:layout_alignLeft="@+id/textView32"
-                android:layout_alignStart="@+id/textView32" />
+                android:layout_alignStart="@+id/textView32"
+                android:layout_weight="0" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="$1000000"
                 android:id="@+id/totalTipsText"
@@ -266,23 +268,23 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_weight="0.09"
-        android:gravity="center_vertical|center_horizontal"
-        android:layout_marginTop="5dp"
-        android:weightSum="1">
+        android:layout_marginTop="3dp"
+        android:weightSum="1"
+        android:layout_marginLeft="15dp"
+        android:gravity="center">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_expand_more"
             android:id="@+id/totalPayMoreInfoButton"
-            android:layout_weight="1.06"
+            android:layout_weight="0"
             android:layout_marginRight="5dp" />
 
         <TextView
@@ -301,7 +303,7 @@
             android:textColor="#03a9f4" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="$1000000"
             android:id="@+id/paycheckText"
@@ -318,48 +320,51 @@
     </LinearLayout>
 
     <LinearLayout
-            android:orientation="horizontal"
+        android:orientation="horizontal"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginLeft="16dp">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-        android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Total Hours:"
+            android:id="@+id/textView21"
+            android:textAlignment="inherit"
+            android:textSize="18dp"
+            android:textStyle="bold"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-        android:layout_weight="0.1"
-        android:gravity="center_vertical|center_horizontal">
+            android:gravity="center"
+            android:textColor="@color/BLUE_GREY"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Total Hours:"
-                android:id="@+id/textView21"
-                android:textAlignment="inherit"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:gravity="center"
-                android:textColor="@color/BLUE_GREY" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalHoursText"
+            android:textSize="18dp"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
+            android:textStyle="bold"
+            android:layout_alignBottom="@+id/textView21"
+            android:layout_toRightOf="@+id/textView21"
+            android:layout_toEndOf="@+id/textView21"
+            android:textColor="@color/BLUE_GREY"
+            android:layout_marginLeft="5dp"
+            android:textAlignment="viewStart"
+            android:layout_weight="1"
+            android:text="100000:00" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="100"
-                android:id="@+id/totalHoursText"
-                android:textSize="18dp"
-                android:clickable="true"
-                android:background="?attr/selectableItemBackground"
-                android:textStyle="bold"
-                android:layout_alignBottom="@+id/textView21"
-                android:layout_toRightOf="@+id/textView21"
-                android:layout_toEndOf="@+id/textView21"
-                android:gravity="left|center"
-                android:textColor="@color/BLUE_GREY"
-                android:layout_marginLeft="5dp" />
-
-        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
 

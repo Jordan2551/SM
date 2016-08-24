@@ -347,6 +347,7 @@ public class NewShiftActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         setTitle("New Shift");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ssButton = (Button) findViewById(R.id.ssButton);
 
@@ -544,6 +545,7 @@ public class NewShiftActivity extends AppCompatActivity {
 
         payPerHourText = (TextView) findViewById(R.id.payPerHourText);
         payPerHourText.setText(PreferenceManager.getDefaultSharedPreferences(this).getString(Settings.KEY_PAY_PER_HOUR, "0"));
+        payPerHourText.setSelectAllOnFocus(true);
 
         salesPercentage = Double.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString(Settings.KEY_SALES_PERCENTAGE, "0"));
 

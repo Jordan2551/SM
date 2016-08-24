@@ -21,20 +21,59 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ViewShiftsActivity"
-            android:label="@string/title_activity_view_shifts"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".NewShiftActivity"
             android:label="@string/title_activity_new_shift"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ViewShifts.ViewShiftsNEW" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.shiftmate.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".ViewShifts.ViewShifts"
+            android:label="@string/title_activity_view_shifts"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.shiftmate.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".Settings"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.shiftmate.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".DataGraph"
+            android:label="@string/title_activity_data_chart"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.shiftmate.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".SettingsFragment"
+            android:label="Settings"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.shiftmate.SettingsFragment" />
+        </activity>
+
         <activity android:name=".MessingAround" />
         <activity android:name=".ViewShifts.ShiftTableAdapter" />
-        <activity android:name=".SettingsFragment" />
-        <activity android:name=".Settings" />
-        <activity android:name=".DataChart"></activity>
+
     </application>
 
 </manifest>

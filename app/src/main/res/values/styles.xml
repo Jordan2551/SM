@@ -13,6 +13,8 @@
 
     <style name="spinnerDDStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
         <item name="android:textColor">@color/BLUE_GREY</item>
+        <item name="android:textColorPrimary">@color/BLUE_GREY</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerStyle</item>
     </style>
 
     <style name="ButtonTextColor" parent="@android:style/Widget.Button">
@@ -28,7 +30,8 @@
     </style>
 
     <style name="SpinnerStyle" parent="Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
-        <item name="android:textAppearance">@color/WHITE</item>
+        <item name="android:textColorPrimary">@color/BLUE_GREY</item>
+        <item name="android:textColor">@color/BLUE_GREY</item>
         <item name="android:checkMark">?android:attr/listChoiceIndicatorSingle</item>
 
     </style>

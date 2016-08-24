@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.shiftmate.DataChart">
+    tools:context=".DataGraph">
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:background="@color/LIGHT_PURPLE"
-        android:layout_weight="1"
+        android:layout_gravity="center"
         android:id="@+id/linearLayout"
         android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp">
+        android:layout_marginLeft="15dp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="63dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,17 +26,15 @@
             android:id="@+id/textView18"
             android:textAlignment="inherit"
             android:textSize="17dp"
-            android:textStyle="bold"
             android:layout_below="@+id/shiftRangeSpinner"
             android:layout_toRightOf="@+id/shiftsFilterFromText"
             android:layout_toEndOf="@+id/shiftsFilterFromText"
             android:textIsSelectable="true"
             android:gravity="center_vertical"
-            android:textColor="@color/WHITE"
-            android:layout_marginLeft="5dp" />
+            android:textStyle="bold" />
 
         <Spinner
-            android:layout_width="fill_parent"
+            android:layout_width="170dp"
             android:layout_height="33dp"
             android:id="@+id/dataTypeSpinner"
             android:spinnerMode="dropdown"
@@ -48,23 +42,23 @@
             android:layout_toRightOf="@+id/textView16"
             android:layout_alignRight="@+id/shiftsFilterToText"
             android:layout_alignEnd="@+id/shiftsFilterToText"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:layout_gravity="center"
             style="@style/SpinnerStyle"
-            android:layout_marginLeft="15dp" />
+            android:layout_marginLeft="17dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/LIGHT_PURPLE"
-        android:layout_weight="1"
+        android:layout_gravity="center"
         android:id="@+id/linearLayout2"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp">
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,17 +68,15 @@
             android:id="@+id/textView19"
             android:textAlignment="inherit"
             android:textSize="17dp"
-            android:textStyle="bold"
             android:layout_below="@+id/shiftRangeSpinner"
             android:layout_toRightOf="@+id/shiftsFilterFromText"
             android:layout_toEndOf="@+id/shiftsFilterFromText"
             android:textIsSelectable="true"
             android:gravity="center_vertical"
-            android:textColor="@color/WHITE"
-            android:layout_marginLeft="5dp" />
+            android:textStyle="bold" />
 
         <Spinner
-            android:layout_width="fill_parent"
+            android:layout_width="170dp"
             android:layout_height="33dp"
             android:id="@+id/yearSpinner"
             android:spinnerMode="dropdown"
@@ -92,22 +84,22 @@
             android:layout_toRightOf="@+id/textView16"
             android:layout_alignRight="@+id/shiftsFilterToText"
             android:layout_alignEnd="@+id/shiftsFilterToText"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:layout_gravity="center"
             style="@style/SpinnerStyle"
-            android:layout_marginLeft="15dp" />
+            android:layout_marginLeft="13dp" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@color/LIGHT_PURPLE"
-        android:layout_weight="1"
         android:id="@+id/linearLayout3"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp">
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -117,17 +109,15 @@
             android:id="@+id/textView20"
             android:textAlignment="inherit"
             android:textSize="17dp"
-            android:textStyle="bold"
             android:layout_below="@+id/shiftRangeSpinner"
             android:layout_toRightOf="@+id/shiftsFilterFromText"
             android:layout_toEndOf="@+id/shiftsFilterFromText"
             android:textIsSelectable="true"
             android:gravity="center_vertical"
-            android:textColor="@color/WHITE"
-            android:layout_marginLeft="5dp" />
+            android:textStyle="bold" />
 
         <Spinner
-            android:layout_width="fill_parent"
+            android:layout_width="170dp"
             android:layout_height="33dp"
             android:id="@+id/monthSpinner"
             android:spinnerMode="dropdown"
@@ -135,27 +125,76 @@
             android:layout_toRightOf="@+id/textView16"
             android:layout_alignRight="@+id/shiftsFilterToText"
             android:layout_alignEnd="@+id/shiftsFilterToText"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:layout_gravity="center"
-            style="@style/SpinnerStyle" />
+            style="@style/spinnerDDStyle" />
     </LinearLayout>
 
-    <Button
-        style="@style/ButtonTextColor"
-        android:id="@+id/generateGraphButton"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_height="34dp"
         android:layout_gravity="center_horizontal"
-        android:text="Generate Graph"
-        android:layout_weight="1" />
+        android:id="@+id/linearLayout4"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="8dp"
+        style="r"
+        android:gravity="center_horizontal">
+
+        <Button
+            style="@style/ButtonTextColor"
+            android:id="@+id/generateGraphButton"
+            android:layout_width="150dp"
+            android:layout_height="31dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@drawable/ic_bar_chart_white"
+            android:text="Generate Graph"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="viewStart"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/LIGHT_PURPLE"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="15dp">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_zoom_in"
+                android:id="@+id/zoomInButton"
+                android:layout_marginRight="5dp" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_zoom_out"
+                android:id="@+id/zoomOutButton" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_help"
+            android:id="@+id/helpButton"
+            android:layout_marginLeft="5dp" />
+
+    </LinearLayout>
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barChart"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="10" />
+        android:layout_weight="10"
+        android:layout_marginTop="15dp" />
 
 
 </LinearLayout>

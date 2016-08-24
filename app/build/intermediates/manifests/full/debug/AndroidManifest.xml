@@ -27,20 +27,53 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.shiftmate.ViewShiftsActivity"
-            android:label="@string/title_activity_view_shifts"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name="com.example.shiftmate.NewShiftActivity"
             android:label="@string/title_activity_new_shift"
+            android:parentActivityName="com.example.shiftmate.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.example.shiftmate.ViewShifts.ViewShiftsNEW" />
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.shiftmate.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.shiftmate.ViewShifts.ViewShifts"
+            android:label="@string/title_activity_view_shifts"
+            android:parentActivityName="com.example.shiftmate.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.shiftmate.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.shiftmate.Settings"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="com.example.shiftmate.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.shiftmate.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.shiftmate.DataGraph"
+            android:label="@string/title_activity_data_chart"
+            android:parentActivityName="com.example.shiftmate.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.shiftmate.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.shiftmate.SettingsFragment"
+            android:label="Settings"
+            android:parentActivityName="com.example.shiftmate.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.shiftmate.SettingsFragment" />
+        </activity>
         <activity android:name="com.example.shiftmate.MessingAround" />
         <activity android:name="com.example.shiftmate.ViewShifts.ShiftTableAdapter" />
-        <activity android:name="com.example.shiftmate.SettingsFragment" />
-        <activity android:name="com.example.shiftmate.Settings" />
-        <activity android:name="com.example.shiftmate.DataChart" />
     </application>
 
 </manifest>

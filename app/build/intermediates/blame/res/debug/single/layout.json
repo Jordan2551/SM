@@ -48,12 +48,16 @@
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_layout_snackbar.xml"
     },
     {
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_view_shifts.xml",
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\layout\\activity_view_shifts.xml"
     },
     {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_list_menu_item_layout.xml"
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_settings_fragment.xml",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\layout\\content_settings_fragment.xml"
     },
     {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
@@ -78,10 +82,6 @@
     {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\select_dialog_item_material.xml"
-    },
-    {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_view_shifts_new.xml",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\layout\\activity_view_shifts_new.xml"
     },
     {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
@@ -116,6 +116,10 @@
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\layout\\activity_shift_table_adapter.xml"
     },
     {
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_data_graph.xml",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\layout\\activity_data_graph.xml"
+    },
+    {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_main.xml",
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\layout\\content_main.xml"
     },
@@ -144,6 +148,10 @@
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_data_graph.xml",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\layout\\content_data_graph.xml"
+    },
+    {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_screen_toolbar.xml"
     },
@@ -166,10 +174,6 @@
     {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_template_part_time.xml"
-    },
-    {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_data_chart.xml",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\layout\\activity_data_chart.xml"
     },
     {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
@@ -210,6 +214,10 @@
     {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
         "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_settings.xml",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\layout\\content_settings.xml"
     },
     {
         "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",

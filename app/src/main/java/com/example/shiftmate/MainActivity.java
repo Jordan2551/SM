@@ -3,18 +3,11 @@ package com.example.shiftmate;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -24,13 +17,9 @@ import com.example.shiftmate.Database.Tables.Shifts.Shift;
 import com.example.shiftmate.Database.Tables.Shifts.Shifts;
 import com.example.shiftmate.Shared.UniversalFunctions;
 import com.example.shiftmate.Shared.UniversalVariables;
-import com.example.shiftmate.ViewShifts.ViewShiftsNEW;
+import com.example.shiftmate.ViewShifts.ViewShifts;
 
 import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormatter;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     Button nsButton;
     Button qsButton;
     Button vsButton;
+    Button vgButton;
     Button settingsButton;
     TextView latestShiftTV;
 
@@ -149,7 +139,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //Intent intent = new Intent(MainActivity.this, ViewShiftsActivity.class);
-                Intent intent = new Intent(MainActivity.this, ViewShiftsNEW.class);
+                Intent intent = new Intent(MainActivity.this, ViewShifts.class);
+                startActivity(intent);
+
+            }
+        });
+
+        //endregion
+
+        //region Graphs Button
+
+        vgButton = (Button) findViewById(R.id.vgButton);
+
+        vgButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, DataGraph.class);
                 startActivity(intent);
 
             }
@@ -193,13 +199,7 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
-
     }
 
     //Updates the GUI's selectable buttons depending on the records of the database

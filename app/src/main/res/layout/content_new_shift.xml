@@ -84,7 +84,8 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_weight="1"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/BLUE_GREY" />
 
             <TextView
                 android:id="@+id/shiftBeginTimeText"
@@ -101,7 +102,8 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_weight="1"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/BLUE_GREY" />
 
         </LinearLayout>
 
@@ -138,7 +140,8 @@
                 android:textAlignment="center"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginLeft="40dp" />
+                android:layout_marginLeft="40dp"
+                android:textColor="@color/BLUE_GREY" />
 
             <TextView
                 android:id="@+id/shiftEndTimeText"
@@ -155,7 +158,8 @@
                 android:textAlignment="center"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/BLUE_GREY" />
 
         </LinearLayout>
 
@@ -247,10 +251,10 @@
                 android:layout_toLeftOf="@+id/shiftEndTimeText"
                 android:layout_toStartOf="@+id/shiftEndTimeText"
                 android:ems="10"
-                android:inputType="number"
                 android:maxLength="6"
                 android:textAlignment="center"
-                android:textColor="@color/BLUE_GREY" />
+                android:textColor="@color/BLUE_GREY"
+                android:inputType="numberDecimal" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -479,7 +483,9 @@
                 android:clickable="true"
                 android:text="123456:30"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/BLUE_GREY" />
 
         </LinearLayout>
 
@@ -515,7 +521,9 @@
                 android:clickable="true"
                 android:text="$"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/BLUE_GREY" />
 
             <EditText
                 android:id="@+id/totalPayText"
@@ -530,7 +538,8 @@
                 android:inputType="numberDecimal"
                 android:maxLength="8"
                 android:text="100000000"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/BLUE_GREY" />
 
         </LinearLayout>
 

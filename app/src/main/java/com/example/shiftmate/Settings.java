@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
-public class Settings extends Activity {
+public class Settings extends AppCompatActivity {
 
     //Preference key consts
     public static final String KEY_CURRENCY_LIST = "currencyList";
@@ -20,12 +22,17 @@ public class Settings extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         // Display the fragment as the main content.
         //This takes our SettingsFragment class and set's it's xml layout to this activity
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new SettingsFragment())
                 .commit();
+
+        setTitle("Settings");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true); DDOS
 
         //Calling this during onCreate() ensures that your application is properly initialized with default settings, which your application might need to read in order to determine some behaviors
         //(such as whether to download data while on a cellular network).

@@ -10,6 +10,7 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
+import android.support.v7.widget.Toolbar;
 
 import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Currencies.Currency;

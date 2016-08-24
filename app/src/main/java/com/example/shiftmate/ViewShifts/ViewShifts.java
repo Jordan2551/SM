@@ -3,17 +3,15 @@ package com.example.shiftmate.ViewShifts;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -21,7 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.shiftmate.DataChart;
+import com.example.shiftmate.DataGraph;
 import com.example.shiftmate.Database.DataSource;
 import com.example.shiftmate.Database.Tables.Shifts.Shift;
 import com.example.shiftmate.NewShiftActivity;
@@ -46,7 +44,7 @@ import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 import de.codecrafters.tableview.toolkit.TableDataRowColorizers;
 
 
-public class ViewShiftsNEW extends AppCompatActivity {
+public class ViewShifts extends AppCompatActivity {
 
     //Shift Range Spinner option consts
     private final byte SPINNER_OPTION_ALL_SHIFTS = 0;
@@ -74,7 +72,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
     private ImageButton prevIntervalBtn;
     private ImageButton nxtIntervalBtn;
     private ImageButton totalPayMoreInfoButton;
-    private ImageButton chartButton;
+    private ImageButton helpButton;
 
     private LinearLayout dateFromLL;
     private LinearLayout dateToLL;
@@ -85,8 +83,8 @@ public class ViewShiftsNEW extends AppCompatActivity {
     private TextView basePayText;
     private TextView totalTipsText;
 
-    private TextView shiftFilterDateFromText;
-    private TextView shiftFilterDateToText;
+    private Button shiftsFilterFromButton;
+    private Button shiftsFilterToButton;
 
     private SortableTableView tableView;
     private Spinner shiftRangeSpinner;
@@ -115,7 +113,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
                     //Set to date automatically when the filteration by week option is selected
                     //Set the to date to saturday (the last day of the week)
                     shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, selectedDate.plusDays(6), null);
-                    shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                    shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
                     break;
 
@@ -128,7 +126,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
                     //Set to date automatically when the filteration by week option is selected
                     //Set the to date to saturday (the last day of the week)
                     shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, selectedDate.plusMonths(1).minusDays(1), null);
-                    shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                    shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
                     break;
 
@@ -140,14 +138,14 @@ public class ViewShiftsNEW extends AppCompatActivity {
                     //Set to date automatically when the filteration by year option is selected
                     //Set the to date to saturday (the last day of the week)
                     shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, selectedDate.plusYears(1).minusDays(1), null);
-                    shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                    shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
                     break;
 
             }
 
             shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, selectedDate, null);
-            shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+            shiftsFilterFromButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
 
             setFilteredShifts(shiftRangeSpinner.getSelectedItemPosition());
             tableView.setDataAdapter(new ShiftTableAdapter(getBaseContext(), filteredShiftsList));
@@ -170,7 +168,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
             DateTime selectedDate = UniversalFunctions.dateToDateTime(UniversalVariables.dateFormatDateString, UniversalVariables.dateFormatDate, myCalendar.getTime());
 
             shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, selectedDate, null);
-            shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+            shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
             setFilteredShifts(shiftRangeSpinner.getSelectedItemPosition());
             tableView.setDataAdapter(new ShiftTableAdapter(getBaseContext(), filteredShiftsList));
@@ -182,9 +180,12 @@ public class ViewShiftsNEW extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_shifts_new);
+        setContentView(R.layout.activity_view_shifts);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         setTitle("View Shifts");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         dateFromLL = (LinearLayout) findViewById(R.id.dateFromLL);
         dateToLL = (LinearLayout) findViewById(R.id.dateToLL);
@@ -197,7 +198,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
         prevIntervalBtn = (ImageButton) findViewById(R.id.prevIntervalBtn);
         nxtIntervalBtn = (ImageButton) findViewById(R.id.nxtIntervalBtn);
         totalPayMoreInfoButton = (ImageButton) findViewById(R.id.totalPayMoreInfoButton);
-        chartButton = (ImageButton) findViewById(R.id.chartButton);
+        helpButton = (ImageButton) findViewById(R.id.helpButton);
 
         prevIntervalBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -212,10 +213,10 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
                         //Set date from to previous week (sunday-satruday of previous week)
                         shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousDateStart.minusDays(7), null);
-                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+                        shiftsFilterFromButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
 
                         shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousDateStart.minusDays(1), null);
-                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                        shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
                         break;
 
@@ -223,10 +224,10 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
                         //Set date from to previous week (sunday-satruday of previous week)
                         shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousDateStart.minusMonths(1), null);
-                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+                        shiftsFilterFromButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
 
                         shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousDateStart.minusDays(1), null);
-                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                        shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
                         break;
 
@@ -234,10 +235,10 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
                         //Set date from to previous year
                         shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousDateStart.minusYears(1), null);
-                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+                        shiftsFilterFromButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
 
                         shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, previousDateStart.minusDays(1), null);
-                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                        shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
                         break;
 
@@ -267,10 +268,10 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
                         //Set date from to next week (sunday-satruday of next week)
                         shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextDateStart.plusDays(7), null);
-                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+                        shiftsFilterFromButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
 
                         shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextDateStart.plusDays(13), null);
-                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                        shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
                         break;
 
@@ -278,10 +279,10 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
                         //Set date from to next week (sunday-satruday of next week)
                         shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextDateStart.plusMonths(1), null);
-                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+                        shiftsFilterFromButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
 
                         shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextDateStart.plusMonths(2).minusDays(1), null);
-                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                        shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
                         break;
 
@@ -289,10 +290,10 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
                         //Set date from to next year
                         shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextDateStart.plusYears(1), null);
-                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+                        shiftsFilterFromButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
 
                         shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, nextDateStart.plusYears(2).minusDays(1), null);
-                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                        shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
 
                         break;
@@ -322,38 +323,41 @@ public class ViewShiftsNEW extends AppCompatActivity {
             }
         });
 
-        chartButton.setOnClickListener(new View.OnClickListener() {
+        helpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ViewShiftsNEW.this, DataChart.class);
-                startActivity(intent);
+                new AlertDialog.Builder(ViewShifts.this)
+                        .setTitle("How to use the Graph")
+                        .setIcon(R.drawable.ic_help)
+                        .setMessage(getString(R.string.data_chart_help) + System.getProperty("line.separator") + "2. Choose the year for the data you wish to view" + System.getProperty("line.separator") + "3. Choose the month for the data you wish to view")
+                        .show();
             }
         });
 
-        shiftFilterDateFromText = (TextView) findViewById(R.id.shiftsFilterFromText);
-        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+        shiftsFilterFromButton = (Button) findViewById(R.id.shiftsFilterFromButton);
+        shiftsFilterFromButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
 
-        shiftFilterDateFromText.setOnClickListener(new View.OnClickListener() {
+        shiftsFilterFromButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                new DatePickerDialog(ViewShiftsNEW.this, shiftFilterDateFromSetListener, myCalendar
+                new DatePickerDialog(ViewShifts.this, shiftFilterDateFromSetListener, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
             }
         });
 
-        shiftFilterDateToText = (TextView) findViewById(R.id.shiftsFilterToText);
-        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+        shiftsFilterToButton = (Button) findViewById(R.id.shiftsFilterToButton);
+        shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
-        shiftFilterDateToText.setOnClickListener(new View.OnClickListener() {
+        shiftsFilterToButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                new DatePickerDialog(ViewShiftsNEW.this, shiftFilterDateToSetListener, myCalendar
+                new DatePickerDialog(ViewShifts.this, shiftFilterDateToSetListener, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
@@ -420,9 +424,9 @@ public class ViewShiftsNEW extends AppCompatActivity {
                         //When the filter by week option is selected, we want to set the current week by default
                         DateTime firstDayOfWeek = DateTime.now().withDayOfWeek(DateTimeConstants.SUNDAY).minusDays(7);
                         shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, firstDayOfWeek, null);
-                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+                        shiftsFilterFromButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
                         shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, firstDayOfWeek.plusDays(6), null);
-                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                        shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
                         break;
 
@@ -431,9 +435,9 @@ public class ViewShiftsNEW extends AppCompatActivity {
                         //When the filter by week option is selected, we want to set the current week by default
                         DateTime firstDayOfMonth = DateTime.now().withDayOfMonth(1);
                         shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, firstDayOfMonth, null);
-                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+                        shiftsFilterFromButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
                         shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, firstDayOfMonth.plusMonths(1).minusDays(1), null);
-                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                        shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
                         break;
 
@@ -441,9 +445,9 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
                         DateTime firstDayOfYear = DateTime.now().withDate(DateTime.now().getYear(), 1, DateTimeConstants.JANUARY);
                         shiftFilterDateFrom = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, firstDayOfYear, null);
-                        shiftFilterDateFromText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
+                        shiftsFilterFromButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateFrom));
                         shiftFilterDateTo = UniversalFunctions.dateToString(UniversalVariables.dateFormatDateString, firstDayOfYear.plusYears(1).minusDays(1), null);
-                        shiftFilterDateToText.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
+                        shiftsFilterToButton.setText(UniversalFunctions.changeDateStringFormat(UniversalVariables.dateFormatDate, UniversalVariables.dateFormatDateDisplayString, shiftFilterDateTo));
 
                         break;
 
@@ -469,7 +473,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
         public void onDataClicked(int rowIndex, final Shift clickedShift) {
 
             //Show the user a dialog of options regarding the clicked shift
-            new AlertDialog.Builder(ViewShiftsNEW.this)
+            new AlertDialog.Builder(ViewShifts.this)
                     .setTitle("Choose Option")
                     .setIcon(R.drawable.ic_options)
                     .setItems(new String[]{"Update Shift", "Delete", "Cancel"}, new DialogInterface.OnClickListener() {
@@ -480,7 +484,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
                                 case 0:
 
                                     //Transition to the NewShiftActivity with the data for the selected Shift to update
-                                    Intent intent = new Intent(ViewShiftsNEW.this, NewShiftActivity.class);
+                                    Intent intent = new Intent(ViewShifts.this, NewShiftActivity.class);
 
                                     intent.putExtra("updateShiftRequest", true);
                                     intent.putExtra("shiftEndIndex", DataSource.shifts.shiftList.indexOf(clickedShift));
@@ -499,7 +503,7 @@ public class ViewShiftsNEW extends AppCompatActivity {
                                 case 1:
 
                                     //Add a second confirmation dialog for deletion
-                                    new AlertDialog.Builder(ViewShiftsNEW.this)
+                                    new AlertDialog.Builder(ViewShifts.this)
                                             .setTitle("Delete this shift?")
                                             .setPositiveButton("Cancel", null)
                                             .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
@@ -608,6 +612,10 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
             case SPINNER_OPTION_ALL_SHIFTS:
 
+                Animator.fade(dateFromLL, false);
+                Animator.fade(dateToLL, false);
+                Animator.fade(prevIntervalBtn, false);
+                Animator.fade(nxtIntervalBtn, false);
                 dateFromLL.setVisibility(View.GONE);
                 dateToLL.setVisibility(View.GONE);
                 prevIntervalBtn.setVisibility(View.GONE);
@@ -619,9 +627,13 @@ public class ViewShiftsNEW extends AppCompatActivity {
 
                 dateFromLL.setVisibility(View.VISIBLE);
                 dateToLL.setVisibility(View.VISIBLE);
+                Animator.fade(dateFromLL, true);
+                Animator.fade(dateToLL, true);
+                Animator.fade(prevIntervalBtn, false);
+                Animator.fade(nxtIntervalBtn, false);
                 prevIntervalBtn.setVisibility(View.GONE);
                 nxtIntervalBtn.setVisibility(View.GONE);
-                shiftFilterDateToText.setEnabled(true);
+                shiftsFilterToButton.setEnabled(true);
 
                 break;
 
@@ -633,7 +645,11 @@ public class ViewShiftsNEW extends AppCompatActivity {
                 dateToLL.setVisibility(View.VISIBLE);
                 prevIntervalBtn.setVisibility(View.VISIBLE);
                 nxtIntervalBtn.setVisibility(View.VISIBLE);
-                shiftFilterDateToText.setEnabled(false);
+                Animator.fade(dateFromLL, true);
+                Animator.fade(dateToLL, true);
+                Animator.fade(prevIntervalBtn, true);
+                Animator.fade(nxtIntervalBtn, true);
+                shiftsFilterToButton.setEnabled(false);
 
                 break;
 
