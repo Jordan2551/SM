@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/imageView8"
                 android:layout_column="1"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_toLeftOf="@+id/shiftEndTimeText"
                 android:layout_toStartOf="@+id/shiftEndTimeText"
@@ -48,13 +48,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
             android:weightSum="1"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/textView5"
@@ -73,46 +73,45 @@
             <TextView
                 android:id="@+id/shiftBeginDateText"
                 android:layout_width="wrap_content"
-                android:layout_height="32dp"
+                android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/notesText"
                 android:layout_alignStart="@+id/notesText"
                 android:layout_alignTop="@+id/textView5"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
-                android:text="New Text"
+                android:text="Mon, 29 Aug 2015"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_weight="1"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:textColor="@color/BLUE_GREY" />
 
             <TextView
                 android:id="@+id/shiftBeginTimeText"
                 android:layout_width="wrap_content"
-                android:layout_height="32dp"
+                android:layout_height="wrap_content"
                 android:layout_above="@+id/totalHoursText"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_toRightOf="@+id/shiftBeginDateText"
+                android:layout_toEndOf="@+id/shiftBeginDateText"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
-                android:text="New Text"
+                android:text="05:09 PM"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_weight="1"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:textColor="@color/BLUE_GREY" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="7dp">
 
             <TextView
                 android:id="@+id/textView27"
@@ -129,36 +128,34 @@
             <TextView
                 android:id="@+id/shiftEndDateText"
                 android:layout_width="wrap_content"
-                android:layout_height="32dp"
+                android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/notesText"
                 android:layout_alignStart="@+id/notesText"
                 android:layout_alignTop="@+id/textView27"
-                android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
-                android:text="New Text"
+                android:text="Wed, 26 Aug 2016"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
                 android:textColor="@color/BLUE_GREY" />
 
             <TextView
                 android:id="@+id/shiftEndTimeText"
                 android:layout_width="wrap_content"
-                android:layout_height="32dp"
+                android:layout_height="wrap_content"
                 android:layout_above="@+id/totalHoursText"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_toRightOf="@+id/shiftEndDateText"
-                android:layout_weight="1"
+                android:layout_toEndOf="@+id/shiftEndDateText"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
-                android:text="New Text"
+                android:text="02:53 AM"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:textColor="@color/BLUE_GREY" />
 
         </LinearLayout>
@@ -168,8 +165,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
             android:layout_gravity="center">
 
             <TextView
@@ -206,7 +203,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/shiftEndTimeText"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:clickable="true"
                 android:text="Minutes"
                 android:textAlignment="center"
@@ -263,7 +260,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_column="27"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="2dp"
                 android:layout_toEndOf="@+id/ssButton"
                 android:layout_toRightOf="@+id/ssButton"
@@ -377,7 +374,7 @@
                 android:layout_alignRight="@+id/salesText"
                 android:layout_alignStart="@+id/salesText"
                 android:layout_below="@+id/breakTimeText"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:ems="10"
                 android:inputType="numberDecimal"
                 android:maxLength="7"
@@ -391,7 +388,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_column="27"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="2dp"
                 android:layout_toEndOf="@+id/ssButton"
                 android:layout_toRightOf="@+id/ssButton"
@@ -425,7 +422,7 @@
                 android:layout_alignEnd="@+id/ssButton"
                 android:layout_alignRight="@+id/ssButton"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/textView10"
+                android:layout_toEndOf="@+id/textView10"
                 android:ems="10"
                 android:inputType="textMultiLine"
                 android:textAlignment="center"
@@ -438,7 +435,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_column="27"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="2dp"
                 android:layout_toEndOf="@+id/ssButton"
                 android:layout_toRightOf="@+id/ssButton"
@@ -470,21 +467,22 @@
                 android:text="Total Hours:"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:layout_marginLeft="50dp" />
 
             <TextView
                 android:id="@+id/totalHoursText"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/textView10"
                 android:layout_toEndOf="@+id/textView10"
                 android:layout_toRightOf="@+id/textView10"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
-                android:text="123456:30"
+                android:text="1000000.21"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:textColor="@color/BLUE_GREY" />
 
         </LinearLayout>
@@ -495,7 +493,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="3dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <TextView
                 android:id="@+id/textView33"
@@ -508,7 +507,8 @@
                 android:text="Total Pay:"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:layout_marginLeft="45dp" />
 
             <TextView
                 android:id="@+id/currencySymbol"
@@ -522,12 +522,12 @@
                 android:text="$"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:textColor="@color/BLUE_GREY" />
 
             <EditText
                 android:id="@+id/totalPayText"
-                android:layout_width="77dp"
+                android:layout_width="95dp"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/totalHoursText"
                 android:layout_alignStart="@+id/totalHoursText"
@@ -537,7 +537,7 @@
                 android:ems="10"
                 android:inputType="numberDecimal"
                 android:maxLength="8"
-                android:text="100000000"
+                android:text="1000000.21"
                 android:textSize="16sp"
                 android:textColor="@color/BLUE_GREY" />
 

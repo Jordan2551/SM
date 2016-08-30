@@ -33,7 +33,7 @@
         android:layout_alignBottom="@+id/imageView"
         android:layout_alignLeft="@+id/relativeLayout2"
         android:layout_alignStart="@+id/relativeLayout2"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
         android:layout_weight="0.09"
         android:textColor="@color/BLUE_GREY"
         android:layout_marginBottom="2dp" />
@@ -48,8 +48,8 @@
         android:layout_gravity="center"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp">
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp">
 
 
         <Button
@@ -62,8 +62,8 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:drawableLeft="@drawable/ic_quick_punch_out"
-            android:layout_toLeftOf="@+id/vsButton"
+            android:drawableStart="@drawable/ic_quick_punch_out"
+            android:layout_toStartOf="@+id/vsButton"
             android:textSize="18sp"
             android:textAlignment="viewStart" />
 
@@ -90,7 +90,7 @@
             android:text="Add a New Shift"
             android:id="@+id/nsButton"
             style="@style/ButtonTextColor"
-            android:drawableLeft="@drawable/ic_calendar"
+            android:drawableStart="@drawable/ic_calendar"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textAlignment="viewStart"
@@ -104,7 +104,7 @@
             android:layout_gravity="center_horizontal"
             style="@style/ButtonTextColor"
             android:layout_below="@+id/nsButton"
-            android:drawableLeft="@drawable/ic_view_shifts"
+            android:drawableStart="@drawable/ic_view_shifts"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textAlignment="viewStart" />
@@ -117,7 +117,7 @@
             android:id="@+id/vgButton"
             android:layout_gravity="center_horizontal"
             android:layout_below="@+id/vsButton"
-            android:drawableLeft="@drawable/ic_bar_chart_white"
+            android:drawableStart="@drawable/ic_bar_chart_white"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textAlignment="viewStart" />
@@ -129,7 +129,7 @@
             android:text="Settings"
             android:id="@+id/settingsButton"
             android:layout_gravity="center_horizontal"
-            android:drawableLeft="@drawable/ic_settings_gear"
+            android:drawableStart="@drawable/ic_settings_gear"
             android:layout_below="@+id/vgButton"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

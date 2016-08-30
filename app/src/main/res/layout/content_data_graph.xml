@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/linearLayout"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
         android:gravity="center_horizontal"
         android:layout_marginTop="63dp">
 
@@ -39,13 +39,13 @@
             android:id="@+id/dataTypeSpinner"
             android:spinnerMode="dropdown"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/textView16"
+            android:layout_toEndOf="@+id/textView16"
             android:layout_alignRight="@+id/shiftsFilterToText"
             android:layout_alignEnd="@+id/shiftsFilterToText"
             android:textAlignment="viewStart"
             android:layout_gravity="center"
             style="@style/SpinnerStyle"
-            android:layout_marginLeft="17dp" />
+            android:layout_marginStart="17dp" />
 
     </LinearLayout>
 
@@ -55,8 +55,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/linearLayout2"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal">
 
@@ -81,13 +81,13 @@
             android:id="@+id/yearSpinner"
             android:spinnerMode="dropdown"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/textView16"
+            android:layout_toEndOf="@+id/textView16"
             android:layout_alignRight="@+id/shiftsFilterToText"
             android:layout_alignEnd="@+id/shiftsFilterToText"
             android:textAlignment="viewStart"
             android:layout_gravity="center"
             style="@style/SpinnerStyle"
-            android:layout_marginLeft="13dp" />
+            android:layout_marginStart="13dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -96,8 +96,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:id="@+id/linearLayout3"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal">
 
@@ -122,7 +122,7 @@
             android:id="@+id/monthSpinner"
             android:spinnerMode="dropdown"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/textView16"
+            android:layout_toEndOf="@+id/textView16"
             android:layout_alignRight="@+id/shiftsFilterToText"
             android:layout_alignEnd="@+id/shiftsFilterToText"
             android:textAlignment="viewStart"
@@ -136,8 +136,8 @@
         android:layout_height="34dp"
         android:layout_gravity="center_horizontal"
         android:id="@+id/linearLayout4"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginTop="8dp"
         style="r"
         android:gravity="center_horizontal">
@@ -150,7 +150,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
-            android:drawableLeft="@drawable/ic_bar_chart_white"
+            android:drawableStart="@drawable/ic_bar_chart_white"
             android:text="Generate Graph"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
@@ -163,14 +163,14 @@
             android:layout_height="wrap_content"
             android:background="@color/LIGHT_PURPLE"
             android:gravity="center_horizontal"
-            android:layout_marginLeft="15dp">
+            android:layout_marginStart="15dp">
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_zoom_in"
                 android:id="@+id/zoomInButton"
-                android:layout_marginRight="5dp" />
+                android:layout_marginEnd="5dp" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -185,7 +185,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/ic_help"
             android:id="@+id/helpButton"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginStart="5dp" />
 
     </LinearLayout>
 

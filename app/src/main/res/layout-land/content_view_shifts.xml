@@ -17,8 +17,8 @@
         android:layout_height="35dp"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="15dp"
         android:visibility="visible">
 
@@ -49,7 +49,7 @@
             android:text="Sun, 23 Jul 2016"
             android:textSize="16sp"
             android:gravity="center"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginStart="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
             android:layout_below="@+id/shiftRangeSpinner"
             android:layout_weight="0.6"
             android:textColor="@color/BLUE_GREY"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:gravity="center"
             android:layout_marginTop="3dp" />
 
@@ -78,7 +78,7 @@
             android:text="Mon, 24 Jul 2016"
             android:textSize="16sp"
             android:gravity="center"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginStart="10dp" />
 
     </LinearLayout>
 
@@ -121,7 +121,7 @@
             android:id="@+id/shiftRangeSpinner"
             android:spinnerMode="dropdown"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/textView16"
+            android:layout_toEndOf="@+id/textView16"
             android:layout_alignRight="@+id/shiftsFilterToText"
             android:layout_alignEnd="@+id/shiftsFilterToText"
             android:textAlignment="center"
@@ -133,7 +133,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/ic_help_white"
             android:id="@+id/helpButton"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginStart="5dp" />
 
     </LinearLayout>
 
@@ -175,7 +175,7 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginLeft="42dp">
+            android:layout_marginStart="42dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -202,12 +202,12 @@
                 android:clickable="true"
                 android:background="?attr/selectableItemBackground"
                 android:textStyle="bold"
-                android:gravity="left|center_horizontal"
+                android:gravity="start|center_horizontal"
                 android:textColor="@color/BLUE_GREY"
                 android:layout_above="@+id/totalTipsText"
                 android:layout_alignLeft="@+id/totalTipsText"
                 android:layout_alignStart="@+id/totalTipsText"
-                android:layout_marginLeft="5dp" />
+                android:layout_marginStart="5dp" />
 
         </LinearLayout>
 
@@ -218,7 +218,7 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginLeft="10dp">
+            android:layout_marginStart="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -245,12 +245,12 @@
                 android:clickable="true"
                 android:background="?attr/selectableItemBackground"
                 android:textStyle="bold"
-                android:gravity="left|center_horizontal"
+                android:gravity="start|center_horizontal"
                 android:textColor="@color/BLUE_GREY"
                 android:layout_centerVertical="true"
                 android:layout_alignRight="@+id/view"
                 android:layout_alignEnd="@+id/view"
-                android:layout_marginLeft="5dp" />
+                android:layout_marginStart="5dp" />
 
         </LinearLayout>
 
@@ -262,7 +262,7 @@
             android:layout_alignLeft="@+id/textView37"
             android:layout_alignStart="@+id/textView37"
             android:id="@+id/view"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginStart="10dp" />
 
     </LinearLayout>
 
@@ -276,7 +276,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="3dp"
         android:weightSum="1"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:gravity="center">
 
         <ImageButton
@@ -285,7 +285,7 @@
             android:background="@drawable/ic_expand_more"
             android:id="@+id/totalPayMoreInfoButton"
             android:layout_weight="0"
-            android:layout_marginRight="5dp" />
+            android:layout_marginEnd="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -314,9 +314,9 @@
             android:layout_alignBottom="@+id/textView17"
             android:layout_toRightOf="@+id/textView17"
             android:layout_toEndOf="@+id/textView17"
-            android:gravity="left|center"
+            android:gravity="start|center"
             android:textColor="#03a9f4"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginStart="5dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -328,7 +328,7 @@
         android:layout_alignParentStart="true"
         android:gravity="center"
         android:layout_gravity="center"
-        android:layout_marginLeft="16dp">
+        android:layout_marginStart="16dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -344,7 +344,7 @@
             android:layout_alignParentStart="true"
             android:gravity="center"
             android:textColor="@color/BLUE_GREY"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_weight="0" />
 
         <TextView
@@ -359,7 +359,7 @@
             android:layout_toRightOf="@+id/textView21"
             android:layout_toEndOf="@+id/textView21"
             android:textColor="@color/BLUE_GREY"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:textAlignment="viewStart"
             android:layout_weight="1"
             android:text="100000:00" />

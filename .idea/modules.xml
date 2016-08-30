@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ShiftMate.iml" filepath="$PROJECT_DIR$/ShiftMate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ShiftBuddy.iml" filepath="$PROJECT_DIR$/ShiftBuddy.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/sorttableview/sorttableview.iml" filepath="$PROJECT_DIR$/sorttableview/sorttableview.iml" />
       <module fileurl="file://$PROJECT_DIR$/testlib/testlib.iml" filepath="$PROJECT_DIR$/testlib/testlib.iml" />

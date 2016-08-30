@@ -31,7 +31,7 @@
             android:layout_marginLeft="33dp"
             android:layout_marginStart="33dp"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/shiftStatusIV" />
+            android:layout_toEndOf="@+id/shiftStatusIV" />
 
         <TextView
             android:id="@+id/textView2"
@@ -55,7 +55,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="17sp"
             android:layout_alignBottom="@+id/textView3"
-            android:layout_toRightOf="@+id/textView2"
+            android:layout_toEndOf="@+id/textView2"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/textView3" />
@@ -98,7 +98,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_below="@+id/totalHoursText"
-            android:layout_toRightOf="@+id/textView4"
+            android:layout_toEndOf="@+id/textView4"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 

@@ -132,7 +132,7 @@ Event: 1.394 Thread 0x0000000002aed800 Uncommon trap: reason=unstable_if action=
 Event: 1.724 Thread 0x0000000002aed800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002ede47c method=com.android.dx.util.IntList.binarysearch(I)I @ 105
 
 Internal exceptions (2 events):
-Event: 0.214 Thread 0x0000000002aed800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000eab0dda0) thrown at [C:\workspace\8-2-build-windows-amd64-cygwin\jdk8u65\4987\hotspot\src\såaª\Ë?
+Event: 0.214 Thread 0x0000000002aed800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000eab0dda0) thrown at [C:\workspace\8-2-build-windows-amd64-cygwin\jdk8u65\4987\hotspot\src\sï¿½aï¿½\ï¿½?
 Event: 0.214 Thread 0x0000000002aed800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x00000000eab0e088) thrown at [C:\workspace\8-2-build-windows-amd64-cygwin\jdk8u65\4987\hotspot\src\share\vm\prims\jni.
 
 Events (10 events):

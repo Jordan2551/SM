@@ -1,30 +1,30 @@
 [
     {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_light_sortable.png",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_light_sortable.png"
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_light_sorted_asc.png",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_light_sorted_asc.png"
     },
     {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_light_sorted_asc.png",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_light_sorted_asc.png"
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_dark_sorted_asc.png",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_dark_sorted_asc.png"
     },
     {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_launcher.png",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_light_sorted_desc.png",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_light_sorted_desc.png"
     },
     {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_dark_sorted_desc.png",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_dark_sorted_desc.png"
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_dark_sortable.png",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_dark_sortable.png"
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_light_sortable.png",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_light_sortable.png"
     },
     {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_dark_sorted_asc.png",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_dark_sorted_asc.png"
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_dark_sortable.png",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_dark_sortable.png"
     },
     {
-        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_light_sorted_desc.png",
-        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftMate\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_light_sorted_desc.png"
+        "merged": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_dark_sorted_desc.png",
+        "source": "C:\\Users\\jorda_000\\Documents\\Android Studio\\Projects\\ShiftBuddy\\app\\build\\intermediates\\exploded-aar\\de.codecrafters.tableview\\tableview\\2.0.1\\res\\mipmap-xxhdpi-v4\\ic_dark_sorted_desc.png"
     }
 ]

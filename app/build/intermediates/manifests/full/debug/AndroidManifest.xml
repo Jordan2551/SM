@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.shiftmate"
+    package="com.example.shiftbuddy"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -12,12 +12,18 @@
 
     <application
         android:allowBackup="true"
+        android:backupAgent="com.example.shiftbuddy.BackupAgent.SBBackupAgentHelper"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:restoreAnyVersion="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.backup.api_key"
+            android:value="AEdPqrEAAAAIV5UPLKQL92byS7WvhLL_YWphulpdAIt9y3VgAA" />
+
         <activity
-            android:name="com.example.shiftmate.MainActivity"
+            android:name="com.example.shiftbuddy.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -27,53 +33,47 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.shiftmate.NewShiftActivity"
+            android:name="com.example.shiftbuddy.NewShiftActivity"
             android:label="@string/title_activity_new_shift"
-            android:parentActivityName="com.example.shiftmate.MainActivity"
+            android:parentActivityName="com.example.shiftbuddy.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.shiftmate.MainActivity" />
+                android:value="com.example.shiftbuddy.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.shiftmate.ViewShifts.ViewShifts"
+            android:name="com.example.shiftbuddy.ViewShifts.ViewShifts"
             android:label="@string/title_activity_view_shifts"
-            android:parentActivityName="com.example.shiftmate.MainActivity"
+            android:parentActivityName="com.example.shiftbuddy.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.shiftmate.MainActivity" />
+                android:value="com.example.shiftbuddy.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.shiftmate.Settings"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName="com.example.shiftmate.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.shiftmate.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.example.shiftmate.DataGraph"
+            android:name="com.example.shiftbuddy.DataGraph"
             android:label="@string/title_activity_data_chart"
-            android:parentActivityName="com.example.shiftmate.MainActivity"
+            android:parentActivityName="com.example.shiftbuddy.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.shiftmate.MainActivity" />
+                android:value="com.example.shiftbuddy.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.shiftmate.SettingsFragment"
+            android:name="com.example.shiftbuddy.SettingsFragment"
             android:label="Settings"
-            android:parentActivityName="com.example.shiftmate.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.example.shiftbuddy.MessingAround" />
+        <activity android:name="com.example.shiftbuddy.ViewShifts.ShiftTableAdapter" />
+        <activity
+            android:name="com.example.shiftbuddy.Settings"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="com.example.shiftbuddy.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.shiftmate.SettingsFragment" />
+                android:value="com.example.shiftbuddy.MainActivity" />
         </activity>
-        <activity android:name="com.example.shiftmate.MessingAround" />
-        <activity android:name="com.example.shiftmate.ViewShifts.ShiftTableAdapter" />
     </application>
 
 </manifest>

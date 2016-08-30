@@ -28,7 +28,7 @@
             android:layout_alignBottom="@+id/imageView"
             android:layout_alignLeft="@+id/relativeLayout2"
             android:layout_alignStart="@+id/relativeLayout2"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_weight="0.05"
             android:text="What Would you like to do?"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -40,8 +40,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@color/LIGHT_PURPLE"
             android:orientation="horizontal">
 
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:drawableLeft="@drawable/ic_quick_punch_out"
+                android:drawableStart="@drawable/ic_quick_punch_out"
                 android:text="Quickly Punch In"
                 android:textAlignment="viewStart"
                 android:textSize="17sp"
@@ -78,8 +78,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@color/LIGHT_PURPLE"
             android:orientation="horizontal">
 
@@ -94,7 +94,7 @@
                 android:layout_toLeftOf="@+id/vsButton"
                 android:layout_toStartOf="@+id/vsButton"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_calendar"
+                android:drawableStart="@drawable/ic_calendar"
                 android:text="Add a New Shift"
                 android:textAlignment="viewStart"
                 android:textSize="17sp" />
@@ -109,7 +109,7 @@
                 android:layout_toEndOf="@+id/qsButton"
                 android:layout_toRightOf="@+id/qsButton"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_view_shifts"
+                android:drawableStart="@drawable/ic_view_shifts"
                 android:text="View Your Shifts"
                 android:textAlignment="viewStart"
                 android:textSize="17sp" />
@@ -119,8 +119,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@color/LIGHT_PURPLE"
             android:orientation="horizontal" >
 
@@ -132,7 +132,7 @@
                 android:id="@+id/vgButton"
                 android:layout_gravity="center_horizontal"
                 android:layout_below="@+id/vsButton"
-                android:drawableLeft="@drawable/ic_bar_chart_white"
+                android:drawableStart="@drawable/ic_bar_chart_white"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:textAlignment="viewStart"
@@ -147,9 +147,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/latestShiftTV"
                 android:layout_gravity="center_horizontal"
-                android:layout_toRightOf="@+id/vsButton"
+                android:layout_toEndOf="@+id/vsButton"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_settings_gear"
+                android:drawableStart="@drawable/ic_settings_gear"
                 android:text="Settings"
                 android:textAlignment="viewStart"
                 android:textSize="17sp" />

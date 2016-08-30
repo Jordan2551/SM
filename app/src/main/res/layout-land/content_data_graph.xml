@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".DataGraph">
 
@@ -16,8 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/linearLayout"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="40dp">
 
         <TextView
@@ -42,13 +42,13 @@
             android:id="@+id/dataTypeSpinner"
             android:spinnerMode="dropdown"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/textView16"
+            android:layout_toEndOf="@+id/textView16"
             android:layout_alignRight="@+id/shiftsFilterToText"
             android:layout_alignEnd="@+id/shiftsFilterToText"
             android:textAlignment="center"
             android:layout_gravity="center"
             style="@style/SpinnerStyle"
-            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
             android:layout_weight="1" />
 
         <TextView
@@ -73,13 +73,13 @@
             android:id="@+id/yearSpinner"
             android:spinnerMode="dropdown"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/textView16"
+            android:layout_toEndOf="@+id/textView16"
             android:layout_alignRight="@+id/shiftsFilterToText"
             android:layout_alignEnd="@+id/shiftsFilterToText"
             android:textAlignment="center"
             android:layout_gravity="center"
             style="@style/SpinnerStyle"
-            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
             android:layout_weight="1" />
 
     </LinearLayout>
@@ -90,8 +90,8 @@
         android:layout_height="42dp"
         android:layout_gravity="center"
         android:id="@+id/linearLayout3"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="3dp"
         android:gravity="center">
 
@@ -118,7 +118,7 @@
             android:id="@+id/monthSpinner"
             android:spinnerMode="dropdown"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/textView16"
+            android:layout_toEndOf="@+id/textView16"
             android:layout_alignRight="@+id/shiftsFilterToText"
             android:layout_alignEnd="@+id/shiftsFilterToText"
             android:textAlignment="center"
@@ -133,7 +133,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:drawableLeft="@drawable/ic_bar_chart_white"
+            android:drawableStart="@drawable/ic_bar_chart_white"
             android:text="Generate Graph"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
@@ -145,7 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/LIGHT_PURPLE"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_gravity="bottom|center"
             android:gravity="center">
 
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_zoom_in"
                 android:id="@+id/zoomInButton"
-                android:layout_marginRight="5dp" />
+                android:layout_marginEnd="5dp" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -169,7 +169,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/ic_help"
             android:id="@+id/helpButton"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_gravity="bottom" />
 
     </LinearLayout>
