@@ -7,6 +7,6 @@
     android:paddingStart="@dimen/activity_horizontal_margin"
     android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.shiftbuddy.Settings">
+    tools:context="com.shiftbuddy.app.Settings">
 
 </RelativeLayout>

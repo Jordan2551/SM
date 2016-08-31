@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    tools:context="com.example.shiftbuddy.MainActivity">
+    tools:context="com.shiftbuddy.app.MainActivity">
 
     <include layout="@layout/content_main" />
 
+
 </android.support.design.widget.CoordinatorLayout>
+

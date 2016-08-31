@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,52 +15,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            >
-
-            <TextView
-                android:id="@+id/textView29"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/imageView8"
-                android:layout_column="1"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toLeftOf="@+id/shiftEndTimeText"
-                android:layout_toStartOf="@+id/shiftEndTimeText"
-                android:clickable="true"
-                android:text="Shift Information"
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_alignParentTop="true"
-                android:layout_column="27"
-                android:layout_toEndOf="@+id/ssButton"
-                android:layout_toRightOf="@+id/ssButton"
-                android:background="@drawable/ic_date_range_black_36dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:weightSum="1"
             android:layout_gravity="center"
             android:gravity="center">
 
             <TextView
                 android:id="@+id/textView5"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView7"
@@ -562,6 +530,26 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:text="Save Shift" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|center"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/new_shift_ad_unit_id">
+            </com.google.android.gms.ads.AdView>
+        </LinearLayout>
+
 
     </LinearLayout>
 

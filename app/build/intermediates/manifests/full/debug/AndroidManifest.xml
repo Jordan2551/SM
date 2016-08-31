@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.shiftbuddy"
+    package="com.shiftbuddy.app"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -10,9 +10,21 @@
 
     <supports-screens />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+ <!-- Optional permission for App measurement to run. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="com.shiftbuddy.app.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.shiftbuddy.app.permission.C2D_MESSAGE" />
+
     <application
         android:allowBackup="true"
-        android:backupAgent="com.example.shiftbuddy.BackupAgent.SBBackupAgentHelper"
+        android:backupAgent="com.shiftbuddy.app.BackupAgent.SBBackupAgentHelper"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:restoreAnyVersion="true"
@@ -20,10 +32,10 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.google.android.backup.api_key"
-            android:value="AEdPqrEAAAAIV5UPLKQL92byS7WvhLL_YWphulpdAIt9y3VgAA" />
+            android:value="AEdPqrEAAAAIoBgw1RzZZP46T4K3NG9kTv_F9rK6zOBkFmSIBw" />
 
         <activity
-            android:name="com.example.shiftbuddy.MainActivity"
+            android:name="com.shiftbuddy.app.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -33,47 +45,111 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.shiftbuddy.NewShiftActivity"
+            android:name="com.shiftbuddy.app.NewShiftActivity"
             android:label="@string/title_activity_new_shift"
-            android:parentActivityName="com.example.shiftbuddy.MainActivity"
+            android:parentActivityName="com.shiftbuddy.app.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.shiftbuddy.MainActivity" />
+                android:value="com.shiftbuddy.app.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.shiftbuddy.ViewShifts.ViewShifts"
+            android:name="com.shiftbuddy.app.ViewShifts.ViewShifts"
             android:label="@string/title_activity_view_shifts"
-            android:parentActivityName="com.example.shiftbuddy.MainActivity"
+            android:parentActivityName="com.shiftbuddy.app.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.shiftbuddy.MainActivity" />
+                android:value="com.shiftbuddy.app.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.shiftbuddy.DataGraph"
+            android:name="com.shiftbuddy.app.DataGraph"
             android:label="@string/title_activity_data_chart"
-            android:parentActivityName="com.example.shiftbuddy.MainActivity"
+            android:parentActivityName="com.shiftbuddy.app.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.shiftbuddy.MainActivity" />
+                android:value="com.shiftbuddy.app.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.shiftbuddy.SettingsFragment"
+            android:name="com.shiftbuddy.app.SettingsFragment"
             android:label="Settings"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.example.shiftbuddy.MessingAround" />
-        <activity android:name="com.example.shiftbuddy.ViewShifts.ShiftTableAdapter" />
+        <activity android:name="com.shiftbuddy.app.ViewShifts.ShiftTableAdapter" />
         <activity
-            android:name="com.example.shiftbuddy.Settings"
+            android:name="com.shiftbuddy.app.Settings"
             android:label="@string/title_activity_settings"
-            android:parentActivityName="com.example.shiftbuddy.MainActivity" >
+            android:parentActivityName="com.shiftbuddy.app.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.shiftbuddy.MainActivity" />
+                android:value="com.shiftbuddy.app.MainActivity" />
         </activity>
+
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.google.android.gms.measurement.UPLOAD" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="com.shiftbuddy.app.firebaseinitprovider"
+            android:exported="false"
+            android:initOrder="100" />
+
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.shiftbuddy.app" />
+            </intent-filter>
+        </receiver>
+        <!--
+ Internal (not exported) receiver used by the app to start its own exported services
+             without risk of being spoofed.
+        -->
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver"
+            android:exported="false" />
+        <!--
+ FirebaseInstanceIdService performs security checks at runtime,
+             no need for explicit permissions despite exported="true"
+        -->
+        <service
+            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
+            android:exported="true" >
+            <intent-filter android:priority="-500" >
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+ <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity"
+            android:theme="@style/Theme.IAPTheme" />
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
 </manifest>

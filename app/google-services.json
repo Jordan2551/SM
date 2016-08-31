@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "172885814401",
+    "firebase_url": "https://shift-buddy.firebaseio.com",
+    "project_id": "shift-buddy",
+    "storage_bucket": "shift-buddy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172885814401:android:c73cb47f7e657f2f",
+        "android_client_info": {
+          "package_name": "com.shiftbuddy.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "172885814401-3rsvgdf5bad9t77poo06a4oigk54ebb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBRIPFOafAC44ijlLOSsQ8Zuz1nzwi5QA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
